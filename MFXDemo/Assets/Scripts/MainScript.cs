@@ -206,14 +206,6 @@ public class MainScript : MonoBehaviour
     {
     	MobFox.NativeInfo nativeInfo = JsonUtility.FromJson<MobFox.NativeInfo>(msg);
 
-		if (nativeInfo.title==null)
-		{
-			nativeTitle.enabled = false;
-		} else {
-			nativeTitle.enabled = true;
-	    	nativeTitle.text = nativeInfo.title;
-		}
-
 		MySetText(nativeTitle,        nativeInfo.title);
 		MySetText(nativeDescription,  nativeInfo.desc);
 		MySetText(nativeCallToAction, nativeInfo.ctatext);
