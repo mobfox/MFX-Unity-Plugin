@@ -54,11 +54,11 @@ On your main **MonoBehaviour** class 'start' function, call:
 Next you can define some global settings to refine your ad tergeting - you can define age, gender, keywords, and location (all these are optional):
 
 ```java
-        MobFox.Instance.setDemoAge("32");
-        MobFox.Instance.setDemoGender("male");
-        MobFox.Instance.setDemoKeywords("basketball,tennis");
-        MobFox.Instance.setLatitude(32.455666);
-        MobFox.Instance.setLongitude(32.455666);
+    MobFox.Instance.setDemoAge("32");
+    MobFox.Instance.setDemoGender("male");
+    MobFox.Instance.setDemoKeywords("basketball,tennis");
+    MobFox.Instance.setLatitude(32.455666);
+    MobFox.Instance.setLongitude(32.455666);
 ```
  
 ## Setting up listeners
@@ -66,16 +66,15 @@ Next you can define some global settings to refine your ad tergeting - you can d
 The SDK supports several callbacks for events related to the ads, you can define them as follows:
 
 ```java
-		// set listeners:
-		MobFox.OnBannerReady       += onBannerLoaded;
-		MobFox.OnBannerError       += onBannerError;
+    // set listeners:
+    MobFox.OnBannerReady       += onBannerLoaded;
+    MobFox.OnBannerError       += onBannerError;
         
-    	MobFox.OnInterstitialReady += onInterLoaded;
-    	MobFox.OnInterstitialError += onInterError;
+    MobFox.OnInterstitialReady += onInterLoaded;
+    MobFox.OnInterstitialError += onInterError;
 
-		MobFox.OnNativeReady       += onNativeReady;
-		MobFox.OnNativeError       += onNativeError;
-
+    MobFox.OnNativeReady       += onNativeReady;
+    MobFox.OnNativeError       += onNativeError;
 ```
  
 The callbacks may look like this:
@@ -85,12 +84,12 @@ The callbacks may look like this:
     
     public void onBannerLoaded()
     {
-		MobFox.Instance.ShowMobFoxBanner();
+        MobFox.Instance.ShowMobFoxBanner();
     }
 
     public void onBannerError( string msg)
     {
-	    MobFox.Instance.Log(msg);
+        MobFox.Instance.Log(msg);
     }
 
     //-------------------------------------------------------------
@@ -102,36 +101,28 @@ The callbacks may look like this:
     
     public void onInterError( string msg)
     {
-	    MobFox.Instance.Log(msg);
+        MobFox.Instance.Log(msg);
     }
 
     //-------------------------------------------------------------
         
     public void onNativeError( string msg)
     {
-	    MobFox.Instance.Log(msg);
+        MobFox.Instance.Log(msg);
     }
 
     public void onNativeReady(string msg)
     {
-    	MobFox.NativeInfo nativeInfo = JsonUtility.FromJson<MobFox.NativeInfo>(msg);
+        MobFox.NativeInfo nativeInfo = JsonUtility.FromJson<MobFox.NativeInfo>(msg);
 
-		if (nativeInfo.title==null)
-		{
-			nativeTitle.enabled = false;
-		} else {
-			nativeTitle.enabled = true;
-	    	nativeTitle.text = nativeInfo.title;
-		}
+        MySetText(nativeTitle,        nativeInfo.title);
+	MySetText(nativeDescription,  nativeInfo.desc);
+        MySetText(nativeCallToAction, nativeInfo.ctatext);
+        MySetText(nativeRating,       nativeInfo.rating);
+        MySetText(nativeSponsored,    nativeInfo.sponsored);
 
-		MySetText(nativeTitle,        nativeInfo.title);
-		MySetText(nativeDescription,  nativeInfo.desc);
-		MySetText(nativeCallToAction, nativeInfo.ctatext);
-		MySetText(nativeRating,       nativeInfo.rating);
-		MySetText(nativeSponsored,    nativeInfo.sponsored);
-
-		MySetImage(nativeIcon,        nativeInfo.iconImageUrl);
-		MySetImage(nativeMainImage,   nativeInfo.mainImageUrl);
+        MySetImage(nativeIcon,        nativeInfo.iconImageUrl);
+        MySetImage(nativeMainImage,   nativeInfo.mainImageUrl);
     }
     
     //-------------------------------------------------------------
@@ -142,27 +133,27 @@ The callbacks may look like this:
 To create a banner ad call:
 
 ```java
-		// possible dimensions: 320x50 / 300x250
-		MobFox.Instance.RequestMobFoxBanner ( "<banner inventory hash code>", x, y, width, height );
+    // possible dimensions: 320x50 / 300x250
+    MobFox.Instance.RequestMobFoxBanner ( "<banner inventory hash code>", x, y, width, height );
 ```
 You can configure refresh rate (0 means no refresh), and floor price:
 
 ```java
-		MobFox.Instance.setBannerRefresh(10);
+    MobFox.Instance.setBannerRefresh(10);
 		
-		MobFox.Instance.setBannerFloorPrice(0.05);
+    MobFox.Instance.setBannerFloorPrice(0.05);
 ```
 To hide or show the banner ad:
 
 ```java
-		MobFox.Instance.HideMobFoxBanner();
+    MobFox.Instance.HideMobFoxBanner();
     	
-		MobFox.Instance.ShowMobFoxBanner();
+    MobFox.Instance.ShowMobFoxBanner();
 ```
 And to deallocate (release) the ad:
 
 ```java
-		MobFox.Instance.ReleaseMobFoxBanner();
+    MobFox.Instance.ReleaseMobFoxBanner();
 ```
  
 ## Interstitial ads
@@ -170,22 +161,22 @@ And to deallocate (release) the ad:
 To create a interstitial ad call:
 
 ```java
-		MobFox.Instance. interstitial ( "<interstitial inventory hash code>" );
+    MobFox.Instance. interstitial ( "<interstitial inventory hash code>" );
 ```
 You can floor price:
 
 ```java
-		MobFox.Instance.setInterstitialFloorPrice(0.05);
+    MobFox.Instance.setInterstitialFloorPrice(0.05);
 ```
 To show the interstitial ad:
 
 ```java    	
-		MobFox.Instance.ShowMobFoxInterstitial();
+    MobFox.Instance.ShowMobFoxInterstitial();
 ```
 And to deallocate (release) the ad:
 
 ```java
-		MobFox.Instance.ReleaseMobFoxInterstitial();
+    MobFox.Instance.ReleaseMobFoxInterstitial();
 ```
  
 ## Native ads
@@ -193,82 +184,81 @@ And to deallocate (release) the ad:
 Before you load a native ad, you can configure type of ad and required fields, and the floor price:
 
 ```java		
-    	MobFox.Instance.setNativeAdContext      ( MobFox.NativeAdContext.CONTENT );
-    	MobFox.Instance.setNativeAdPlacementType( MobFox.NativeAdPlacementType.ATOMIC );
+    MobFox.Instance.setNativeAdContext      ( MobFox.NativeAdContext.CONTENT );
+    MobFox.Instance.setNativeAdPlacementType( MobFox.NativeAdPlacementType.ATOMIC );
 
-    	MobFox.Instance.setNativeAdIconImage    ( true, size );
-    	MobFox.Instance.setNativeAdMainImage    ( true, width, height );
-    	MobFox.Instance.setNativeAdTitle        ( true, maxLength );
-    	MobFox.Instance.setNativeAdDesc         ( true, maxLength );
+    MobFox.Instance.setNativeAdIconImage    ( true, size );
+    MobFox.Instance.setNativeAdMainImage    ( true, width, height );
+    MobFox.Instance.setNativeAdTitle        ( true, maxLength );
+    MobFox.Instance.setNativeAdDesc         ( true, maxLength );
 
-		MobFox.Instance.setNativeFloorPrice(0.05);
+    MobFox.Instance.setNativeFloorPrice(0.05);
 ```
 To create a native ad call:
 
 ```java
-		MobFox.Instance.RequestMobFoxNative ( "<native inventory hash code>" );
+    MobFox.Instance.RequestMobFoxNative ( "<native inventory hash code>" );
 ```
 When the SDK returns the ad creatives, you can display them using the following convenience methods:
 
 ```java
     public void onNativeReady(string msg)
     {
-    	MobFox.NativeInfo nativeInfo = JsonUtility.FromJson<MobFox.NativeInfo>(msg);
+        MobFox.NativeInfo nativeInfo = JsonUtility.FromJson<MobFox.NativeInfo>(msg);
 
-		MySetText(nativeTitle,        nativeInfo.title);
-		MySetText(nativeDescription,  nativeInfo.desc);
-		MySetText(nativeCallToAction, nativeInfo.ctatext);
-		MySetText(nativeRating,       nativeInfo.rating);
-		MySetText(nativeSponsored,    nativeInfo.sponsored);
+        MySetText(nativeTitle,        nativeInfo.title);
+        MySetText(nativeDescription,  nativeInfo.desc);
+        MySetText(nativeCallToAction, nativeInfo.ctatext);
+        MySetText(nativeRating,       nativeInfo.rating);
+        MySetText(nativeSponsored,    nativeInfo.sponsored);
 
-		MySetImage(nativeIcon,        nativeInfo.iconImageUrl);
-		MySetImage(nativeMainImage,   nativeInfo.mainImageUrl);
+        MySetImage(nativeIcon,        nativeInfo.iconImageUrl);
+        MySetImage(nativeMainImage,   nativeInfo.mainImageUrl);
     }
     
     //-------------------------------------------------------------
 
-	private void MySetText(Text trg, string txt)
-	{
-		if (txt==null)
-		{
-			trg.enabled = false;
-		} else {
-			trg.enabled = true;
-	    	trg.text = txt;
-		}
-	}
+    private void MySetText(Text trg, string txt)
+    {
+        if (txt==null)
+        {
+            trg.enabled = false;
+        } else {
+            trg.enabled = true;
+            trg.text = txt;
+        }
+    }
 	
-	private void MySetImage(RawImage trg, string mediaUrl)
-	{
-		if (mediaUrl==null)
-		{
-			trg.enabled = false;
-		} else {
-			trg.enabled = true;
-		    StartCoroutine(DownloadImage(trg, mediaUrl));
-		}
-	}
+    private void MySetImage(RawImage trg, string mediaUrl)
+    {
+        if (mediaUrl==null)
+        {
+            trg.enabled = false;
+        } else {
+            trg.enabled = true;
+            StartCoroutine(DownloadImage(trg, mediaUrl));
+        }
+    }
     
     IEnumerator DownloadImage(RawImage trg, string mediaUrl)
-	{   
-    	UnityWebRequest request = UnityWebRequestTexture.GetTexture(mediaUrl);
-    	yield return request.SendWebRequest();
-    	if(request.isNetworkError || request.isHttpError) 
-        	Debug.Log(request.error);
-    	else
-        	trg.texture = ((DownloadHandlerTexture) request.downloadHandler).texture;
-	} 
-
+    {   
+        UnityWebRequest request = UnityWebRequestTexture.GetTexture(mediaUrl);
+        yield return request.SendWebRequest();
+        if(request.isNetworkError || request.isHttpError) 
+       	    Debug.Log(request.error);
+        else
+            trg.texture = ((DownloadHandlerTexture) request.downloadHandler).texture;
+    } 
 ```
 When the user clicks on the ad:
 
 ```java
-		MobFox.Instance.callToActionClicked();
+    MobFox.Instance.callToActionClicked();
 ```
 And to deallocate (release) the ad:
 
 ```java
-		MobFox.Instance.ReleaseMobFoxNative();
+    MobFox.Instance.ReleaseMobFoxNative();
 ```
  
 # Support
