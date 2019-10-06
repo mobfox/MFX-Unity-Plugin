@@ -1,5 +1,5 @@
 # MFX-Unity-Plugin
-Thanks for selecting Unity plugin for Mobfox SDK.
+Thanks for selecting Unity plugin for Mobfox Unity Plugin.
 
 <!-- toc -->
 
@@ -12,20 +12,18 @@ Thanks for selecting Unity plugin for Mobfox SDK.
 
 # Prerequisites
 
-* Mobfox SDK works on **Android** devices with OS version **4.4.x (19)** and up.
-* Mobfox SDK requires an internet access.
+* Mobfox Unity Plugin works on **Android** devices with OS version **4.4.x (19)** and up.
+* Mobfox Unity Plugin requires an internet access.
 * You will need a [Mobfox](https://mobfox.atlassian.net/wiki/spaces/PUMD/pages/354549848/Setup+MobFox+Account) account.
 
 # Installation
 
-Clone or download Mobfox SDK-SDK from here, and extract it on your computer.
-In it you will find a demo application for how the Mobfox SDK can be used.
+Clone or download **MFX-Unity-Plugin** from [here](https://github.com/mobfox/MFX-Unity-Plugin), and extract it on your computer.
 
-You can import this project to Android Studio, and use it as a reference
-or base to make your alterations.
+In it you will find a demo application (under the **MFXDemo** directory) for how the Mobfox Unity Plugin can be used. You can use this as a basis, and build you app on it.
 
 If you already have an existing project, or want to create a new one,
-The Mobfox SDK comes in the form of **bazz_bridge_sdk.aar**. You should receive it from us, along with
+The Mobfox Unity Plugin comes in the form of **bazz_bridge_sdk.aar**. You should receive it from us, along with
 the App ID.
 
 You can also download it from here: https://dl.dropboxusercontent.com/s/vijxkoh6xf9w2r7/bazz_bridge_sdk.aar
@@ -38,7 +36,7 @@ To add it to your project, follow the steps below:
 4. After Gradle Sync is done, go to your project settings: right-click on the project module, and select '**Open Module Settings**'.
 5. Select your **app** module in the left pane, and click the '**Dependencies**' tab. Click the **plus (+)** sign, and select '**Module dependency**'. Select '**:bazz_bridge_sdk**', and click '**OK**' twice.
 
-Done. Now you can start integrating the Mobfox SDK as explained in the next sections.
+Done. Now you can start integrating the Mobfox Unity Plugin as explained in the next sections.
 
 # Usage
 
