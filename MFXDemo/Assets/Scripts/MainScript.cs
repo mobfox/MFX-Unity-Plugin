@@ -52,6 +52,8 @@ public class MainScript : MonoBehaviour
         MobFox.Instance.setDemoKeywords("basketball,tennis");
         MobFox.Instance.setLatitude(32.455666);
         MobFox.Instance.setLongitude(32.455666);
+        
+        MobFox.Instance.setCOPPA(true);
 
         clearAllAds();
     }

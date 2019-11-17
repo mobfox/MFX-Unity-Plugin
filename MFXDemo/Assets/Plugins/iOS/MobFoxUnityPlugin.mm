@@ -50,14 +50,9 @@ extern "C"
 //======  G L O B A L                                                             ======
 //======================================================================================
 
--(void) setSubjectToGDPR:(BOOL)val
+-(void) setCOPPA:(BOOL)val
 {
-    [MobFoxSDK setGDPR:val];
-}
-
--(void) setGDPRConsentString:(NSString*)val
-{
-    [MobFoxSDK setGDPRConsentString:val];
+    [MobFoxSDK setCOPPA:val];
 }
 
 -(void) setDemoAge:(NSString*)val
@@ -478,14 +473,9 @@ extern "C"
     
     //----------------------------------------------------------------------
     
-    void _setSubjectToGDPR(bool subjectToGDPR){
+    void _setCOPPA(bool subjectToCOPPA){
     
-    	[plugin setSubjectToGDPR:subjectToGDPR];
-    }
-    
-    void _setGDPRConsentString(const char* consentString){
-    
-    	[plugin setGDPRConsentString:[NSString stringWithUTF8String:consentString]];
+    	[plugin setCOPPS:subjectToCOPPA];
     }
     
     void _setDemoAge(const char* val){

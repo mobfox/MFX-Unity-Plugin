@@ -9,10 +9,7 @@ public class MobFox :MonoBehaviour
 	
 
 	[DllImport ( "__Internal" )]
-	public static extern void _setSubjectToGDPR (bool subjectToGDPR);
-
-	[DllImport ( "__Internal" )]
-	public static extern void _setGDPRConsentString (string consentString);
+	public static extern void _setCOPPA (bool subjectToCOPPA);
 
 	[DllImport ( "__Internal" )]
 	public static extern void _setDemoAge (string demoAge);
@@ -286,72 +283,36 @@ public class MobFox :MonoBehaviour
 	//======  G L O B A L                                                             ======
 	//======================================================================================
 
-	public void setSubjectToGDPR (bool subjectToGDPR)
+	public void setCOPPA (bool subjectToCOPPA)
 	{
 		ConnectToPlugin ( );
 
 		if (Application.platform == RuntimePlatform.Android)
 		{
-			setSubjectToGDPR_Android ( subjectToGDPR );
+			setCOPPA_Android ( subjectToCOPPA );
 		}
 		else
 		{
-			setSubjectToGDPR_iPhone ( subjectToGDPR );
+			setCOPPA_iPhone ( subjectToCOPPA );
 		}
 	}
 
 	//-------------------------------------------
 
-	private void setSubjectToGDPR_iPhone (bool subjectToGDPR)
+	private void setCOPPA_iPhone (bool subjectToCOPPA)
 	{
-		_setSubjectToGDPR(subjectToGDPR);
+		_setCOPPA(subjectToCOPPA);
 	}
 
 	//-------------------------------------------
 
-	private void setSubjectToGDPR_Android (bool subjectToGDPR)
+	private void setCOPPA_Android (bool subjectToCOPPA)
 	{
 		if (activityContext != null)
 		{
 			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
 			{
-				PluginInstance.Call ( "setSubjectToGDPR", subjectToGDPR );
-			}));
-		}
-	}
-
-	//======================================================================================
-
-	public void setGDPRConsentString (string consentString)
-	{
-		ConnectToPlugin ( );
-
-		if (Application.platform == RuntimePlatform.Android)
-		{
-			setGDPRConsentString_Android ( consentString );
-		}
-		else
-		{
-			setGDPRConsentString_iPhone ( consentString );
-		}
-	}
-
-	//-------------------------------------------
-
-	private void setGDPRConsentString_iPhone (string consentString)
-	{
-		_setGDPRConsentString (consentString);
-	}
-
-	//-------------------------------------------
-
-	private void setGDPRConsentString_Android (string consentString)
-	{
-		if (activityContext != null)
-		{
-			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
-			{
-				PluginInstance.Call ( "setGDPRConsentString", consentString );
+				PluginInstance.Call ( "setCOPPA", subjectToCOPPA );
 			}));
 		}
 	}

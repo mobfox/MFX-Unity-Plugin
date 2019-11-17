@@ -1,0 +1,353 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:2:1-32:12
+MERGED from [com.android.volley:volley:1.1.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/volley-1.1.0.aar/d64d34846bc4226ce96d6cfc0b6666ca/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/636ea03886f72b0ef47036e0662a9f68/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/play-services-ads-identifier-16.0.0.aar/a61d9b8d80fdd2c4a0ad6103c45a0743/AndroidManifest.xml:17:1-24:12
+MERGED from [:MobFox-Android-SDK-Unity-Plugin-4.0.10:] /Users/takephone/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Unity-Plugin-4.0.10.aar/2dbceeb0b7bb5b21fac74af51fc67812/AndroidManifest.xml:2:1-47:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/c06235244af893b114376ddae21185c0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/3fce3f42c977187a8822e1cca1d6bff6/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /Users/takephone/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/f43f48b69bcc1f1335bb17a0c64125f9/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:26.1.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/d3b2281397d60da1c7aea49f13a8dd41/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/3d426fa910396ae2d96dbb22a124a9df/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/09f232bc3cb59aa990a682c91c5df786/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/e0b2349a92bf841279d31655d967671f/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/e50dd6e19e895addf90f7d68fe8eb145/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/67ff56d2aa599e4b85e7ed81da05ff4f/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/19c46ec96c85559415396c840b61980d/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/1af3675efe8afaa8336457a1b5eba181/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/07e08768ddcb5e96ce51f45590719994/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/13ee6b8664c2fd4d5145a6d1c3b8d1ce/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/f093fb1f072cbbe77153b717b50ee24b/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/ab77b2df29e3117db4fdba033eaae802/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/287116f843a79bb79ab8804222959997/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/521091e2e9b4641669f7e9c52de5080c/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/bd07d358644bb7ae8b6342917248a8b5/AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/0fd35d3ca01f17cde55a23a9411be9cf/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/takephone/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/d2f6e05f3ebeecef47b0469b14e111b7/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/takephone/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/fd899c47e68589459e433d43b55009a6/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/takephone/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/2acc057bf7edb2d369bc52509fe0492a/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] /Users/takephone/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/ed1922b075a5be16f20caf6197321fef/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/e1b451171aab31f48c4fd91eb7658fc2/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/e76c9404c8c37299358313d99ae65be3/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/a9c92b6236d8f422b4e86982f74bcd48/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/takephone/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/52497ceea03eab3f353fda669b1a4bc4/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/112dbedc87a3098e851c3ddbe9d39a49/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:2:1-32:12
+	package
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:2:70-111
+		INJECTED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml
+		INJECTED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:2:1-32:12
+		INJECTED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:2:112-158
+	android:versionCode
+		INJECTED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:2:1-32:12
+		INJECTED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:2:11-69
+	android:installLocation
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:2:159-199
+supports-screens
+ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:3:3-163
+	android:largeScreens
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:3:78-105
+	android:smallScreens
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:3:21-48
+	android:normalScreens
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:3:49-77
+	android:xlargeScreens
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:3:106-134
+	android:anyDensity
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:3:135-160
+application
+ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:4:3-19:17
+MERGED from [com.android.volley:volley:1.1.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/volley-1.1.0.aar/d64d34846bc4226ce96d6cfc0b6666ca/AndroidManifest.xml:9:5-20
+MERGED from [com.android.volley:volley:1.1.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/volley-1.1.0.aar/d64d34846bc4226ce96d6cfc0b6666ca/AndroidManifest.xml:9:5-20
+MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/play-services-ads-identifier-16.0.0.aar/a61d9b8d80fdd2c4a0ad6103c45a0743/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/play-services-ads-identifier-16.0.0.aar/a61d9b8d80fdd2c4a0ad6103c45a0743/AndroidManifest.xml:22:5-20
+MERGED from [:MobFox-Android-SDK-Unity-Plugin-4.0.10:] /Users/takephone/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Unity-Plugin-4.0.10.aar/2dbceeb0b7bb5b21fac74af51fc67812/AndroidManifest.xml:19:5-45:19
+MERGED from [:MobFox-Android-SDK-Unity-Plugin-4.0.10:] /Users/takephone/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Unity-Plugin-4.0.10.aar/2dbceeb0b7bb5b21fac74af51fc67812/AndroidManifest.xml:19:5-45:19
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /Users/takephone/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/f43f48b69bcc1f1335bb17a0c64125f9/AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /Users/takephone/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/f43f48b69bcc1f1335bb17a0c64125f9/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-v4:26.1.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/d3b2281397d60da1c7aea49f13a8dd41/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-v4:26.1.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/d3b2281397d60da1c7aea49f13a8dd41/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/3d426fa910396ae2d96dbb22a124a9df/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/3d426fa910396ae2d96dbb22a124a9df/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/521091e2e9b4641669f7e9c52de5080c/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/521091e2e9b4641669f7e9c52de5080c/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/bd07d358644bb7ae8b6342917248a8b5/AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/bd07d358644bb7ae8b6342917248a8b5/AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/521091e2e9b4641669f7e9c52de5080c/AndroidManifest.xml:22:18-91
+	android:label
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:4:90-122
+	android:allowBackup
+		ADDED from [:MobFox-Android-SDK-Unity-Plugin-4.0.10:] /Users/takephone/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Unity-Plugin-4.0.10.aar/2dbceeb0b7bb5b21fac74af51fc67812/AndroidManifest.xml:20:9-35
+	android:icon
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:4:58-89
+	android:banner
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:4:145-182
+	android:theme
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:4:16-57
+	android:networkSecurityConfig
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:4:219-279
+	android:isGame
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:4:123-144
+	android:usesCleartextTraffic
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:4:183-218
+activity#com.unity3d.player.UnityPlayerActivity
+ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:5:5-12:16
+	android:screenOrientation
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:5:102-140
+	android:label
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:5:69-101
+	android:launchMode
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:5:141-172
+	android:hardwareAccelerated
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:5:355-389
+	android:configChanges
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:5:173-354
+	android:name
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:5:15-68
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER+category:name:android.intent.category.LEANBACK_LAUNCHER
+ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:6:7-10:23
+action#android.intent.action.MAIN
+ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:7:9-61
+	android:name
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:7:17-58
+category#android.intent.category.LAUNCHER
+ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:8:9-69
+	android:name
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:8:19-66
+category#android.intent.category.LEANBACK_LAUNCHER
+ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:9:9-78
+	android:name
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:9:19-75
+meta-data#unityplayer.UnityActivity
+ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:11:7-82
+	android:value
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:11:59-79
+	android:name
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:11:18-58
+meta-data#unity.build-id
+ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:13:5-101
+	android:value
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:13:46-98
+	android:name
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:13:16-45
+meta-data#unity.splash-mode
+ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:14:5-69
+	android:value
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:14:49-66
+	android:name
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:14:16-48
+meta-data#unity.splash-enable
+ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:15:5-74
+	android:value
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:15:51-71
+	android:name
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:15:16-50
+activity#com.mobfox.android.Ads.InterstitialActivity
+ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:16:5-217
+MERGED from [:MobFox-Android-SDK-Unity-Plugin-4.0.10:] /Users/takephone/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Unity-Plugin-4.0.10.aar/2dbceeb0b7bb5b21fac74af51fc67812/AndroidManifest.xml:34:9-38:74
+MERGED from [:MobFox-Android-SDK-Unity-Plugin-4.0.10:] /Users/takephone/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Unity-Plugin-4.0.10.aar/2dbceeb0b7bb5b21fac74af51fc67812/AndroidManifest.xml:34:9-38:74
+	android:hardwareAccelerated
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:16:74-108
+	android:configChanges
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:16:109-155
+	android:theme
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:16:156-214
+	android:name
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:16:15-73
+activity#com.mobfox.android.core.InAppBrowser
+ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:17:5-151
+MERGED from [:MobFox-Android-SDK-Unity-Plugin-4.0.10:] /Users/takephone/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Unity-Plugin-4.0.10.aar/2dbceeb0b7bb5b21fac74af51fc67812/AndroidManifest.xml:41:9-44:50
+MERGED from [:MobFox-Android-SDK-Unity-Plugin-4.0.10:] /Users/takephone/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Unity-Plugin-4.0.10.aar/2dbceeb0b7bb5b21fac74af51fc67812/AndroidManifest.xml:41:9-44:50
+	android:hardwareAccelerated
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:17:67-101
+	android:configChanges
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:17:102-148
+	android:name
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:17:15-66
+service#com.mobfox.android.dmp.services.MobFoxService
+ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:18:5-108
+MERGED from [:MobFox-Android-SDK-Unity-Plugin-4.0.10:] /Users/takephone/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Unity-Plugin-4.0.10.aar/2dbceeb0b7bb5b21fac74af51fc67812/AndroidManifest.xml:28:9-30:46
+MERGED from [:MobFox-Android-SDK-Unity-Plugin-4.0.10:] /Users/takephone/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Unity-Plugin-4.0.10.aar/2dbceeb0b7bb5b21fac74af51fc67812/AndroidManifest.xml:28:9-30:46
+	android:launchMode
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:18:75-105
+	android:name
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:18:14-74
+uses-feature#0x00020000
+ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:20:3-52
+	android:glEsVersion
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:20:17-49
+uses-permission#android.permission.INTERNET
+ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:21:3-65
+MERGED from [:MobFox-Android-SDK-Unity-Plugin-4.0.10:] /Users/takephone/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Unity-Plugin-4.0.10.aar/2dbceeb0b7bb5b21fac74af51fc67812/AndroidManifest.xml:15:5-67
+MERGED from [:MobFox-Android-SDK-Unity-Plugin-4.0.10:] /Users/takephone/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Unity-Plugin-4.0.10.aar/2dbceeb0b7bb5b21fac74af51fc67812/AndroidManifest.xml:15:5-67
+	android:name
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:21:20-62
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:22:3-106
+MERGED from [:MobFox-Android-SDK-Unity-Plugin-4.0.10:] /Users/takephone/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Unity-Plugin-4.0.10.aar/2dbceeb0b7bb5b21fac74af51fc67812/AndroidManifest.xml:17:5-81
+MERGED from [:MobFox-Android-SDK-Unity-Plugin-4.0.10:] /Users/takephone/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Unity-Plugin-4.0.10.aar/2dbceeb0b7bb5b21fac74af51fc67812/AndroidManifest.xml:17:5-81
+	android:maxSdkVersion
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:22:77-103
+	android:name
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:22:20-76
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:23:3-105
+	android:maxSdkVersion
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:23:76-102
+	android:name
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:23:20-75
+uses-feature#android.hardware.touchscreen
+ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:24:3-88
+	android:required
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:24:61-85
+	android:name
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:24:17-60
+uses-feature#android.hardware.touchscreen.multitouch
+ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:25:3-99
+	android:required
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:25:72-96
+	android:name
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:25:17-71
+uses-feature#android.hardware.touchscreen.multitouch.distinct
+ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:26:3-108
+	android:required
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:26:81-105
+	android:name
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:26:17-80
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:27:3-74
+MERGED from [:MobFox-Android-SDK-Unity-Plugin-4.0.10:] /Users/takephone/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Unity-Plugin-4.0.10.aar/2dbceeb0b7bb5b21fac74af51fc67812/AndroidManifest.xml:11:5-76
+MERGED from [:MobFox-Android-SDK-Unity-Plugin-4.0.10:] /Users/takephone/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Unity-Plugin-4.0.10.aar/2dbceeb0b7bb5b21fac74af51fc67812/AndroidManifest.xml:11:5-76
+	android:name
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:27:20-71
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:28:3-74
+MERGED from [:MobFox-Android-SDK-Unity-Plugin-4.0.10:] /Users/takephone/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Unity-Plugin-4.0.10.aar/2dbceeb0b7bb5b21fac74af51fc67812/AndroidManifest.xml:12:5-76
+MERGED from [:MobFox-Android-SDK-Unity-Plugin-4.0.10:] /Users/takephone/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Unity-Plugin-4.0.10.aar/2dbceeb0b7bb5b21fac74af51fc67812/AndroidManifest.xml:12:5-76
+	android:name
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:28:20-71
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:29:3-79
+MERGED from [:MobFox-Android-SDK-Unity-Plugin-4.0.10:] /Users/takephone/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Unity-Plugin-4.0.10.aar/2dbceeb0b7bb5b21fac74af51fc67812/AndroidManifest.xml:13:5-81
+MERGED from [:MobFox-Android-SDK-Unity-Plugin-4.0.10:] /Users/takephone/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Unity-Plugin-4.0.10.aar/2dbceeb0b7bb5b21fac74af51fc67812/AndroidManifest.xml:13:5-81
+	android:name
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:29:20-76
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:30:3-77
+MERGED from [:MobFox-Android-SDK-Unity-Plugin-4.0.10:] /Users/takephone/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Unity-Plugin-4.0.10.aar/2dbceeb0b7bb5b21fac74af51fc67812/AndroidManifest.xml:14:5-79
+MERGED from [:MobFox-Android-SDK-Unity-Plugin-4.0.10:] /Users/takephone/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Unity-Plugin-4.0.10.aar/2dbceeb0b7bb5b21fac74af51fc67812/AndroidManifest.xml:14:5-79
+	android:name
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml:30:20-74
+uses-sdk
+INJECTED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml
+INJECTED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml
+MERGED from [com.android.volley:volley:1.1.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/volley-1.1.0.aar/d64d34846bc4226ce96d6cfc0b6666ca/AndroidManifest.xml:7:5-43
+MERGED from [com.android.volley:volley:1.1.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/volley-1.1.0.aar/d64d34846bc4226ce96d6cfc0b6666ca/AndroidManifest.xml:7:5-43
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/636ea03886f72b0ef47036e0662a9f68/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/636ea03886f72b0ef47036e0662a9f68/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/play-services-ads-identifier-16.0.0.aar/a61d9b8d80fdd2c4a0ad6103c45a0743/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/play-services-ads-identifier-16.0.0.aar/a61d9b8d80fdd2c4a0ad6103c45a0743/AndroidManifest.xml:20:5-44
+MERGED from [:MobFox-Android-SDK-Unity-Plugin-4.0.10:] /Users/takephone/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Unity-Plugin-4.0.10.aar/2dbceeb0b7bb5b21fac74af51fc67812/AndroidManifest.xml:7:5-9:41
+MERGED from [:MobFox-Android-SDK-Unity-Plugin-4.0.10:] /Users/takephone/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Unity-Plugin-4.0.10.aar/2dbceeb0b7bb5b21fac74af51fc67812/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/c06235244af893b114376ddae21185c0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/c06235244af893b114376ddae21185c0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/3fce3f42c977187a8822e1cca1d6bff6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/3fce3f42c977187a8822e1cca1d6bff6/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /Users/takephone/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/f43f48b69bcc1f1335bb17a0c64125f9/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /Users/takephone/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/f43f48b69bcc1f1335bb17a0c64125f9/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:26.1.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/d3b2281397d60da1c7aea49f13a8dd41/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:26.1.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/d3b2281397d60da1c7aea49f13a8dd41/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/3d426fa910396ae2d96dbb22a124a9df/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/3d426fa910396ae2d96dbb22a124a9df/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/09f232bc3cb59aa990a682c91c5df786/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/09f232bc3cb59aa990a682c91c5df786/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/e0b2349a92bf841279d31655d967671f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/e0b2349a92bf841279d31655d967671f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/e50dd6e19e895addf90f7d68fe8eb145/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/e50dd6e19e895addf90f7d68fe8eb145/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/67ff56d2aa599e4b85e7ed81da05ff4f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/67ff56d2aa599e4b85e7ed81da05ff4f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/19c46ec96c85559415396c840b61980d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/19c46ec96c85559415396c840b61980d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/1af3675efe8afaa8336457a1b5eba181/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/1af3675efe8afaa8336457a1b5eba181/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/07e08768ddcb5e96ce51f45590719994/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/07e08768ddcb5e96ce51f45590719994/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/13ee6b8664c2fd4d5145a6d1c3b8d1ce/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/13ee6b8664c2fd4d5145a6d1c3b8d1ce/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/f093fb1f072cbbe77153b717b50ee24b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/f093fb1f072cbbe77153b717b50ee24b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/ab77b2df29e3117db4fdba033eaae802/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/ab77b2df29e3117db4fdba033eaae802/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/287116f843a79bb79ab8804222959997/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/287116f843a79bb79ab8804222959997/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/521091e2e9b4641669f7e9c52de5080c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/521091e2e9b4641669f7e9c52de5080c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/bd07d358644bb7ae8b6342917248a8b5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/bd07d358644bb7ae8b6342917248a8b5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/0fd35d3ca01f17cde55a23a9411be9cf/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/0fd35d3ca01f17cde55a23a9411be9cf/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/takephone/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/d2f6e05f3ebeecef47b0469b14e111b7/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/takephone/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/d2f6e05f3ebeecef47b0469b14e111b7/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/takephone/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/fd899c47e68589459e433d43b55009a6/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/takephone/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/fd899c47e68589459e433d43b55009a6/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/takephone/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/2acc057bf7edb2d369bc52509fe0492a/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/takephone/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/2acc057bf7edb2d369bc52509fe0492a/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/takephone/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/ed1922b075a5be16f20caf6197321fef/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/takephone/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/ed1922b075a5be16f20caf6197321fef/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/e1b451171aab31f48c4fd91eb7658fc2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/e1b451171aab31f48c4fd91eb7658fc2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/e76c9404c8c37299358313d99ae65be3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/e76c9404c8c37299358313d99ae65be3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/a9c92b6236d8f422b4e86982f74bcd48/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/a9c92b6236d8f422b4e86982f74bcd48/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/takephone/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/52497ceea03eab3f353fda669b1a4bc4/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/takephone/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/52497ceea03eab3f353fda669b1a4bc4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/112dbedc87a3098e851c3ddbe9d39a49/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/112dbedc87a3098e851c3ddbe9d39a49/AndroidManifest.xml:20:5-44
+INJECTED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml
+INJECTED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [com.android.support:support-v4:26.1.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/d3b2281397d60da1c7aea49f13a8dd41/AndroidManifest.xml:23:9-51
+	android:targetSdkVersion
+		INJECTED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml
+		INJECTED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml
+		ADDED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml
+		INJECTED from /Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Temp/gradleOut/src/main/AndroidManifest.xml
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from [:MobFox-Android-SDK-Unity-Plugin-4.0.10:] /Users/takephone/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Unity-Plugin-4.0.10.aar/2dbceeb0b7bb5b21fac74af51fc67812/AndroidManifest.xml:16:5-75
+	android:name
+		ADDED from [:MobFox-Android-SDK-Unity-Plugin-4.0.10:] /Users/takephone/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Unity-Plugin-4.0.10.aar/2dbceeb0b7bb5b21fac74af51fc67812/AndroidManifest.xml:16:22-72
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:16.0.1] /Users/takephone/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/f43f48b69bcc1f1335bb17a0c64125f9/AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:16.0.1] /Users/takephone/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/f43f48b69bcc1f1335bb17a0c64125f9/AndroidManifest.xml:25:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:16.0.1] /Users/takephone/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/f43f48b69bcc1f1335bb17a0c64125f9/AndroidManifest.xml:24:13-58
+meta-data#android.support.VERSION
+ADDED from [com.android.support:support-v4:26.1.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/d3b2281397d60da1c7aea49f13a8dd41/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/3d426fa910396ae2d96dbb22a124a9df/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/3d426fa910396ae2d96dbb22a124a9df/AndroidManifest.xml:26:9-28:38
+	android:value
+		ADDED from [com.android.support:support-v4:26.1.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/d3b2281397d60da1c7aea49f13a8dd41/AndroidManifest.xml:28:13-35
+	android:name
+		ADDED from [com.android.support:support-v4:26.1.0] /Users/takephone/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/d3b2281397d60da1c7aea49f13a8dd41/AndroidManifest.xml:27:13-51

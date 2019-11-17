@@ -12,8 +12,7 @@
 @interface MobFoxUnityPlugin : NSObject<MFXBannerAdDelegate,MFXInterstitialAdDelegate,MFXNativeAdDelegate>
 
 
--(void) setSubjectToGDPR:(BOOL)val;
--(void) setGDPRConsentString:(NSString*)val;
+-(void) setCOPPA:(BOOL)val;
 -(void) setDemoAge:(NSString*)val;
 -(void) setDemoGender:(NSString*)val;
 -(void) setDemoKeywords:(NSString*)val;
