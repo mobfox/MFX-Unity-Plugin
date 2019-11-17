@@ -52,7 +52,7 @@ extern "C"
 
 -(void) setCOPPA:(BOOL)val
 {
-    [MobFoxSDK setCOPPA:val];
+    [MobFoxSDK setCoppa:val];
 }
 
 -(void) setDemoAge:(NSString*)val
@@ -475,7 +475,7 @@ extern "C"
     
     void _setCOPPA(bool subjectToCOPPA){
     
-    	[plugin setCOPPS:subjectToCOPPA];
+    	[plugin setCOPPA:subjectToCOPPA];
     }
     
     void _setDemoAge(const char* val){

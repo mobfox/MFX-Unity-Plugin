@@ -155,6 +155,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.mobfox.mfxsdkcore.MFXTester
     Standalone: com.Company.ProductName
+    iOS: com.mobfox.mfxsdkcore.MFXTester
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 19

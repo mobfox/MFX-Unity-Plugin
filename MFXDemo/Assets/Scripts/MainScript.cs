@@ -12,7 +12,7 @@ public class MainScript : MonoBehaviour
 	private string MobFoxVideoInterstitialInventoryHash = "80187188f458cfde788d961b6882fd53";
 	//private string MobFoxNativeInventoryHash            = "a764347547748896b84e0b8ccd90fd62";	// "normal" test hash
 	//private string MobFoxNativeInventoryHash            = "d8bd50e4ba71a708ad224464bdcdc237";	// "new" test hash
-	private string MobFoxNativeInventoryHash            = "4510d1b36036ac5c9e80ee1f1c74931c";   //"d22bf35c596809155ec8520d283a9b09";	// "live" hash
+	private string MobFoxNativeInventoryHash            = "d8bd50e4ba71a708ad224464bdcdc237";   //"d22bf35c596809155ec8520d283a9b09";	// "live" hash
 
 
 	public Button btnSmallBanner;
