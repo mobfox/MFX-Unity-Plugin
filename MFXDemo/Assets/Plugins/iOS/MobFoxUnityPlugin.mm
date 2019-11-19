@@ -50,11 +50,6 @@ extern "C"
 //======  G L O B A L                                                             ======
 //======================================================================================
 
--(void) setCOPPA:(BOOL)val
-{
-    [MobFoxSDK setCoppa:val];
-}
-
 -(void) setDemoAge:(NSString*)val
 {
     [MobFoxSDK setDemoAge:val];
@@ -80,6 +75,10 @@ extern "C"
     [MobFoxSDK setLongitude:[NSNumber numberWithFloat:val]];
 }
 
+-(void) setCOPPA:(BOOL)val
+{
+    [MobFoxSDK setCoppa:val];
+}
 
 //======================================================================================
 //======  B A N N E R                                                             ======

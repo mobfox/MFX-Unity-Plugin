@@ -12,12 +12,13 @@
 @interface MobFoxUnityPlugin : NSObject<MFXBannerAdDelegate,MFXInterstitialAdDelegate,MFXNativeAdDelegate>
 
 
--(void) setCOPPA:(BOOL)val;
 -(void) setDemoAge:(NSString*)val;
 -(void) setDemoGender:(NSString*)val;
 -(void) setDemoKeywords:(NSString*)val;
 -(void) setLatitude:(CGFloat)val;
 -(void) setLongitude:(CGFloat)val;
+
+-(void) setCOPPA:(BOOL)val;
 
 
 

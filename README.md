@@ -12,6 +12,7 @@ Thanks for selecting Unity plugin for Mobfox Unity Plugin.
   * [Banner ads](#banner-ads)
   * [Interstitial ads](#interstitial-ads)
   * [Native ads](#native-ads)
+  * [COPPA compliance](#coppa-compliance)
 * [Support](#support)
 
 <!-- toc stop -->
@@ -259,6 +260,14 @@ And to deallocate (release) the ad:
 
 ```java
     MobFox.Instance.ReleaseMobFoxNative();
+```
+ 
+## COPPA compliance
+
+If your app is COPPA compliant, you can use the following call to inform our SDK:
+
+```java
+    MobFox.Instance.setCOPPA(true/false);
 ```
  
 # Support

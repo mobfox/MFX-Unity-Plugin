@@ -1,6 +1,6 @@
 iOS
 PlayerPath?
-/Users/takephone/Documents/Matomy/tmp/iostest
+/Users/takephone/Documents/Matomy/tmp/iostest1
 SceneListBegin?
 Assets/Scenes/SampleScene.unity
 SceneListEnd?
