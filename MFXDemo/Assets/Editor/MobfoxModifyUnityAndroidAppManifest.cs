@@ -30,6 +30,8 @@ public class MobfoxModifyUnityAndroidAppManifest : IPostGenerateGradleAndroidPro
         
         androidManifest.SetHardwareAccel();
 
+        androidManifest.TurnAndroidXOn(basePath);
+
         androidManifest.Save();
     }
 
@@ -178,4 +180,19 @@ internal class AndroidManifest : AndroidXmlDocument
     {
    		GetActivityWithLaunchIntent().Attributes.Append(CreateAndroidAttribute("hardwareAccelerated", "true")); 
 	} 
+	
+	internal void TurnAndroidXOn(string path)
+	{
+	    string gradlePropertiesFile = path + "/gradle.properties";
+        if (File.Exists(gradlePropertiesFile))
+        {
+            File.Delete(gradlePropertiesFile);
+        }
+        StreamWriter writer = File.CreateText(gradlePropertiesFile);
+        writer.WriteLine("org.gradle.jvmargs=-Xmx4096M");
+        writer.WriteLine("android.useAndroidX=true");
+        writer.WriteLine("android.enableJetifier=true");
+        writer.Flush();
+        writer.Close();
+	}
 }
