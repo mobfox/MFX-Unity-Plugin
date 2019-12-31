@@ -47,7 +47,7 @@ You an look at the **MainSript.cs** sript in the MFXDemo project to see examples
 
 On your main **MonoBehaviour** class 'start' function, call:
 
-    	MobFox.CreateSingletone ( );
+    	MobFox.CreateSingletone( );
 
 
 ## Configuring ads mediation
@@ -88,7 +88,7 @@ The callbacks may look like this:
         MobFox.Instance.ShowMobFoxBanner();
     }
 
-    public void onBannerError( string msg)
+    public void onBannerError(string msg)
     {
         MobFox.Instance.Log(msg);
     }
@@ -135,7 +135,7 @@ To create a banner ad call:
 
 ```java
     // possible dimensions: 320x50 / 300x250
-    MobFox.Instance.RequestMobFoxBanner ( "<banner inventory hash code>", x, y, width, height );
+    MobFox.Instance.RequestMobFoxBanner( "<banner inventory hash code>", x, y, width, height );
 ```
 You can configure refresh rate (0 means no refresh), and floor price:
 
@@ -162,7 +162,7 @@ And to deallocate (release) the ad:
 To create a interstitial ad call:
 
 ```java
-    MobFox.Instance. interstitial ( "<interstitial inventory hash code>" );
+    MobFox.Instance.RequestMobFoxInterstitial( "<interstitial inventory hash code>" );
 ```
 You can floor price:
 
