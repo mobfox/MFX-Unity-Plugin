@@ -55,10 +55,15 @@ public class MainScript : MonoBehaviour
         MoPubManager.OnInterstitialShownEvent     += OnInterstitialShownEvent;
         MoPubManager.OnInterstitialClickedEvent   += OnInterstitialClickedEvent;
         
-        //MoPubManager.OnAdLoadedEvent       += OnAdLoadedEvent;
-        //MoPubManager.OnAdLoadedEvent       += OnAdLoadedEvent;
-
-
+        MoPubManager.OnRewardedVideoLoadedEvent             += OnRewardedVideoLoadedEvent;
+        MoPubManager.OnRewardedVideoFailedEvent             += OnRewardedVideoFailedEvent;
+        MoPubManager.OnRewardedVideoExpiredEvent            += OnRewardedVideoExpiredEvent;
+        MoPubManager.OnRewardedVideoShownEvent              += OnRewardedVideoShownEvent;
+        MoPubManager.OnRewardedVideoClickedEvent            += OnRewardedVideoClickedEvent;
+        MoPubManager.OnRewardedVideoFailedToPlayEvent       += OnRewardedVideoFailedToPlayEvent;
+        MoPubManager.OnRewardedVideoReceivedRewardEvent     += OnRewardedVideoReceivedRewardEvent;
+        MoPubManager.OnRewardedVideoClosedEvent             += OnRewardedVideoClosedEvent;
+        MoPubManager.OnRewardedVideoLeavingApplicationEvent += OnRewardedVideoLeavingApplicationEvent;
 
         MoPub.SdkConfiguration mopConfig = new MoPub.SdkConfiguration ();
         mopConfig.LogLevel = MoPub.LogLevel.Debug;
@@ -124,7 +129,7 @@ public class MainScript : MonoBehaviour
         btnBanner.enabled = true;
     	btnInterstitial.enabled = true;
     	btnRewarded.enabled = true;
-    	btnNative.enabled = true;
+    	btnNative.enabled = false;
     	txtTitle.enabled = true;
 
 		string[] _bannerAdUnits = new string[] {MoPubBannerInventoryHash};
@@ -202,7 +207,7 @@ public class MainScript : MonoBehaviour
     
     void OnAdFailedEvent(string adUnitId, string errMsg)
     {
-		txtTitle.text = errMsg;
+		txtTitle.text = "Banner error: "+errMsg;
 
     	showBanner();
     }
@@ -244,7 +249,7 @@ public class MainScript : MonoBehaviour
 
 	void OnInterstitialFailedEvent (string adUnitId, string errorCode)
     {
-		txtTitle.text = errorCode;
+		txtTitle.text = "Interstitial error: "+errorCode;
     }
 
 	void OnInterstitialDismissedEvent (string adUnitId)
@@ -273,19 +278,58 @@ public class MainScript : MonoBehaviour
     {
 	    clearAllAds();
     
-		//@@@MobFox.Instance.RequestMobFoxInterstitial ( MoPubInterstitialInventoryHash );
+		txtTitle.text = "Loading rewarded...";
+
+		MoPub.RequestRewardedVideo(MoPubRewardedInventoryHash);//, mediationSettings, keywords, latitude, longitude, customerId);
     }
     
     //-------------------------------------------------------------
     
-    public void onRewardedLoaded()
+	void OnRewardedVideoLoadedEvent (string adUnitId)
     {
-    	//@@@MobFox.Instance.ShowMobFoxInterstitial();
+		txtTitle.text = "Rewarded loaded";
+		
+		MoPub.ShowRewardedVideo(adUnitId);
     }
-    
-    public void onRewardedError( string msg)
+
+	void OnRewardedVideoFailedEvent (string adUnitId, string errorMsg)
     {
-	    //@@@MobFox.Instance.Log(msg);
+		txtTitle.text = "Rewarded failed: "+errorMsg;
+    }
+
+	void OnRewardedVideoExpiredEvent (string adUnitId)
+    {
+		txtTitle.text = "Rewarded expired";
+    }
+
+	void OnRewardedVideoShownEvent (string adUnitId)
+    {
+		txtTitle.text = "Rewarded shown";
+    }
+
+	void OnRewardedVideoClickedEvent (string adUnitId)
+    {
+		txtTitle.text = "Rewarded clicked";
+    }
+
+	void OnRewardedVideoFailedToPlayEvent (string adUnitId, string errorMsg)
+    {
+		txtTitle.text = "Rewarded failed to play: "+errorMsg;
+    }
+
+	void OnRewardedVideoReceivedRewardEvent (string adUnitId, string label, float amount)
+    {
+		txtTitle.text = "Rewarded received reward: "+amount+" "+label+"/s";
+    }
+
+	void OnRewardedVideoClosedEvent (string adUnitId)
+    {
+		txtTitle.text = "Rewarded closed";
+    }
+
+	void OnRewardedVideoLeavingApplicationEvent (string adUnitId)
+    {
+		txtTitle.text = "Rewarded leaving app";
     }
 
     //=============================================================
@@ -294,7 +338,7 @@ public class MainScript : MonoBehaviour
     {
 	    clearAllAds();
 
-    	showNative();
+    	//@@@showNative();
     
     	//@@@MobFox.Instance.setNativeAdContext      ( MobFox.NativeAdContext.CONTENT );
     	//@@@MobFox.Instance.setNativeAdPlacementType( MobFox.NativeAdPlacementType.ATOMIC );

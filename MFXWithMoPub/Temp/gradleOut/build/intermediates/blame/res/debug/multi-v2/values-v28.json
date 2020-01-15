@@ -1,0 +1,39 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXWithMoPub/Temp/gradleOut/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v28/values-v28.xml",
+            "map": [
+                {
+                    "source": "/Users/takephone/.gradle/caches/transforms-1/files-1.1/mopub-sdk-base.aar/c2ffb66791ede08c04a436504ae9841c/res/values-v28/values-v28.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "7",
+                        "endColumns": "12",
+                        "endOffsets": "383"
+                    },
+                    "to": {
+                        "startLines": "12",
+                        "startColumns": "4",
+                        "startOffsets": "689",
+                        "endLines": "17",
+                        "endColumns": "12",
+                        "endOffsets": "1017"
+                    }
+                },
+                {
+                    "source": "/Users/takephone/.gradle/caches/transforms-1/files-1.1/appcompat-1.1.0.aar/48851e90a743c4c42c71a2c2ba137522/res/values-v28/values-v28.xml",
+                    "from": {
+                        "startLines": "2,3,4,8",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,130,217,447",
+                        "endLines": "2,3,7,11",
+                        "endColumns": "74,86,12,12",
+                        "endOffsets": "125,212,442,684"
+                    }
+                }
+            ]
+        }
+    ]
+}
