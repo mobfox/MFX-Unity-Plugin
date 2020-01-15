@@ -7,20 +7,15 @@ using UnityEngine.Networking;
 public class MainScript : MonoBehaviour
 {
 	private string MoPubBannerInventoryHash             = "4ad212b1d0104c5998b288e7a8e35967";	// Mobfox test banner
-	private string MoPubBannerLargeInventoryHash        = "bf453fccdfe74af0ab8f6a944d6ae97a";	// Mobfox test banner
-    
 	private string MobFoxInterstitialInventoryHash      = "3fd85a3e7a9d43ea993360a2536b7bbd";
-	private string MobFoxVideoInterstitialInventoryHash = "562f11d6b8f2499dbd0d1ebfe3c17968";
 	private string MobFoxRewardedInventoryHash          = "005491feb31848a0ae7b9daf4a46c701";
-	
 	private string MobFoxNativeInventoryHash            = "b146b367940a4c6da94e8143fb4b66e4";
 
+	public Text   txtTitle;
 
-	public Button btnSmallBanner;
-	public Button btnLargeBanner;
-	public Button btnVideoBanner;
-	public Button btnHtmlInterstitial;
-	public Button btnVideoInterstitial;
+	public Button btnBanner;
+	public Button btnInterstitial;
+	public Button btnRewarded;
 	public Button btnNative;
 	
 	public Text   nativeTitle;
@@ -36,14 +31,12 @@ public class MainScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    	btnSmallBanner.enabled = false;
-    	btnLargeBanner.enabled = false;
-    	btnVideoBanner.enabled = false;
-    	btnHtmlInterstitial.enabled = false;
-    	btnVideoInterstitial.enabled = false;
+    	btnBanner.enabled = false;
+    	btnInterstitial.enabled = false;
+    	btnRewarded.enabled = false;
     	btnNative.enabled = false;
     	
-                        var value = "bla bla";
+        var value = "bla bla";
 
 
         // register for initialized callback event in the app
@@ -119,29 +112,28 @@ public class MainScript : MonoBehaviour
     void OnSdkInitializedEvent(string adUnitId)
     {
     	// The SDK is initialized here. Ready to make ad requests.
-        btnSmallBanner.enabled = true;
-	    btnLargeBanner.enabled = true;
-    	btnVideoBanner.enabled = true;
-    	btnHtmlInterstitial.enabled = true;
-	    btnVideoInterstitial.enabled = true;
+        btnBanner.enabled = true;
+    	btnInterstitial.enabled = true;
+    	btnRewarded.enabled = true;
     	btnNative.enabled = true;
+    	txtTitle.enabled = true;
 
-		string[] _bannerAdUnits = new string[] {MoPubBannerInventoryHash, MoPubBannerLargeInventoryHash};
+		string[] _bannerAdUnits = new string[] {MoPubBannerInventoryHash};
 	 	MoPub.LoadBannerPluginsForAdUnits(_bannerAdUnits);
 
-		btnSmallBanner.GetComponentInChildren<Text>().text = "la di da";
+		txtTitle.text = "Initialized";
     }
     
     void OnAdLoadedEvent(string adUnitId, float height)
     {
-    	btnSmallBanner.GetComponentInChildren<Text>().text = "WoooHooo";
+		txtTitle.text = "Banner loaded";
 
     	showBanner();
     }
     
     void OnAdFailedEvent(string adUnitId, string errMsg)
     {
-    	btnSmallBanner.GetComponentInChildren<Text>().text = errMsg;
+		txtTitle.text = errMsg;
 
     	showBanner();
     }
@@ -155,7 +147,7 @@ public class MainScript : MonoBehaviour
     
     public void showBanner()
     {
-  		MoPub.ShowBanner (MoPubBannerLargeInventoryHash, true);   // shows the banner
+  		MoPub.ShowBanner (MoPubBannerInventoryHash, true);   // shows the banner
     }
     
     public void hideNative()
@@ -185,35 +177,19 @@ public class MainScript : MonoBehaviour
 		
 		// release all ads
 		MoPub.DestroyBanner(MoPubBannerInventoryHash);
-		MoPub.DestroyBanner(MoPubBannerLargeInventoryHash);
     }
     
     //============================================================
     
-    public void btnSmallBannerPressed()
+    public void btnBannerPressed()
     {
 	    clearAllAds();
 
-		btnSmallBanner.GetComponentInChildren<Text>().text = "Loading...";
+		txtTitle.text = "Loading...";
 
     	MoPub.RequestBanner(MoPubBannerInventoryHash, MoPub.AdPosition.Centered, MoPub.MaxAdSize.Width320Height50);
     }
     
-    public void btnLargeBannerPressed()
-    {
-	    clearAllAds();
-
-    	MoPub.RequestBanner(MoPubBannerLargeInventoryHash, MoPub.AdPosition.Centered, MoPub.MaxAdSize.Width300Height250);
-    }
-    
-    public void btnVideoBannerPressed()
-    {
-	    clearAllAds();
-
-		//@@@MobFox.Instance.RequestMobFoxBanner ( MobFoxVideoBannerInventoryHash, 50, 100, 300, 250 );
-		//@@@MobFox.Instance.setBannerRefresh(0);
-    }
-        
     //-------------------------------------------------------------
     
     public void onBannerLoaded()
@@ -228,18 +204,11 @@ public class MainScript : MonoBehaviour
 
     //=============================================================
     
-    public void btnHtmlInterPressed()
+    public void btnInterPressed()
     {
 	    clearAllAds();
     
 		//@@@MobFox.Instance.RequestMobFoxInterstitial ( MobFoxInterstitialInventoryHash );
-    }
-    
-    public void btnVideoInterPressed()
-    {
-	    clearAllAds();
-    
-		//@@@MobFox.Instance.RequestMobFoxInterstitial ( MobFoxVideoInterstitialInventoryHash );
     }
     
     //-------------------------------------------------------------
@@ -250,6 +219,27 @@ public class MainScript : MonoBehaviour
     }
     
     public void onInterError( string msg)
+    {
+	    //@@@MobFox.Instance.Log(msg);
+    }
+
+    //=============================================================
+    
+    public void btnRewardedPressed()
+    {
+	    clearAllAds();
+    
+		//@@@MobFox.Instance.RequestMobFoxInterstitial ( MobFoxInterstitialInventoryHash );
+    }
+    
+    //-------------------------------------------------------------
+    
+    public void onRewardedLoaded()
+    {
+    	//@@@MobFox.Instance.ShowMobFoxInterstitial();
+    }
+    
+    public void onRewardedError( string msg)
     {
 	    //@@@MobFox.Instance.Log(msg);
     }
