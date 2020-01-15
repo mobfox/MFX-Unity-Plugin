@@ -7,9 +7,9 @@ using UnityEngine.Networking;
 public class MainScript : MonoBehaviour
 {
 	private string MoPubBannerInventoryHash             = "4ad212b1d0104c5998b288e7a8e35967";	// Mobfox test banner
-	private string MobFoxInterstitialInventoryHash      = "3fd85a3e7a9d43ea993360a2536b7bbd";
-	private string MobFoxRewardedInventoryHash          = "005491feb31848a0ae7b9daf4a46c701";
-	private string MobFoxNativeInventoryHash            = "b146b367940a4c6da94e8143fb4b66e4";
+	private string MoPubInterstitialInventoryHash       = "3fd85a3e7a9d43ea993360a2536b7bbd";
+	private string MoPubRewardedInventoryHash           = "005491feb31848a0ae7b9daf4a46c701";
+	private string MoPubNativeInventoryHash             = "b146b367940a4c6da94e8143fb4b66e4";
 
 	public Text   txtTitle;
 
@@ -41,11 +41,20 @@ public class MainScript : MonoBehaviour
 
         // register for initialized callback event in the app
         MoPubManager.OnSdkInitializedEvent += OnSdkInitializedEvent;
+        
         MoPubManager.OnAdLoadedEvent       += OnAdLoadedEvent;
         MoPubManager.OnAdFailedEvent       += OnAdFailedEvent;
+        MoPubManager.OnAdClickedEvent      += OnAdClickedEvent;
+        MoPubManager.OnAdExpandedEvent     += OnAdExpandedEvent;
+        MoPubManager.OnAdCollapsedEvent    += OnAdCollapsedEvent;
 
-        //MoPubManager.OnAdLoadedEvent       += OnAdLoadedEvent;
-        //MoPubManager.OnAdLoadedEvent       += OnAdLoadedEvent;
+        MoPubManager.OnInterstitialLoadedEvent    += OnInterstitialLoadedEvent;
+        MoPubManager.OnInterstitialFailedEvent    += OnInterstitialFailedEvent;
+        MoPubManager.OnInterstitialDismissedEvent += OnInterstitialDismissedEvent;
+        MoPubManager.OnInterstitialExpiredEvent   += OnInterstitialExpiredEvent;
+        MoPubManager.OnInterstitialShownEvent     += OnInterstitialShownEvent;
+        MoPubManager.OnInterstitialClickedEvent   += OnInterstitialClickedEvent;
+        
         //MoPubManager.OnAdLoadedEvent       += OnAdLoadedEvent;
         //MoPubManager.OnAdLoadedEvent       += OnAdLoadedEvent;
 
@@ -121,21 +130,13 @@ public class MainScript : MonoBehaviour
 		string[] _bannerAdUnits = new string[] {MoPubBannerInventoryHash};
 	 	MoPub.LoadBannerPluginsForAdUnits(_bannerAdUnits);
 
+		string[] _interAdUnits = new string[] {MoPubInterstitialInventoryHash};
+	 	MoPub.LoadInterstitialPluginsForAdUnits(_interAdUnits);
+
+		string[] _rewardedAdUnits = new string[] {MoPubRewardedInventoryHash};
+	 	MoPub.LoadRewardedVideoPluginsForAdUnits(_rewardedAdUnits);
+
 		txtTitle.text = "Initialized";
-    }
-    
-    void OnAdLoadedEvent(string adUnitId, float height)
-    {
-		txtTitle.text = "Banner loaded";
-
-    	showBanner();
-    }
-    
-    void OnAdFailedEvent(string adUnitId, string errMsg)
-    {
-		txtTitle.text = errMsg;
-
-    	showBanner();
     }
 
     //============================================================
@@ -185,21 +186,40 @@ public class MainScript : MonoBehaviour
     {
 	    clearAllAds();
 
-		txtTitle.text = "Loading...";
+		txtTitle.text = "Loading banner...";
 
     	MoPub.RequestBanner(MoPubBannerInventoryHash, MoPub.AdPosition.Centered, MoPub.MaxAdSize.Width320Height50);
     }
     
-    //-------------------------------------------------------------
-    
-    public void onBannerLoaded()
+    //------------------------------------------------------------
+        
+    void OnAdLoadedEvent(string adUnitId, float height)
     {
-	    showBanner();
+		txtTitle.text = "Banner loaded";
+
+    	showBanner();
+    }
+    
+    void OnAdFailedEvent(string adUnitId, string errMsg)
+    {
+		txtTitle.text = errMsg;
+
+    	showBanner();
     }
 
-    public void onBannerError( string msg)
+    void OnAdClickedEvent(string adUnitId)
     {
-	    //@@@MobFox.Instance.Log(msg);
+		txtTitle.text = "Banner clicked";
+    }
+
+    void OnAdExpandedEvent(string adUnitId)
+    {
+		txtTitle.text = "Banner expanded";
+    }
+
+    void OnAdCollapsedEvent(string adUnitId)
+    {
+		txtTitle.text = "Banner collapsed";
     }
 
     //=============================================================
@@ -208,19 +228,43 @@ public class MainScript : MonoBehaviour
     {
 	    clearAllAds();
     
-		//@@@MobFox.Instance.RequestMobFoxInterstitial ( MobFoxInterstitialInventoryHash );
+		txtTitle.text = "Loading interstitial...";
+
+	     MoPub.RequestInterstitialAd(MoPubInterstitialInventoryHash);
     }
     
     //-------------------------------------------------------------
     
-    public void onInterLoaded()
+    void OnInterstitialLoadedEvent (string adUnitId)
     {
-    	//@@@MobFox.Instance.ShowMobFoxInterstitial();
+		txtTitle.text = "Interstitial loaded";
+
+ 		MoPub.ShowInterstitialAd (adUnitId);
     }
-    
-    public void onInterError( string msg)
+
+	void OnInterstitialFailedEvent (string adUnitId, string errorCode)
     {
-	    //@@@MobFox.Instance.Log(msg);
+		txtTitle.text = errorCode;
+    }
+
+	void OnInterstitialDismissedEvent (string adUnitId)
+    {
+		txtTitle.text = "Interstitial dismissed";
+    }
+
+	void OnInterstitialExpiredEvent (string adUnitId)
+    {
+		txtTitle.text = "Interstitial expired";
+    }
+
+	void OnInterstitialShownEvent (string adUnitId)
+    {
+		txtTitle.text = "Interstitial shown";
+    }
+
+	void OnInterstitialClickedEvent (string adUnitId)
+    {
+		txtTitle.text = "Interstitial clicked";
     }
 
     //=============================================================
@@ -229,7 +273,7 @@ public class MainScript : MonoBehaviour
     {
 	    clearAllAds();
     
-		//@@@MobFox.Instance.RequestMobFoxInterstitial ( MobFoxInterstitialInventoryHash );
+		//@@@MobFox.Instance.RequestMobFoxInterstitial ( MoPubInterstitialInventoryHash );
     }
     
     //-------------------------------------------------------------
@@ -260,7 +304,7 @@ public class MainScript : MonoBehaviour
     	//@@@MobFox.Instance.setNativeAdTitle        ( true, 100 );
     	//@@@MobFox.Instance.setNativeAdDesc         ( true, 200 );
     
-		//@@@MobFox.Instance.RequestMobFoxNative ( MobFoxNativeInventoryHash );
+		//@@@MobFox.Instance.RequestMobFoxNative ( MoPubNativeInventoryHash );
     }
 
     public void btnNativeCallToActionPressed()
