@@ -11,6 +11,11 @@ public class MainScript : MonoBehaviour
 	private string MoPubRewardedInventoryHash           = "005491feb31848a0ae7b9daf4a46c701";
 	private string MoPubNativeInventoryHash             = "b146b367940a4c6da94e8143fb4b66e4";
 
+	//private string MoPubBannerInventoryHash             = "b195f8dd8ded45fe847ad89ed1d016da";	// MoPub test banner
+	//private string MoPubInterstitialInventoryHash       = "24534e1901884e398f1253216226017e";	// MoPub test Interstitial
+	//private string MoPubRewardedInventoryHash           = "920b6145fb1546cf8b5cf2ac34638bb7";	// MoPub test Rewarded
+	//private string MoPubNativeInventoryHash             = "11a17b188668469fb0412708c3d16813";	// MoPub test native
+
 	public Text   txtTitle;
 
 	public Button btnBanner;
@@ -280,7 +285,7 @@ public class MainScript : MonoBehaviour
     
 		txtTitle.text = "Loading rewarded...";
 
-		MoPub.RequestRewardedVideo(MoPubRewardedInventoryHash);//, mediationSettings, keywords, latitude, longitude, customerId);
+		MoPub.RequestRewardedVideo(MoPubRewardedInventoryHash);
     }
     
     //-------------------------------------------------------------
