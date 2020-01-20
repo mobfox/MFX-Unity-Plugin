@@ -11,29 +11,16 @@ public class MainScript : MonoBehaviour
 	private string MoPubBannerInventoryHash             = "4ad212b1d0104c5998b288e7a8e35967";	// Mobfox test banner
 	private string MoPubInterstitialInventoryHash       = "3fd85a3e7a9d43ea993360a2536b7bbd";
 	private string MoPubRewardedInventoryHash           = "005491feb31848a0ae7b9daf4a46c701";
-	private string MoPubNativeInventoryHash             = "b146b367940a4c6da94e8143fb4b66e4";
 
 	//private string MoPubBannerInventoryHash             = "b195f8dd8ded45fe847ad89ed1d016da";	// MoPub test banner
 	//private string MoPubInterstitialInventoryHash       = "24534e1901884e398f1253216226017e";	// MoPub test Interstitial
 	//private string MoPubRewardedInventoryHash           = "920b6145fb1546cf8b5cf2ac34638bb7";	// MoPub test Rewarded
-	//private string MoPubNativeInventoryHash             = "11a17b188668469fb0412708c3d16813";	// MoPub test native
 
 	public Text   txtTitle;
 
 	public Button btnBanner;
 	public Button btnInterstitial;
 	public Button btnRewarded;
-	public Button btnNative;
-	
-	public Text   nativeTitle;
-	public Text   nativeDescription;
-	public Text   nativeRating;
-	public Text   nativeSponsored;
-	public Text   nativeCallToAction;
-	public RawImage  nativeIcon;
-	public RawImage  nativeMainImage;
-	
-	public GameObject NativeBlock;
 	
     // Start is called before the first frame update
     void Start()
@@ -41,7 +28,6 @@ public class MainScript : MonoBehaviour
     	btnBanner.enabled = false;
     	btnInterstitial.enabled = false;
     	btnRewarded.enabled = false;
-    	btnNative.enabled = false;
     	
         // Initialize the Google Mobile Ads SDK.
         MobileAds.Initialize(initStatus => { 
@@ -137,7 +123,6 @@ public class MainScript : MonoBehaviour
         btnBanner.enabled = true;
     	btnInterstitial.enabled = true;
     	btnRewarded.enabled = true;
-    	btnNative.enabled = false;
     	txtTitle.enabled = true;
 
 		/*
@@ -166,31 +151,10 @@ public class MainScript : MonoBehaviour
   		//@@@MoPub.ShowBanner (MoPubBannerInventoryHash, true);   // shows the banner
     }
     
-    public void hideNative()
-    {
-    	NativeBlock.SetActive(false);
-    }
-    
-    public void showNative()
-    {
-    	NativeBlock.SetActive(true);
-    }
-    
     public void clearAllAds()
     {
     	hideBanner();
-    	hideNative();
-    	
-    	// clear all native fields:
-		MySetText(nativeTitle,        null);
-		MySetText(nativeDescription,  null);
-		MySetText(nativeCallToAction, null);
-		MySetText(nativeRating,       null);
-		MySetText(nativeSponsored,    null);
-
-		MySetImage(nativeIcon,        null);
-		MySetImage(nativeMainImage,   null);
-		
+    			
 		// release all ads
 		//@@@MoPub.DestroyBanner(MoPubBannerInventoryHash);
     }
@@ -341,85 +305,4 @@ public class MainScript : MonoBehaviour
     {
 		txtTitle.text = "Rewarded leaving app";
     }
-
-    //=============================================================
-
-    public void btnNativePressed()
-    {
-	    clearAllAds();
-
-    	//@@@showNative();
-    
-    	//@@@MobFox.Instance.setNativeAdContext      ( MobFox.NativeAdContext.CONTENT );
-    	//@@@MobFox.Instance.setNativeAdPlacementType( MobFox.NativeAdPlacementType.ATOMIC );
-
-    	//@@@MobFox.Instance.setNativeAdIconImage    ( true, 80 );
-    	//@@@MobFox.Instance.setNativeAdMainImage    ( true, 1200, 627 );
-    	//@@@MobFox.Instance.setNativeAdTitle        ( true, 100 );
-    	//@@@MobFox.Instance.setNativeAdDesc         ( true, 200 );
-    
-		//@@@MobFox.Instance.RequestMobFoxNative ( MoPubNativeInventoryHash );
-    }
-
-    public void btnNativeCallToActionPressed()
-    {
-	    //@@@MobFox.Instance.callToActionClicked();
-    }
-    
-    //-------------------------------------------------------------
-        
-    public void onNativeError( string msg)
-    {
-	    //@@@MobFox.Instance.Log(msg);
-    }
-
-    public void onNativeReady(string msg)
-    {
-    	//@@@MobFox.NativeInfo nativeInfo = JsonUtility.FromJson<MobFox.NativeInfo>(msg);
-
-		//@@@MySetText(nativeTitle,        nativeInfo.title);
-		//@@@MySetText(nativeDescription,  nativeInfo.desc);
-		//@@@MySetText(nativeCallToAction, nativeInfo.ctatext);
-		//@@@MySetText(nativeRating,       nativeInfo.rating);
-		//@@@MySetText(nativeSponsored,    nativeInfo.sponsored);
-
-		//@@@MySetImage(nativeIcon,        nativeInfo.iconImageUrl);
-		//@@@MySetImage(nativeMainImage,   nativeInfo.mainImageUrl);
-    }
-    
-    //-------------------------------------------------------------
-
-	private void MySetText(Text trg, string txt)
-	{
-		if (txt==null)
-		{
-			trg.enabled = false;
-		} else {
-			trg.enabled = true;
-	    	trg.text = txt;
-		}
-	}
-	
-	private void MySetImage(RawImage trg, string mediaUrl)
-	{
-		if (mediaUrl==null)
-		{
-			trg.enabled = false;
-		} else {
-			trg.enabled = true;
-		    StartCoroutine(DownloadImage(trg, mediaUrl));
-		}
-	}
-    
-    IEnumerator DownloadImage(RawImage trg, string mediaUrl)
-	{   
-    	UnityWebRequest request = UnityWebRequestTexture.GetTexture(mediaUrl);
-    	yield return request.SendWebRequest();
-    	if(request.isNetworkError || request.isHttpError) 
-        	Debug.Log(request.error);
-    	else
-        	trg.texture = ((DownloadHandlerTexture) request.downloadHandler).texture;
-	} 
-
-    //=============================================================
 }

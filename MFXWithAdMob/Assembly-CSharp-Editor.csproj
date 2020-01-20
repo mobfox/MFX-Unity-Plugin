@@ -313,6 +313,15 @@
  <Reference Include="UnityEditor.OSXStandalone.Extensions">
  <HintPath>/Applications/Unity/Hub/Editor/2018.3.14f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
  </Reference>
+ <Reference Include="Google.IOSResolver_v1.2.135.0">
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXWithAdMob/Assets/PlayServicesResolver/Editor/Google.IOSResolver_v1.2.135.0.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.VersionHandlerImpl_v1.2.135.0">
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXWithAdMob/Assets/PlayServicesResolver/Editor/Google.VersionHandlerImpl_v1.2.135.0.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.JarResolver_v1.2.135.0">
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXWithAdMob/Assets/PlayServicesResolver/Editor/Google.JarResolver_v1.2.135.0.dll</HintPath>
+ </Reference>
  <Reference Include="Google.VersionHandler">
  <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXWithAdMob/Assets/PlayServicesResolver/Editor/Google.VersionHandler.dll</HintPath>
  </Reference>
@@ -330,15 +339,6 @@
  </Reference>
  <Reference Include="UnityEditor.Purchasing">
  <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXWithAdMob/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
- </Reference>
- <Reference Include="Google.JarResolver_v1.2.135.0">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXWithAdMob/Assets/PlayServicesResolver/Editor/Google.JarResolver_v1.2.135.0.dll</HintPath>
- </Reference>
- <Reference Include="Google.IOSResolver_v1.2.135.0">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXWithAdMob/Assets/PlayServicesResolver/Editor/Google.IOSResolver_v1.2.135.0.dll</HintPath>
- </Reference>
- <Reference Include="Google.VersionHandlerImpl_v1.2.135.0">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXWithAdMob/Assets/PlayServicesResolver/Editor/Google.VersionHandlerImpl_v1.2.135.0.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/Hub/Editor/2018.3.14f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
