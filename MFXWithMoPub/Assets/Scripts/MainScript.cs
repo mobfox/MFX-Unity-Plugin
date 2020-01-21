@@ -6,9 +6,15 @@ using UnityEngine.Networking;
 
 public class MainScript : MonoBehaviour
 {
+#if UNITY_ANDROID
 	private string MoPubBannerInventoryHash             = "4ad212b1d0104c5998b288e7a8e35967";	// Mobfox test banner
 	private string MoPubInterstitialInventoryHash       = "3fd85a3e7a9d43ea993360a2536b7bbd";
 	private string MoPubRewardedInventoryHash           = "005491feb31848a0ae7b9daf4a46c701";
+#else
+	private string MoPubBannerInventoryHash             = "234dd5a1b1bf4a5f9ab50431f9615784";	// Mobfox test banner
+	private string MoPubInterstitialInventoryHash       = "a5277fa1fd57418b867cfaa949df3b4a";
+	private string MoPubRewardedInventoryHash           = "e3d4c8701d4547e68e8f837fa4fe5122";
+#endif
 
 	//private string MoPubBannerInventoryHash             = "b195f8dd8ded45fe847ad89ed1d016da";	// MoPub test banner
 	//private string MoPubInterstitialInventoryHash       = "24534e1901884e398f1253216226017e";	// MoPub test Interstitial

@@ -2,23 +2,9 @@ using System.IO;
 using System.Text;
 using System.Xml;
 using UnityEditor.Android;
-using GoogleMobileAds.Editor;
-
-using System.Linq;
-using System.Xml.Linq;
 
 public class MobfoxModifyUnityAndroidAppManifest : IPostGenerateGradleAndroidProject
 {
-    private const string META_AD_MANAGER_APP = "com.google.android.gms.ads.AD_MANAGER_APP";
-
-    private const string META_APPLICATION_ID  = "com.google.android.gms.ads.APPLICATION_ID";
-
-    private const string META_DELAY_APP_MEASUREMENT_INIT =
-            "com.google.android.gms.ads.DELAY_APP_MEASUREMENT_INIT";
-
-    private XNamespace ns = "http://schemas.android.com/apk/res/android";
-
- 
     public void OnPostGenerateGradleAndroidProject(string basePath)
     {
         // If needed, add condition checks on whether you need to run the modification routine.
