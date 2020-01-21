@@ -9,31 +9,44 @@ using GoogleMobileAds.Api;
  
 public class MainScript : MonoBehaviour
 {
+	/*
     #if UNITY_ANDROID
-        string AdMobBannerHash = "ca-app-pub-3940256099942544/6300978111";
+        string AdMobBannerHash       = "ca-app-pub-3940256099942544/6300978111";
+		string AdMobInterstitialHash = "ca-app-pub-3940256099942544/1033173712";
+		string AdMobRewardedHash     = "ca-app-pub-3940256099942544/5224354917";
     #else
-        string AdMobBannerHash = "ca-app-pub-3940256099942544/2934735716";
+        string AdMobBannerHash       = "ca-app-pub-3940256099942544/2934735716";
+		string AdMobInterstitialHash = "ca-app-pub-3940256099942544/4411468910";
+		string AdMobRewardedHash     = "ca-app-pub-3940256099942544/1712485313";
+    #endif
+    */
+
+    #if UNITY_ANDROID
+        string AdMobBannerHash       = "ca-app-pub-8111915318550857/5234422920";
+		string AdMobInterstitialHash = "ca-app-pub-8111915318550857/9385420926";
+		string AdMobRewardedHash     = "ca-app-pub-6224828323195096/1152622735";
+    #else
+        string AdMobBannerHash       = "ca-app-pub-6224828323195096/5240875564";
+		string AdMobInterstitialHash = "ca-app-pub-6224828323195096/7876284361";
+		string AdMobRewardedHash     = "ca-app-pub-6224828323195096/9409251358";
     #endif
 
-	//private string AdMobBannerHash             = "4ad212b1d0104c5998b288e7a8e35967";	// Mobfox test banner
-	private string AdMobInterstitialHash       = "3fd85a3e7a9d43ea993360a2536b7bbd";
-	private string AdMobRewardedHash           = "005491feb31848a0ae7b9daf4a46c701";
+	private string txtToShow = "";
+	private string txtReward = null;
+	private string asyncCommand = null;
 
-	public Text   txtTitle;
-
-	public Button btnBanner;
-	public Button btnInterstitial;
-	public Button btnRewarded;
+	public  Text   txtTitle;
+	public  Button btnBanner;
+	public  Button btnInterstitial;
+	public  Button btnRewarded;
 		
 	private BannerView bannerView;
-	
+    private InterstitialAd interstitial;
+    private RewardedAd rewardedAd;
+
     // Start is called before the first frame update
     void Start()
     {
-    	btnBanner.enabled = false;
-    	btnInterstitial.enabled = false;
-    	btnRewarded.enabled = false;    	
-    	
         #if UNITY_ANDROID
             string appId = "ca-app-pub-6224828323195096~8368193162";
         #elif UNITY_IPHONE
@@ -42,18 +55,62 @@ public class MainScript : MonoBehaviour
             string appId = "unexpected_platform";
         #endif
 
+		asyncCommand = null;
+
+    	btnBanner.enabled = false;
+    	btnInterstitial.enabled = false;
+    	btnRewarded.enabled = false;    	
+
+        clearAllAds();
+        
+        MobileAds.SetiOSAppPauseOnBackground(true);
+    	
         // Initialize the Google Mobile Ads SDK.
         MobileAds.Initialize(appId);
     	
     	OnSdkInitializedEvent();
-
-        clearAllAds();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+    	if (asyncCommand!=null)
+    	{
+    		if (asyncCommand == "showInterstitial")
+    		{	
+ 				if ((interstitial!=null) && (interstitial.IsLoaded()))
+ 				{
+ 				    txtTitle.text = "Interstitial loaded, showing...";
+
+    				interstitial.Show();
+  				}
+    				
+    			asyncCommand = null;
+    			return;
+    		}
+    		
+    		if (asyncCommand == "showRewarded")
+    		{	
+ 				if ((rewardedAd!=null) && (rewardedAd.IsLoaded()))
+ 				{
+ 				    txtTitle.text = "Rewarded loaded, showing...";
+
+    				rewardedAd.Show();
+  				}
+    				
+    			asyncCommand = null;
+    			return;
+    		}
+
+    		asyncCommand = null;
+    	}
+
+    	if (txtReward!=null)
+    	{
+	        txtTitle.text = txtToShow + " | " + txtReward;
+    	} else {
+    	    txtTitle.text = txtToShow;
+    	}    	
     }
         
     //============================================================
@@ -67,7 +124,7 @@ public class MainScript : MonoBehaviour
     	btnRewarded.enabled = true;
     	txtTitle.enabled = true;
 
-		txtTitle.text = "Initialized";
+		txtToShow = "Initialized";
     }
 
     //============================================================
@@ -90,6 +147,8 @@ public class MainScript : MonoBehaviour
     
     public void clearAllAds()
     {
+    	txtReward = null;
+    
     	hideBanner();
     	
     	if (bannerView!=null)
@@ -97,6 +156,26 @@ public class MainScript : MonoBehaviour
     		bannerView.Destroy();
     		bannerView = null;
     	}
+    	
+    	if (interstitial!=null)
+    	{
+    		interstitial.Destroy();
+    		interstitial = null;
+    	}
+    }
+    
+    //============================================================
+
+	// Returns an ad request with custom ad targeting.
+    private AdRequest CreateAdRequest()
+    {
+        return new AdRequest.Builder()
+            //.AddTestDevice(AdRequest.TestDeviceSimulator)
+            //.AddKeyword("game")
+            //.SetGender(Gender.Male)
+            //.SetBirthday(new DateTime(1985, 1, 1))
+            //.TagForChildDirectedTreatment(false)
+            .Build();
     }
     
     //============================================================
@@ -105,9 +184,7 @@ public class MainScript : MonoBehaviour
     {
 	    clearAllAds();
 
-		txtTitle.text = "Loading banner...";
-		
-		Debug.LogError ("dbg-1");
+		txtToShow = "Loading banner...";
 
         bannerView = new BannerView(AdMobBannerHash, AdSize.Banner, AdPosition.Center);
 
@@ -122,45 +199,41 @@ public class MainScript : MonoBehaviour
         // Called when the ad click caused the user to leave the application.
         bannerView.OnAdLeavingApplication += HandleOnAdLeavingApplication;
 
-        // Create an empty ad request.
-        AdRequest request = new AdRequest.Builder().Build();
-
         // Load the banner with the request.
-        bannerView.LoadAd(request);
+        bannerView.LoadAd(CreateAdRequest());
     }
     
     //------------------------------------------------------------
 
     public void HandleOnAdLoaded(object sender, EventArgs args)
     {
-//    		((BannerView)sender).Hide();
+        MonoBehaviour.print("HandleAdLoaded event received");
 
-		bannerView.Hide();
-    		
-//    	txtTitle.text = "Banner loaded";
-    	
+    	txtToShow = "Banner loaded";
+
+		showBanner();    	
     }
 
     public void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
     {
-		txtTitle.text = "Banner error: "+args.Message;
+		txtToShow = "Banner error: "+args.Message;
 
     	showBanner();
     }
 
     public void HandleOnAdOpened(object sender, EventArgs args)
     {
-		txtTitle.text = "Banner clicked";
+		txtToShow = "Banner clicked";
     }
 
     public void HandleOnAdClosed(object sender, EventArgs args)
     {
-		txtTitle.text = "Banner closed";
+		txtToShow = "Banner closed";
     }
 
     public void HandleOnAdLeavingApplication(object sender, EventArgs args)
     {
-		txtTitle.text = "Banner leaving app";
+		txtToShow = "Banner leaving app";
     }
 
     //=============================================================
@@ -169,44 +242,54 @@ public class MainScript : MonoBehaviour
     {
 	    clearAllAds();
     
-		txtTitle.text = "Loading interstitial...";
+		txtToShow = "Loading interstitial...";
 
-	     //@@@MoPub.RequestInterstitialAd(AdMobInterstitialHash);
+		// Initialize an InterstitialAd.
+    	interstitial = new InterstitialAd(AdMobInterstitialHash);
+    
+        // Called when an ad request has successfully loaded.
+    	interstitial.OnAdLoaded += OnInterstitialLoadedEvent;
+    	// Called when an ad request failed to load.
+    	interstitial.OnAdFailedToLoad += OnInterstitialFailedEvent;
+    	// Called when an ad is shown.
+    	interstitial.OnAdOpening += OnInterstitialOpened;
+    	// Called when the ad is closed.
+    	interstitial.OnAdClosed += OnInterstitialClosed;
+    	// Called when the ad click caused the user to leave the application.
+    	interstitial.OnAdLeavingApplication += OnInterstitialLeavingApplication;
+  
+    	// Load the interstitial with the request.
+    	interstitial.LoadAd(CreateAdRequest());
     }
     
     //-------------------------------------------------------------
     
-    void OnInterstitialLoadedEvent (string adUnitId)
+    void OnInterstitialLoadedEvent(object sender, EventArgs args)
     {
-		txtTitle.text = "Interstitial loaded";
-
- 		//@@@MoPub.ShowInterstitialAd (adUnitId);
+		txtToShow = "Interstitial loaded";
+ 		
+ 		asyncCommand = "showInterstitial";
     }
 
-	void OnInterstitialFailedEvent (string adUnitId, string errorCode)
+	void OnInterstitialFailedEvent (object sender, AdFailedToLoadEventArgs args)
     {
-		txtTitle.text = "Interstitial error: "+errorCode;
+		txtToShow = "Interstitial error: "+args.Message;
     }
 
-	void OnInterstitialDismissedEvent (string adUnitId)
-    {
-		txtTitle.text = "Interstitial dismissed";
-    }
+	public void OnInterstitialOpened(object sender, EventArgs args)
+	{
+    	txtToShow = "Interstitial opened";
+	}
 
-	void OnInterstitialExpiredEvent (string adUnitId)
-    {
-		txtTitle.text = "Interstitial expired";
-    }
+	public void OnInterstitialClosed(object sender, EventArgs args)
+	{
+    	txtToShow = "Interstitial closed";
+	}
 
-	void OnInterstitialShownEvent (string adUnitId)
-    {
-		txtTitle.text = "Interstitial shown";
-    }
-
-	void OnInterstitialClickedEvent (string adUnitId)
-    {
-		txtTitle.text = "Interstitial clicked";
-    }
+	public void OnInterstitialLeavingApplication(object sender, EventArgs args)
+	{
+    	txtToShow = "Interstitial leaving app";
+	}
 
     //=============================================================
     
@@ -214,57 +297,59 @@ public class MainScript : MonoBehaviour
     {
 	    clearAllAds();
     
-		txtTitle.text = "Loading rewarded...";
+		txtToShow = "Loading rewarded...";
+		
+		rewardedAd = new RewardedAd(AdMobRewardedHash);
 
-		//@@@MoPub.RequestRewardedVideo(AdMobRewardedHash);
+        // Called when an ad request has successfully loaded.
+        this.rewardedAd.OnAdLoaded += OnRewardedAdLoaded;
+        // Called when an ad request failed to load.
+        this.rewardedAd.OnAdFailedToLoad += OnRewardedAdFailedToLoad;
+        // Called when an ad is shown.
+        this.rewardedAd.OnAdOpening += OnRewardedAdOpening;
+        // Called when an ad request failed to show.
+        this.rewardedAd.OnAdFailedToShow += OnRewardedAdFailedToShow;
+        // Called when the user should be rewarded for interacting with the ad.
+        this.rewardedAd.OnUserEarnedReward += OnUserEarnedReward;
+        // Called when the ad is closed.
+        this.rewardedAd.OnAdClosed += OnRewardedAdClosed;
+
+		rewardedAd.LoadAd(CreateAdRequest());
     }
     
     //-------------------------------------------------------------
     
-	void OnRewardedVideoLoadedEvent (string adUnitId)
+    public void OnRewardedAdLoaded(object sender, EventArgs args)
     {
-		txtTitle.text = "Rewarded loaded";
-		
-		//@@@MoPub.ShowRewardedVideo(adUnitId);
+        txtToShow = "Rewarded loaded";
+ 		
+ 		asyncCommand = "showRewarded";
     }
 
-	void OnRewardedVideoFailedEvent (string adUnitId, string errorMsg)
+    public void OnRewardedAdFailedToLoad(object sender, AdErrorEventArgs args)
     {
-		txtTitle.text = "Rewarded failed: "+errorMsg;
+        txtToShow = "Rewarded failed: " + args.Message;
     }
 
-	void OnRewardedVideoExpiredEvent (string adUnitId)
+    public void OnRewardedAdOpening(object sender, EventArgs args)
     {
-		txtTitle.text = "Rewarded expired";
+        txtToShow = "Rewarded opening";
     }
 
-	void OnRewardedVideoShownEvent (string adUnitId)
+    public void OnRewardedAdFailedToShow(object sender, AdErrorEventArgs args)
     {
-		txtTitle.text = "Rewarded shown";
+        txtToShow = "Rewarded failed to show: " + args.Message;
     }
 
-	void OnRewardedVideoClickedEvent (string adUnitId)
+    public void OnRewardedAdClosed(object sender, EventArgs args)
     {
-		txtTitle.text = "Rewarded clicked";
+        txtToShow = "Rewarded closed";
     }
 
-	void OnRewardedVideoFailedToPlayEvent (string adUnitId, string errorMsg)
+    public void OnUserEarnedReward(object sender, Reward args)
     {
-		txtTitle.text = "Rewarded failed to play: "+errorMsg;
-    }
-
-	void OnRewardedVideoReceivedRewardEvent (string adUnitId, string label, float amount)
-    {
-		txtTitle.text = "Rewarded received reward: "+amount+" "+label+"/s";
-    }
-
-	void OnRewardedVideoClosedEvent (string adUnitId)
-    {
-		txtTitle.text = "Rewarded closed";
-    }
-
-	void OnRewardedVideoLeavingApplicationEvent (string adUnitId)
-    {
-		txtTitle.text = "Rewarded leaving app";
+        string type = args.Type;
+        double amount = args.Amount;
+        txtReward = "Got " + amount.ToString() + " " + type;
     }
 }
