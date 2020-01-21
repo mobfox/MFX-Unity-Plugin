@@ -17,6 +17,9 @@
 
 - (void)requestInterstitialWithCustomEventInfo:(NSDictionary *)info;
 
+// Added by Shimon for Unity MoPub plugin
+- (void)requestInterstitialWithCustomEventInfo:(NSDictionary *)info adMarkup:(NSString *)adMarkup;
+
 - (void)showInterstitialFromRootViewController:(UIViewController *)rootViewController;
 
 //- (BOOL)enableAutomaticImpressionAndClickTracking;

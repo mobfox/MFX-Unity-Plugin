@@ -17,6 +17,12 @@
 
 @implementation MobFoxMoPubRewardedVideoCustomEvent
 
+// Added by Shimon for Unity MoPub plugin
+- (void)requestRewardedVideoWithCustomEventInfo:(NSDictionary *)info adMarkup:(NSString *)adMarkup
+{
+	[self requestRewardedVideoWithCustomEventInfo:info];
+}
+
 - (void)requestRewardedVideoWithCustomEventInfo:(NSDictionary *)info {
     NSString *adUnitID = info[@"invh"];
     if ([adUnitID isKindOfClass:[NSString class]]) {

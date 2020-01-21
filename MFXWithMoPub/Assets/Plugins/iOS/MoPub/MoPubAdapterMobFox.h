@@ -15,6 +15,9 @@
 
 - (void)requestAdWithSize:(CGSize)size customEventInfo:(NSDictionary *)info;
 
+// Added by Shimon for Unity MoPub plugin
+- (void)requestAdWithSize:(CGSize)size customEventInfo:(NSDictionary *)info adMarkup:(NSString *)adMarkup;
+
 //- (BOOL)enableAutomaticImpressionAndClickTracking;
 
 @end

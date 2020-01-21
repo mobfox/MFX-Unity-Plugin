@@ -9,6 +9,13 @@
 
 @implementation MoPubInterstitialAdapterMobFox
 
+
+// Added by Shimon for Unity MoPub plugin
+- (void)requestInterstitialWithCustomEventInfo:(NSDictionary *)info adMarkup:(NSString *)adMarkup
+{
+	[self requestInterstitialWithCustomEventInfo:info];
+}
+
 - (void)requestInterstitialWithCustomEventInfo:(NSDictionary *)info{
 
     _adUnit = @"";

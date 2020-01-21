@@ -12,6 +12,12 @@
 
 @implementation MoPubAdapterMobFox
 
+// Added by Shimon for Unity MoPub plugin
+- (void)requestAdWithSize:(CGSize)size customEventInfo:(NSDictionary *)info adMarkup:(NSString *)adMarkup
+{
+	[self requestAdWithSize:size customEventInfo:info];
+}
+
 
 - (void)requestAdWithSize:(CGSize)size customEventInfo:(NSDictionary *)info{
     if(self.ad){

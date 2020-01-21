@@ -82,7 +82,7 @@ public class MainScript : MonoBehaviour
                     // Specify the class name that implements the MediationSettings interface.
                     // Note: Custom network mediation settings are currently not supported on Android.
                 #if UNITY_IOS
-                    MediationSettingsClassName = "MobFoxMoPubNativeAdRendererSettings",
+                    //MediationSettingsClassName = "MobFoxMoPubNativeAdRendererSettings",
                 #endif
 
                     // Fill in settings and configuration options the same way as for supported networks:

@@ -19,6 +19,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MobFoxMoPubRewardedVideoCustomEvent : MPRewardedVideoCustomEvent
 
+- (void)requestRewardedVideoWithCustomEventInfo:(NSDictionary *)info;
+
+// Added by Shimon for Unity MoPub plugin
+- (void)requestRewardedVideoWithCustomEventInfo:(NSDictionary *)info adMarkup:(NSString *)adMarkup;
+
 @end
 
 NS_ASSUME_NONNULL_END
