@@ -9,27 +9,11 @@ using GoogleMobileAds.Api;
  
 public class MainScript : MonoBehaviour
 {
-	/*
-    #if UNITY_ANDROID
-        string AdMobBannerHash       = "ca-app-pub-3940256099942544/6300978111";
-		string AdMobInterstitialHash = "ca-app-pub-3940256099942544/1033173712";
-		string AdMobRewardedHash     = "ca-app-pub-3940256099942544/5224354917";
-    #else
-        string AdMobBannerHash       = "ca-app-pub-3940256099942544/2934735716";
-		string AdMobInterstitialHash = "ca-app-pub-3940256099942544/4411468910";
-		string AdMobRewardedHash     = "ca-app-pub-3940256099942544/1712485313";
-    #endif
-    */
-
     #if UNITY_ANDROID
         string AdMobBannerHash       = "ca-app-pub-8111915318550857/5234422920";
 		string AdMobInterstitialHash = "ca-app-pub-8111915318550857/9385420926";
 		string AdMobRewardedHash     = "ca-app-pub-6224828323195096/1152622735";
     #else
-        //string AdMobBannerHash       = "ca-app-pub-6224828323195096/5240875564";
-		//string AdMobInterstitialHash = "ca-app-pub-6224828323195096/7876284361";
-		//string AdMobRewardedHash     = "ca-app-pub-6224828323195096/9409251358";
-		
         string AdMobBannerHash       = "ca-app-pub-6224828323195096/7846687276";
 		string AdMobInterstitialHash = "ca-app-pub-6224828323195096/7876284361";
 		string AdMobRewardedHash     = "ca-app-pub-6224828323195096/9409251358";
@@ -55,7 +39,6 @@ public class MainScript : MonoBehaviour
             string appId = "ca-app-pub-6224828323195096~8368193162";
         #elif UNITY_IPHONE
             string appId = "ca-app-pub-6224828323195096~3764142368";
-            //string appId = "ca-app-pub-3940256099942544~1458002511";
         #else
             string appId = "unexpected_platform";
         #endif
