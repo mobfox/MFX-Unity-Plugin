@@ -4,7 +4,7 @@ Thanks for electing to show Mobfox ads in your Unity app.
 <!-- toc -->
 
 * [Prerequisites](#prerequisites)
-* [Use cases - what plugin do I use?](#use-cases-what-plugin-do-i-use)
+* [Use cases - what plugin do I use?](#use-cases---what-plugin-do-i-use)
 * [Installation](#installation)
 * [Usage](#usage)
   * [Initializing the SDK](#initializing-the-sdk)
