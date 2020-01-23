@@ -1,10 +1,10 @@
-# Mobfox and Unity
+# Mobfox Under MoPub in Unity
 Thanks for electing to show Mobfox ads in your Unity app.
 
 <!-- toc -->
 
 * [Prerequisites](#prerequisites)
-* [Use cases - what plugin do I use?](#use-cases-what-plugin-do-i-use)
+* [Other use cases - Mobfox or AdMob](#other-use-cases---mobfox-or-admob)
 * [Installation](#installation)
 * [Usage](#usage)
   * [Initializing the SDK](#initializing-the-sdk)
@@ -24,13 +24,12 @@ Thanks for electing to show Mobfox ads in your Unity app.
 * Mobfox Unity Plugins requires an internet access.
 * You will need a [Mobfox](https://mobfox.atlassian.net/wiki/spaces/PUMD/pages/354549848/Setup+MobFox+Account) account.
 
-# Use cases - what plugin do I use?
+# Other use cases - Mobfox or AdMob?
 
-There are 3 use cases for using Mobfox in Unity:
+This document describes the use of **Mobfox** under **MoPub** mediation in Unity.
 
-* If you are trying to show Mobfox ads directly - use [the MFX-Unity-Plugin](readme_mobfox.md).
-* If you are already showing MoPub ads, and want to add mediation to Mobfox - use the [MFX-Unity-MoPub-Plugin](MFX-Unity-MoPub-Package/readme_mopub.md).
-* If you are already showing AdMob ads, and want to add mediation to Mobfox - use the [MFX-Unity-AdMob-Plugin](MFX-Unity-AdMob-Package/readme_admob.md).
+* If you are trying to show **Mobfox** ads directly - use [the MFX-Unity-Plugin](../MFX-Unity-Package/README_mobfox.md).
+* If you are already showing **AdMob** ads, and want to add mediation to Mobfox - use the [MFX-Unity-AdMob-Plugin](../MFX-Unity-AdMob-Package/README_admob.md).
 
 # Installation
 
