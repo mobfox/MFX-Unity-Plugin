@@ -28,8 +28,8 @@ Thanks for electing to show Mobfox ads in your Unity app.
 
 This document describes the use of **Mobfox** directly inside Unity.
 
-* If you are already showing MoPub ads, and want to add mediation to Mobfox - use the [MFX-Unity-MoPub-Plugin](../MFX-Unity-MoPub-Package/readme_mopub.md).
-* If you are already showing AdMob ads, and want to add mediation to Mobfox - use the [MFX-Unity-AdMob-Plugin](../MFX-Unity-AdMob-Package/readme_admob.md).
+* If you are already showing MoPub ads, and want to add mediation to Mobfox - use the [MFX-Unity-MoPub-Plugin](./MFX-Unity-MoPub-Package/readme_mopub.md).
+* If you are already showing AdMob ads, and want to add mediation to Mobfox - use the [MFX-Unity-AdMob-Plugin](./MFX-Unity-AdMob-Package/readme_admob.md).
 
 # Installation
 
