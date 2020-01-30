@@ -6,6 +6,7 @@ Thanks for electing to show Mobfox ads in your Unity app.
 * [Prerequisites](#prerequisites)
 * [Other use cases - MoPub or AdMob](#other-use-cases---mopub-or-admob)
 * [Installation](#installation)
+* [Important note - iOS](#important-note---ios)
 * [Usage](#usage)
   * [Initializing the SDK](#initializing-the-sdk)
   * [Configuring ads mediation](#configuring-ads-mediation)
@@ -46,6 +47,10 @@ To add it to your project, follow the steps below:
 2. In the dialog opened, select '**mfx-unity.unitypackage**', and click '**Open**'
 
 Done. Now you can start integrating the Mobfox Unity Plugin as explained in the next sections.
+
+# Important note - iOS
+
+After building the iOS version - remember to go to that XCode project, into "Build Settings", and set "Enable Modules" to YES.
 
 # Usage
 
