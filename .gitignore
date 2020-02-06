@@ -1,2 +1,8 @@
 
 *.meta
+MFXDemo/Library/metadata/*
+MFXDemo/Library/*
+MFXWithAdMob/Library/metadata/*
+MFXWithAdMob/Library/*
+MFXWithMoPub/Library/metadata/*
+MFXWithMoPub/Library/*
