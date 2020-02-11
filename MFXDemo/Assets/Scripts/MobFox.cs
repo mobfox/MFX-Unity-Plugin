@@ -4,6 +4,7 @@ using System;
 
 public class MobFox :MonoBehaviour
 {
+#if UNITY_IOS
 	[DllImport ( "__Internal" )]
 	public static extern void _setGameObject (string gameObject);
 	
@@ -91,8 +92,7 @@ public class MobFox :MonoBehaviour
 
 	[DllImport ( "__Internal" )]
 	public static extern void _releaseNative ();
-
-
+#endif
 
 	private const string MobFoxGameObjectName = "MobFoxObject";
 
@@ -188,7 +188,9 @@ public class MobFox :MonoBehaviour
 					} ) );
 			}
 		} else {
+#if UNITY_IOS
 			_setGameObject ( MobFoxGameObjectName );
+#endif
 		}
 
 		if (OnSdkReady != null)
@@ -239,9 +241,6 @@ public class MobFox :MonoBehaviour
 					} ) );
 			}
 		}
-		else
-		{
-		}
 	}
 
 	public static void CreateSingletone ()
@@ -280,24 +279,10 @@ public class MobFox :MonoBehaviour
 	}
 
 	//======================================================================================
-	//======  G L O B A L                                                             ======
+	//======  iOS functions                                                           ======
 	//======================================================================================
 
-	public void setCOPPA (bool subjectToCOPPA)
-	{
-		ConnectToPlugin ( );
-
-		if (Application.platform == RuntimePlatform.Android)
-		{
-			setCOPPA_Android ( subjectToCOPPA );
-		}
-		else
-		{
-			setCOPPA_iPhone ( subjectToCOPPA );
-		}
-	}
-
-	//-------------------------------------------
+#if UNITY_IOS
 
 	private void setCOPPA_iPhone (bool subjectToCOPPA)
 	{
@@ -305,6 +290,211 @@ public class MobFox :MonoBehaviour
 	}
 
 	//-------------------------------------------
+
+	private void setDemoAge_iPhone (string demoAge)
+	{
+		_setDemoAge (demoAge);
+	}
+
+	//-------------------------------------------
+
+	private void setDemoGender_iPhone (string demoGender)
+	{
+		_setDemoGender (demoGender);
+	}
+
+	//-------------------------------------------
+
+	private void setDemoKeywords_iPhone (string demoKeywords)
+	{
+		_setDemoKeywords (demoKeywords);
+	}
+
+	//-------------------------------------------
+
+	private void setLatitude_iPhone (double latitude)
+	{
+		_setLatitude (latitude);
+	}
+
+	//-------------------------------------------
+
+	private void setLongitude_iPhone (double longitude)
+	{
+		_setLongitude (longitude);
+	}
+	
+	//-------------------------------------------
+
+	private void ShowMobFoxBanner_iPhone (string banner_inventory, int left, int top, int width, int height)
+	{
+		_createBanner ( banner_inventory, left, top, width, height );
+	}
+
+	//-------------------------------------------
+
+	private void setBannerRefresh_iPhone (int intervalInSeconds)
+	{
+		_setBannerRefresh(intervalInSeconds);
+	}
+	
+	//-------------------------------------------
+
+	private void setBannerFloorPrice_iPhone (float floorPrice)
+	{
+		_setBannerFloorPrice(floorPrice);
+	}
+
+	//-------------------------------------------
+
+	private void HideMobFoxBanner_iPhone ()
+	{
+		_hideBanner ( );
+	}
+
+	//-------------------------------------------
+
+	private void UnhideMobFoxBanner_iPhone ()
+	{
+		_showBanner ( );
+	}
+
+	//-------------------------------------------
+
+	private void ReleaseMobFoxBanner_iPhone ()
+	{
+		_releaseBanner ( );
+	}
+
+	//-------------------------------------------
+
+	private void CreateMobFoxInterstitial_iPhone (string interstitial_inventory)
+	{
+		_createInterstitial ( interstitial_inventory );
+	}
+
+	//-------------------------------------------
+
+	private void ShowMobFoxInterstitial_iPhone ()
+	{
+		_showInterstitial ( );
+	}
+
+	//-------------------------------------------
+
+	private void setInterstitialFloorPrice_iPhone (float floorPrice)
+	{
+		_setInterstitialFloorPrice(floorPrice);
+	}
+
+	//-------------------------------------------
+
+	private void ReleaseMobFoxInterstitial_iPhone ()
+	{
+		_releaseInterstitial ( );
+	}
+
+	//-------------------------------------------
+
+	private void CreateMobFoxNative_iPhone (string native_inventory)
+	{
+		_createNative ( native_inventory );
+	}
+
+	//-------------------------------------------
+
+	private void setNativeFloorPrice_iPhone (float floorPrice)
+	{
+		_setNativeFloorPrice(floorPrice);
+	}
+
+	//-------------------------------------------
+
+	private void callToActionClicked_iPhone ()
+	{
+		_callToActionClicked();
+	}
+
+	//-------------------------------------------
+
+	private void setNativeAdContext_iPhone (NativeAdContext adContext)
+	{
+		if (adContext == NativeAdContext.CONTENT)
+		{
+			_setNativeAdContext("content");
+		}
+		if (adContext == NativeAdContext.SOCIAL)
+		{
+			_setNativeAdContext("social");
+		}
+		if (adContext == NativeAdContext.PRODUCT)
+		{
+			_setNativeAdContext("product");
+		}
+	}
+
+	//-------------------------------------------
+
+	private void setNativeAdPlacementType_iPhone (NativeAdPlacementType adType)
+	{
+		if (adType == NativeAdPlacementType.IN_FEED)
+		{
+			_setNativeAdPlacementType("in_feed");
+		}
+		if (adType == NativeAdPlacementType.ATOMIC)
+		{
+			_setNativeAdPlacementType("atomic");
+		}
+		if (adType == NativeAdPlacementType.OUTSIDE)
+		{
+			_setNativeAdPlacementType("outside");
+		}
+		if (adType == NativeAdPlacementType.RECOMMENDATION)
+		{
+			_setNativeAdPlacementType("recommendation");
+		}
+	}
+
+	//-------------------------------------------
+
+	private void setNativeAdIconImage_iPhone ( bool bRequired, int size )
+	{
+		_setNativeAdIconImage( bRequired, size );
+	}
+
+	//-------------------------------------------
+
+	private void setNativeAdMainImage_iPhone ( bool bRequired, int width, int height )
+	{
+		_setNativeAdMainImage( bRequired, width, height );
+	}
+
+	//-------------------------------------------
+
+	private void setNativeAdTitle_iPhone ( bool bRequired, int maxLength )
+	{
+		_setNativeAdTitle( bRequired, maxLength );
+	}
+
+	//-------------------------------------------
+
+	private void setNativeAdDesc_iPhone ( bool bRequired, int maxLength )
+	{
+		_setNativeAdDesc( bRequired, maxLength );
+	}
+
+	//-------------------------------------------
+
+	private void ReleaseMobFoxNative_iPhone ()
+	{
+		_releaseNative ( );
+	}
+
+#endif
+
+	//======================================================================================
+	//======  Android functions                                                       ======
+	//======================================================================================
 
 	private void setCOPPA_Android (bool subjectToCOPPA)
 	{
@@ -315,29 +505,6 @@ public class MobFox :MonoBehaviour
 				PluginInstance.Call ( "setCOPPA", subjectToCOPPA );
 			}));
 		}
-	}
-
-	//======================================================================================
-
-	public void setDemoAge (string demoAge)
-	{
-		ConnectToPlugin ( );
-
-		if (Application.platform == RuntimePlatform.Android)
-		{
-			setDemoAge_Android ( demoAge );
-		}
-		else
-		{
-			setDemoAge_iPhone ( demoAge );
-		}
-	}
-
-	//-------------------------------------------
-
-	private void setDemoAge_iPhone (string demoAge)
-	{
-		_setDemoAge (demoAge);
 	}
 
 	//-------------------------------------------
@@ -353,29 +520,6 @@ public class MobFox :MonoBehaviour
 		}
 	}
 
-	//======================================================================================
-
-	public void setDemoGender (string demoGender)
-	{
-		ConnectToPlugin ( );
-
-		if (Application.platform == RuntimePlatform.Android)
-		{
-			setDemoGender_Android ( demoGender );
-		}
-		else
-		{
-			setDemoGender_iPhone ( demoGender );
-		}
-	}
-
-	//-------------------------------------------
-
-	private void setDemoGender_iPhone (string demoGender)
-	{
-		_setDemoGender (demoGender);
-	}
-
 	//-------------------------------------------
 
 	private void setDemoGender_Android (string demoGender)
@@ -387,29 +531,6 @@ public class MobFox :MonoBehaviour
 				PluginInstance.Call ( "setDemoGender", demoGender );
 			}));
 		}
-	}
-
-	//======================================================================================
-
-	public void setDemoKeywords (string demoKeywords)
-	{
-		ConnectToPlugin ( );
-
-		if (Application.platform == RuntimePlatform.Android)
-		{
-			setDemoKeywords_Android ( demoKeywords );
-		}
-		else
-		{
-			setDemoKeywords_iPhone ( demoKeywords );
-		}
-	}
-
-	//-------------------------------------------
-
-	private void setDemoKeywords_iPhone (string demoKeywords)
-	{
-		_setDemoKeywords (demoKeywords);
 	}
 
 	//-------------------------------------------
@@ -425,29 +546,6 @@ public class MobFox :MonoBehaviour
 		}
 	}
 
-	//======================================================================================
-
-	public void setLatitude (double latitude)
-	{
-		ConnectToPlugin ( );
-
-		if (Application.platform == RuntimePlatform.Android)
-		{
-			setLatitude_Android ( latitude );
-		}
-		else
-		{
-			setLatitude_iPhone ( latitude );
-		}
-	}
-
-	//-------------------------------------------
-
-	private void setLatitude_iPhone (double latitude)
-	{
-		_setLatitude (latitude);
-	}
-
 	//-------------------------------------------
 
 	private void setLatitude_Android (double latitude)
@@ -461,6 +559,369 @@ public class MobFox :MonoBehaviour
 		}
 	}
 
+	//-------------------------------------------
+
+	private void setLongitude_Android (double longitude)
+	{
+		if (activityContext != null)
+		{
+			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
+			{
+				PluginInstance.Call ( "setLongitude", longitude );
+			}));
+		}
+	}
+
+	//-------------------------------------------
+
+	private void setBannerRefresh_Android (int intervalInSeconds)
+	{
+		if (activityContext != null)
+		{
+			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
+			{
+				PluginInstance.Call ( "setBannerRefresh", intervalInSeconds );
+			}));
+		}
+	}
+
+	//-------------------------------------------
+
+	private void setBannerFloorPrice_Android (float floorPrice)
+	{
+		if (activityContext != null)
+		{
+			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
+			{
+				PluginInstance.Call ( "setBannerFloorPrice", floorPrice );
+			}));
+		}
+	}
+
+	//-------------------------------------------
+
+	private void HideMobFoxBanner_Android ()
+	{
+		if (activityContext != null)
+		{
+			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
+				{
+					PluginInstance.Call ( "hideBanner" );
+				} ) );
+		}
+	}
+
+	//-------------------------------------------
+
+	private void UnhideMobFoxBanner_Android ()
+	{
+		if (activityContext != null)
+		{
+			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
+				{
+					PluginInstance.Call ( "showBanner" );
+				} ) );
+		}
+	}
+
+	//-------------------------------------------
+
+	private void ShowMobFoxBanner_Android (string banner_inventory, int left, int top, int width, int height)
+	{
+		if (activityContext != null)
+		{
+			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
+				{
+					PluginInstance.Call ( "createBanner", banner_inventory, left, top, width, height );
+				} ) );
+		}
+	}
+
+	//-------------------------------------------
+
+	private void ReleaseMobFoxBanner_Android ()
+	{
+		if (activityContext != null)
+		{
+			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
+				{
+					PluginInstance.Call ( "releaseBanner" );
+				} ) );
+		}
+	}
+
+	//-------------------------------------------
+
+	private void CreateMobFoxInterstitial_Android (string interstitial_inventory)
+	{
+		if (activityContext != null)
+		{
+			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
+				{
+					PluginInstance.Call ( "createInterstitial", interstitial_inventory );
+				} ) );
+		}
+	}
+
+	//-------------------------------------------
+
+	private void ShowMobFoxInterstitial_Android ()
+	{
+		if (activityContext != null)
+		{
+			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
+				{
+					PluginInstance.Call ( "showInterstitial" );
+				} ) );
+		}
+	}
+
+	//-------------------------------------------
+
+	private void setInterstitialFloorPrice_Android (float floorPrice)
+	{
+		if (activityContext != null)
+		{
+			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
+			{
+				PluginInstance.Call ( "setInterstitialFloorPrice", floorPrice );
+			}));
+		}
+	}
+
+	//-------------------------------------------
+
+	private void ReleaseMobFoxInterstitial_Android ()
+	{
+		if (activityContext != null)
+		{
+			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
+				{
+					PluginInstance.Call ( "releaseInterstitial" );
+				} ) );
+		}
+	}
+
+	//-------------------------------------------
+
+	private void CreateMobFoxNative_Android (string native_inventory)
+	{
+		if (activityContext != null)
+		{
+			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
+				{
+					PluginInstance.Call ( "createNative", native_inventory );
+				} ) );
+		}
+	}
+
+	//-------------------------------------------
+
+	private void setNativeFloorPrice_Android (float floorPrice)
+	{
+		if (activityContext != null)
+		{
+			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
+			{
+				PluginInstance.Call ( "setNativeFloorPrice", floorPrice );
+			}));
+		}
+	}
+	//-------------------------------------------
+
+	private void callToActionClicked_Android ()
+	{
+		if (activityContext != null)
+		{
+			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
+			{
+				PluginInstance.Call ( "callToActionClicked" );
+			}));
+		}
+	}
+
+	//-------------------------------------------
+
+	private void setNativeAdContext_Android (NativeAdContext adContext)
+	{
+		if (activityContext != null)
+		{
+			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
+			{
+				PluginInstance.Call ( "setNativeAdContext", adContext );
+			}));
+		}
+	}
+
+	//-------------------------------------------
+
+	private void setNativeAdPlacementType_Android (NativeAdPlacementType adType)
+	{
+		if (activityContext != null)
+		{
+			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
+			{
+				PluginInstance.Call ( "setNativeAdPlacementType", adType );
+			}));
+		}
+	}
+
+	//-------------------------------------------
+
+	private void setNativeAdIconImage_Android ( bool bRequired, int size )
+	{
+		if (activityContext != null)
+		{
+			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
+			{
+				PluginInstance.Call ( "setNativeAdIconImage", bRequired, size );
+			}));
+		}
+	}
+
+	//-------------------------------------------
+
+	private void setNativeAdMainImage_Android ( bool bRequired, int width, int height )
+	{
+		if (activityContext != null)
+		{
+			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
+			{
+				PluginInstance.Call ( "setNativeAdMainImage", bRequired, width, height );
+			}));
+		}
+	}
+
+	//-------------------------------------------
+
+	private void setNativeAdTitle_Android ( bool bRequired, int maxLength )
+	{
+		if (activityContext != null)
+		{
+			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
+			{
+				PluginInstance.Call ( "setNativeAdTitle", bRequired, maxLength );
+			}));
+		}
+	}
+
+	//-------------------------------------------
+
+	private void setNativeAdDesc_Android ( bool bRequired, int maxLength )
+	{
+		if (activityContext != null)
+		{
+			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
+			{
+				PluginInstance.Call ( "setNativeAdDesc", bRequired, maxLength );
+			}));
+		}
+	}
+
+	//-------------------------------------------
+
+	private void ReleaseMobFoxNative_Android ()
+	{
+		if (activityContext != null)
+		{
+			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
+				{
+					PluginInstance.Call ( "releaseNative" );
+				} ) );
+		}
+	}
+
+	//======================================================================================
+	//======  G L O B A L                                                             ======
+	//======================================================================================
+
+	public void setCOPPA (bool subjectToCOPPA)
+	{
+		ConnectToPlugin ( );
+
+		if (Application.platform == RuntimePlatform.Android)
+		{
+			setCOPPA_Android ( subjectToCOPPA );
+		}
+		else
+		{
+#if UNITY_IOS
+			setCOPPA_iPhone ( subjectToCOPPA );
+#endif
+		}
+	}
+
+	//======================================================================================
+
+	public void setDemoAge (string demoAge)
+	{
+		ConnectToPlugin ( );
+
+		if (Application.platform == RuntimePlatform.Android)
+		{
+			setDemoAge_Android ( demoAge );
+		}
+		else
+		{
+#if UNITY_IOS
+			setDemoAge_iPhone ( demoAge );
+#endif
+		}
+	}
+
+	//======================================================================================
+
+	public void setDemoGender (string demoGender)
+	{
+		ConnectToPlugin ( );
+
+		if (Application.platform == RuntimePlatform.Android)
+		{
+			setDemoGender_Android ( demoGender );
+		}
+		else
+		{
+#if UNITY_IOS
+			setDemoGender_iPhone ( demoGender );
+#endif
+		}
+	}
+
+	//======================================================================================
+
+	public void setDemoKeywords (string demoKeywords)
+	{
+		ConnectToPlugin ( );
+
+		if (Application.platform == RuntimePlatform.Android)
+		{
+			setDemoKeywords_Android ( demoKeywords );
+		}
+		else
+		{
+#if UNITY_IOS
+			setDemoKeywords_iPhone ( demoKeywords );
+#endif
+		}
+	}
+
+	//======================================================================================
+
+	public void setLatitude (double latitude)
+	{
+		ConnectToPlugin ( );
+
+		if (Application.platform == RuntimePlatform.Android)
+		{
+			setLatitude_Android ( latitude );
+		}
+		else
+		{
+#if UNITY_IOS
+			setLatitude_iPhone ( latitude );
+#endif
+		}
+	}
 
 	//======================================================================================
 
@@ -474,27 +935,9 @@ public class MobFox :MonoBehaviour
 		}
 		else
 		{
+#if UNITY_IOS
 			setLongitude_iPhone ( longitude );
-		}
-	}
-
-	//-------------------------------------------
-
-	private void setLongitude_iPhone (double longitude)
-	{
-		_setLongitude (longitude);
-	}
-
-	//-------------------------------------------
-
-	private void setLongitude_Android (double longitude)
-	{
-		if (activityContext != null)
-		{
-			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
-			{
-				PluginInstance.Call ( "setLongitude", longitude );
-			}));
+#endif
 		}
 	}
 
@@ -512,27 +955,9 @@ public class MobFox :MonoBehaviour
 		}
 		else
 		{
+#if UNITY_IOS
 			ShowMobFoxBanner_iPhone ( banner_inventory, left, top, width, height );
-		}
-	}
-	
-	//-------------------------------------------
-
-	private void ShowMobFoxBanner_iPhone (string banner_inventory, int left, int top, int width, int height)
-	{
-		_createBanner ( banner_inventory, left, top, width, height );
-	}
-
-	//-------------------------------------------
-
-	private void ShowMobFoxBanner_Android (string banner_inventory, int left, int top, int width, int height)
-	{
-		if (activityContext != null)
-		{
-			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
-				{
-					PluginInstance.Call ( "createBanner", banner_inventory, left, top, width, height );
-				} ) );
+#endif
 		}
 	}
 
@@ -548,27 +973,9 @@ public class MobFox :MonoBehaviour
 		}
 		else
 		{
+#if UNITY_IOS
 			setBannerRefresh_iPhone ( intervalInSeconds );
-		}
-	}
-
-	//-------------------------------------------
-
-	private void setBannerRefresh_iPhone (int intervalInSeconds)
-	{
-		_setBannerRefresh(intervalInSeconds);
-	}
-
-	//-------------------------------------------
-
-	private void setBannerRefresh_Android (int intervalInSeconds)
-	{
-		if (activityContext != null)
-		{
-			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
-			{
-				PluginInstance.Call ( "setBannerRefresh", intervalInSeconds );
-			}));
+#endif
 		}
 	}
 
@@ -584,27 +991,9 @@ public class MobFox :MonoBehaviour
 		}
 		else
 		{
+#if UNITY_IOS
 			setBannerFloorPrice_iPhone ( floorPrice );
-		}
-	}
-
-	//-------------------------------------------
-
-	private void setBannerFloorPrice_iPhone (float floorPrice)
-	{
-		_setBannerFloorPrice(floorPrice);
-	}
-
-	//-------------------------------------------
-
-	private void setBannerFloorPrice_Android (float floorPrice)
-	{
-		if (activityContext != null)
-		{
-			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
-			{
-				PluginInstance.Call ( "setBannerFloorPrice", floorPrice );
-			}));
+#endif
 		}
 	}
 
@@ -620,27 +1009,9 @@ public class MobFox :MonoBehaviour
 		}
 		else
 		{
+#if UNITY_IOS
 			HideMobFoxBanner_iPhone ( );
-		}
-	}
-
-	//-------------------------------------------
-
-	private void HideMobFoxBanner_iPhone ()
-	{
-		_hideBanner ( );
-	}
-
-	//-------------------------------------------
-
-	private void HideMobFoxBanner_Android ()
-	{
-		if (activityContext != null)
-		{
-			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
-				{
-					PluginInstance.Call ( "hideBanner" );
-				} ) );
+#endif
 		}
 	}
 
@@ -656,27 +1027,9 @@ public class MobFox :MonoBehaviour
 		}
 		else
 		{
+#if UNITY_IOS
 			UnhideMobFoxBanner_iPhone ( );
-		}
-	}
-
-	//-------------------------------------------
-
-	private void UnhideMobFoxBanner_iPhone ()
-	{
-		_showBanner ( );
-	}
-
-	//-------------------------------------------
-
-	private void UnhideMobFoxBanner_Android ()
-	{
-		if (activityContext != null)
-		{
-			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
-				{
-					PluginInstance.Call ( "showBanner" );
-				} ) );
+#endif
 		}
 	}
 
@@ -692,27 +1045,9 @@ public class MobFox :MonoBehaviour
 		}
 		else
 		{
+#if UNITY_IOS
 			ReleaseMobFoxBanner_iPhone ( );
-		}
-	}
-
-	//-------------------------------------------
-
-	private void ReleaseMobFoxBanner_iPhone ()
-	{
-		_releaseBanner ( );
-	}
-
-	//-------------------------------------------
-
-	private void ReleaseMobFoxBanner_Android ()
-	{
-		if (activityContext != null)
-		{
-			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
-				{
-					PluginInstance.Call ( "releaseBanner" );
-				} ) );
+#endif
 		}
 	}
 
@@ -783,45 +1118,13 @@ public class MobFox :MonoBehaviour
 		}
 		else
 		{
+#if UNITY_IOS
 			CreateMobFoxInterstitial_iPhone ( interstitial_inventory );
+#endif
 		}
 	}
 
 	//======================================================================================
-
-	private void CreateMobFoxInterstitial_iPhone (string interstitial_inventory)
-	{
-		_createInterstitial ( interstitial_inventory );
-	}
-
-	private void CreateMobFoxInterstitial_Android (string interstitial_inventory)
-	{
-		if (activityContext != null)
-		{
-			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
-				{
-					PluginInstance.Call ( "createInterstitial", interstitial_inventory );
-				} ) );
-		}
-	}
-
-	//======================================================================================
-
-	private void ShowMobFoxInterstitial_iPhone ()
-	{
-		_showInterstitial ( );
-	}
-
-	private void ShowMobFoxInterstitial_Android ()
-	{
-		if (activityContext != null)
-		{
-			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
-				{
-					PluginInstance.Call ( "showInterstitial" );
-				} ) );
-		}
-	}
 
 	public void ShowMobFoxInterstitial ()
 	{
@@ -835,7 +1138,9 @@ public class MobFox :MonoBehaviour
 			}
 			else
 			{
+#if UNITY_IOS
 				ShowMobFoxInterstitial_iPhone ( );
+#endif
 			}
 		}
 		else
@@ -856,27 +1161,9 @@ public class MobFox :MonoBehaviour
 		}
 		else
 		{
+#if UNITY_IOS
 			setInterstitialFloorPrice_iPhone ( floorPrice );
-		}
-	}
-
-	//-------------------------------------------
-
-	private void setInterstitialFloorPrice_iPhone (float floorPrice)
-	{
-		_setInterstitialFloorPrice(floorPrice);
-	}
-
-	//-------------------------------------------
-
-	private void setInterstitialFloorPrice_Android (float floorPrice)
-	{
-		if (activityContext != null)
-		{
-			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
-			{
-				PluginInstance.Call ( "setInterstitialFloorPrice", floorPrice );
-			}));
+#endif
 		}
 	}
 
@@ -892,27 +1179,9 @@ public class MobFox :MonoBehaviour
 		}
 		else
 		{
+#if UNITY_IOS
 			ReleaseMobFoxInterstitial_iPhone ( );
-		}
-	}
-
-	//-------------------------------------------
-
-	private void ReleaseMobFoxInterstitial_iPhone ()
-	{
-		_releaseInterstitial ( );
-	}
-
-	//-------------------------------------------
-
-	private void ReleaseMobFoxInterstitial_Android ()
-	{
-		if (activityContext != null)
-		{
-			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
-				{
-					PluginInstance.Call ( "releaseInterstitial" );
-				} ) );
+#endif
 		}
 	}
 
@@ -981,27 +1250,9 @@ public class MobFox :MonoBehaviour
 		}
 		else
 		{
+#if UNITY_IOS
 			CreateMobFoxNative_iPhone ( native_inventory );
-		}
-	}
-
-	//-------------------------------------------
-
-	private void CreateMobFoxNative_iPhone (string native_inventory)
-	{
-		_createNative ( native_inventory );
-	}
-
-	//-------------------------------------------
-
-	private void CreateMobFoxNative_Android (string native_inventory)
-	{
-		if (activityContext != null)
-		{
-			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
-				{
-					PluginInstance.Call ( "createNative", native_inventory );
-				} ) );
+#endif
 		}
 	}
 
@@ -1017,27 +1268,9 @@ public class MobFox :MonoBehaviour
 		}
 		else
 		{
+#if UNITY_IOS
 			setNativeFloorPrice_iPhone ( floorPrice );
-		}
-	}
-
-	//-------------------------------------------
-
-	private void setNativeFloorPrice_iPhone (float floorPrice)
-	{
-		_setNativeFloorPrice(floorPrice);
-	}
-
-	//-------------------------------------------
-
-	private void setNativeFloorPrice_Android (float floorPrice)
-	{
-		if (activityContext != null)
-		{
-			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
-			{
-				PluginInstance.Call ( "setNativeFloorPrice", floorPrice );
-			}));
+#endif
 		}
 	}
 
@@ -1053,27 +1286,9 @@ public class MobFox :MonoBehaviour
 		}
 		else
 		{
+#if UNITY_IOS
 			callToActionClicked_iPhone (  );
-		}
-	}
-
-	//-------------------------------------------
-
-	private void callToActionClicked_iPhone ()
-	{
-		_callToActionClicked();
-	}
-
-	//-------------------------------------------
-
-	private void callToActionClicked_Android ()
-	{
-		if (activityContext != null)
-		{
-			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
-			{
-				PluginInstance.Call ( "callToActionClicked" );
-			}));
+#endif
 		}
 	}
 
@@ -1089,38 +1304,9 @@ public class MobFox :MonoBehaviour
 		}
 		else
 		{
+#if UNITY_IOS
 			setNativeAdContext_iPhone ( adContext );
-		}
-	}
-
-	//-------------------------------------------
-
-	private void setNativeAdContext_iPhone (NativeAdContext adContext)
-	{
-		if (adContext == NativeAdContext.CONTENT)
-		{
-			_setNativeAdContext("content");
-		}
-		if (adContext == NativeAdContext.SOCIAL)
-		{
-			_setNativeAdContext("social");
-		}
-		if (adContext == NativeAdContext.PRODUCT)
-		{
-			_setNativeAdContext("product");
-		}
-	}
-
-	//-------------------------------------------
-
-	private void setNativeAdContext_Android (NativeAdContext adContext)
-	{
-		if (activityContext != null)
-		{
-			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
-			{
-				PluginInstance.Call ( "setNativeAdContext", adContext );
-			}));
+#endif
 		}
 	}
 
@@ -1136,42 +1322,9 @@ public class MobFox :MonoBehaviour
 		}
 		else
 		{
+#if UNITY_IOS
 			setNativeAdPlacementType_iPhone ( adType );
-		}
-	}
-
-	//-------------------------------------------
-
-	private void setNativeAdPlacementType_iPhone (NativeAdPlacementType adType)
-	{
-		if (adType == NativeAdPlacementType.IN_FEED)
-		{
-			_setNativeAdPlacementType("in_feed");
-		}
-		if (adType == NativeAdPlacementType.ATOMIC)
-		{
-			_setNativeAdPlacementType("atomic");
-		}
-		if (adType == NativeAdPlacementType.OUTSIDE)
-		{
-			_setNativeAdPlacementType("outside");
-		}
-		if (adType == NativeAdPlacementType.RECOMMENDATION)
-		{
-			_setNativeAdPlacementType("recommendation");
-		}
-	}
-
-	//-------------------------------------------
-
-	private void setNativeAdPlacementType_Android (NativeAdPlacementType adType)
-	{
-		if (activityContext != null)
-		{
-			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
-			{
-				PluginInstance.Call ( "setNativeAdPlacementType", adType );
-			}));
+#endif
 		}
 	}
 
@@ -1187,27 +1340,9 @@ public class MobFox :MonoBehaviour
 		}
 		else
 		{
+#if UNITY_IOS
 			setNativeAdIconImage_iPhone ( bRequired, size );
-		}
-	}
-
-	//-------------------------------------------
-
-	private void setNativeAdIconImage_iPhone ( bool bRequired, int size )
-	{
-		_setNativeAdIconImage( bRequired, size );
-	}
-
-	//-------------------------------------------
-
-	private void setNativeAdIconImage_Android ( bool bRequired, int size )
-	{
-		if (activityContext != null)
-		{
-			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
-			{
-				PluginInstance.Call ( "setNativeAdIconImage", bRequired, size );
-			}));
+#endif
 		}
 	}
 
@@ -1223,27 +1358,9 @@ public class MobFox :MonoBehaviour
 		}
 		else
 		{
+#if UNITY_IOS
 			setNativeAdMainImage_iPhone ( bRequired, width, height );
-		}
-	}
-
-	//-------------------------------------------
-
-	private void setNativeAdMainImage_iPhone ( bool bRequired, int width, int height )
-	{
-		_setNativeAdMainImage( bRequired, width, height );
-	}
-
-	//-------------------------------------------
-
-	private void setNativeAdMainImage_Android ( bool bRequired, int width, int height )
-	{
-		if (activityContext != null)
-		{
-			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
-			{
-				PluginInstance.Call ( "setNativeAdMainImage", bRequired, width, height );
-			}));
+#endif
 		}
 	}
 
@@ -1259,27 +1376,9 @@ public class MobFox :MonoBehaviour
 		}
 		else
 		{
+#if UNITY_IOS
 			setNativeAdTitle_iPhone ( bRequired, maxLength );
-		}
-	}
-
-	//-------------------------------------------
-
-	private void setNativeAdTitle_iPhone ( bool bRequired, int maxLength )
-	{
-		_setNativeAdTitle( bRequired, maxLength );
-	}
-
-	//-------------------------------------------
-
-	private void setNativeAdTitle_Android ( bool bRequired, int maxLength )
-	{
-		if (activityContext != null)
-		{
-			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
-			{
-				PluginInstance.Call ( "setNativeAdTitle", bRequired, maxLength );
-			}));
+#endif
 		}
 	}
 
@@ -1295,27 +1394,9 @@ public class MobFox :MonoBehaviour
 		}
 		else
 		{
+#if UNITY_IOS
 			setNativeAdDesc_iPhone ( bRequired, maxLength );
-		}
-	}
-
-	//-------------------------------------------
-
-	private void setNativeAdDesc_iPhone ( bool bRequired, int maxLength )
-	{
-		_setNativeAdDesc( bRequired, maxLength );
-	}
-
-	//-------------------------------------------
-
-	private void setNativeAdDesc_Android ( bool bRequired, int maxLength )
-	{
-		if (activityContext != null)
-		{
-			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
-			{
-				PluginInstance.Call ( "setNativeAdDesc", bRequired, maxLength );
-			}));
+#endif
 		}
 	}
 	
@@ -1331,66 +1412,12 @@ public class MobFox :MonoBehaviour
 		}
 		else
 		{
+#if UNITY_IOS
 			ReleaseMobFoxNative_iPhone ( );
+#endif
 		}
 	}
 
-	//-------------------------------------------
-
-	private void ReleaseMobFoxNative_iPhone ()
-	{
-		_releaseNative ( );
-	}
-
-	//-------------------------------------------
-
-	private void ReleaseMobFoxNative_Android ()
-	{
-		if (activityContext != null)
-		{
-			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
-				{
-					PluginInstance.Call ( "releaseNative" );
-				} ) );
-		}
-	}
-
-	//======================================================================================
-
-	/*
-	public void registerNativeForInteraction (string nativeGameObjectId)
-	{
-		ConnectToPlugin ( );
-
-		if (Application.platform == RuntimePlatform.Android)
-		{
-			registerNativeForInteraction_Android ( nativeGameObjectId );
-		}
-		else
-		{
-			registerNativeForInteraction_iPhone ( nativeGameObjectId );
-		}
-	}
-
-	//-------------------------------------------
-
-	private void registerNativeForInteraction_iPhone (string nativeGameObjectId)
-	{
-	}
-
-	//-------------------------------------------
-
-	private void registerNativeForInteraction_Android (string nativeGameObjectId)
-	{
-		if (activityContext != null)
-		{
-			activityContext.Call ( "runOnUiThread", new AndroidJavaRunnable ( () =>
-			{
-				PluginInstance.Call ( "registerNativeForInteraction", nativeGameObjectId );
-			}));
-		}
-	}
-	*/
 	//======================================================================================
 
 	public void nativeError (string msg)

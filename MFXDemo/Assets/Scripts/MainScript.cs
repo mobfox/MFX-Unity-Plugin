@@ -142,7 +142,6 @@ public class MainScript : MonoBehaviour
 
     public void onBannerError( string msg)
     {
-	    MobFox.Instance.Log(msg);
     }
 
     //=============================================================
@@ -170,7 +169,6 @@ public class MainScript : MonoBehaviour
     
     public void onInterError( string msg)
     {
-	    MobFox.Instance.Log(msg);
     }
 
     //=============================================================
@@ -201,7 +199,6 @@ public class MainScript : MonoBehaviour
         
     public void onNativeError( string msg)
     {
-	    MobFox.Instance.Log(msg);
     }
 
     public void onNativeReady(string msg)
@@ -216,7 +213,7 @@ public class MainScript : MonoBehaviour
 
 		MySetImage(nativeIcon,        nativeInfo.iconImageUrl);
 		MySetImage(nativeMainImage,   nativeInfo.mainImageUrl);
-    }
+  	}
     
     //-------------------------------------------------------------
 
