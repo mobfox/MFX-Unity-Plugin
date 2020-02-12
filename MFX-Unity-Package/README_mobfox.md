@@ -7,6 +7,7 @@ Thanks for electing to show Mobfox ads in your Unity app.
 * [Other use cases - MoPub or AdMob](#other-use-cases---mopub-or-admob)
 * [Installation](#installation)
 * [Important note - iOS](#important-note---ios)
+* [Important note - Android](#important-note---android)
 * [Usage](#usage)
   * [Initializing the SDK](#initializing-the-sdk)
   * [Configuring ads mediation](#configuring-ads-mediation)
@@ -24,6 +25,7 @@ Thanks for electing to show Mobfox ads in your Unity app.
 * Mobfox Unity Plugins works on **Android** devices with OS version **4.4.x (19)** and up.
 * Mobfox Unity Plugins requires an internet access.
 * You will need a [Mobfox](https://mobfox.atlassian.net/wiki/spaces/PUMD/pages/354549848/Setup+MobFox+Account) account.
+* In order to build **64bit on Android**, you need to use Unity editor version **2019.3.0** and up.
 
 # Other use cases - MoPub or AdMob?
 
@@ -51,6 +53,10 @@ Done. Now you can start integrating the Mobfox Unity Plugin as explained in the 
 # Important note - iOS
 
 After building the iOS version - remember to go to that XCode project, into "Build Settings", and set "Enable Modules" to YES.
+
+# Important note - Android
+
+In order to build **64bit on Android**, you need to use Unity editor version **2019.3.0** and up.
 
 # Usage
 
