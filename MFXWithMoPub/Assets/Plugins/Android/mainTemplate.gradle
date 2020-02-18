@@ -40,7 +40,7 @@ allprojects {
     }
 }
 // Android Resolver Repos End
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 **APPLY_PLUGINS**
 
 dependencies {
@@ -59,7 +59,6 @@ dependencies {
 // Android Resolver Exclusions Start
 android {
   packagingOptions {
-      exclude ('/lib/arm64-v8a/*' + '*')
       exclude ('/lib/armeabi/*' + '*')
       exclude ('/lib/mips/*' + '*')
       exclude ('/lib/mips64/*' + '*')
@@ -78,9 +77,10 @@ android {
     }
 
     defaultConfig {
+consumerProguardFiles 'proguard-unity.txt'**USER_PROGUARD**
         minSdkVersion **MINSDKVERSION**
         targetSdkVersion **TARGETSDKVERSION**
-        applicationId '**APPLICATIONID**'
+        
         ndk {
             abiFilters **ABIFILTERS**
         }
@@ -109,18 +109,8 @@ android {
             useProguard **PROGUARD_RELEASE**
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-unity.txt'**USER_PROGUARD****SIGNCONFIG**
         }
-    }**PACKAGING_OPTIONS****SPLITS**
+    }**PACKAGING_OPTIONS**
 **BUILT_APK_LOCATION**
 **EXTERNAL_SOURCES**
-    bundle {
-        language {
-            enableSplit = false
-        }
-        density {
-            enableSplit = false
-        }
-        abi {
-            enableSplit = true
-        }
-    }
-}**SPLITS_VERSION_CODE****REPOSITORIES****SOURCE_BUILD_SETUP**
+    
+}**REPOSITORIES****SOURCE_BUILD_SETUP**

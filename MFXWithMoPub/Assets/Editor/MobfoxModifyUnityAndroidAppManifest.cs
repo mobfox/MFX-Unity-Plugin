@@ -26,16 +26,30 @@ public class MobfoxModifyUnityAndroidAppManifest : IPostGenerateGradleAndroidPro
         androidManifest.AddService();
         
         androidManifest.AddClearTextSupport();
-//@@@        androidManifest.AddNetworkSecurityConfig();
+        //@@@androidManifest.AddNetworkSecurityConfig();
         
         androidManifest.SetHardwareAccel();
 
-        androidManifest.TurnAndroidXOn(basePath);
+		// This removes from "<project>/unityLibrary"	
+        androidManifest.TurnAndroidXOn1(basePath);
+        
+		// This removes from "<project>"	
+    	var pathBuilder = new StringBuilder(basePath);
+      	string textToRemove = "/unityLibrary";
+        int pos = pathBuilder.ToString().IndexOf(textToRemove);
+        if (pos >= 0) {
+        	pathBuilder.Remove(pos, textToRemove.Length);
+      	}
+        androidManifest.TurnAndroidXOn2(pathBuilder.ToString());
 
         androidManifest.Save();
     }
 
-    public int callbackOrder { get { return 1; } }
+    public int callbackOrder { 
+    	get { 
+    		return 1; 
+    	} 
+    }
 
     private string _manifestFilePath;
 
@@ -181,7 +195,7 @@ internal class AndroidManifest : AndroidXmlDocument
    		GetActivityWithLaunchIntent().Attributes.Append(CreateAndroidAttribute("hardwareAccelerated", "true")); 
 	} 
 	
-	internal void TurnAndroidXOn(string path)
+	internal void TurnAndroidXOn1(string path)
 	{
 	    string gradlePropertiesFile = path + "/gradle.properties";
         if (File.Exists(gradlePropertiesFile))
@@ -190,6 +204,23 @@ internal class AndroidManifest : AndroidXmlDocument
         }
         StreamWriter writer = File.CreateText(gradlePropertiesFile);
         writer.WriteLine("org.gradle.jvmargs=-Xmx4096M");
+        writer.WriteLine("android.useAndroidX=true");
+        writer.WriteLine("android.enableJetifier=true");
+        writer.Flush();
+        writer.Close();
+	}
+	
+	internal void TurnAndroidXOn2(string path)
+	{
+	    string gradlePropertiesFile = path + "/gradle.properties";
+        if (File.Exists(gradlePropertiesFile))
+        {
+            File.Delete(gradlePropertiesFile);
+        }
+        StreamWriter writer = File.CreateText(gradlePropertiesFile);
+        writer.WriteLine("org.gradle.jvmargs=-Xmx4096M");
+        writer.WriteLine("org.gradle.parallel=true");
+        writer.WriteLine("android.bundle.enableUncompressedNativeLibs=false");
         writer.WriteLine("android.useAndroidX=true");
         writer.WriteLine("android.enableJetifier=true");
         writer.Flush();
