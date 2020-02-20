@@ -11,6 +11,8 @@
 #import <MoPub/MoPub.h>
 #elif __has_include(<MoPubSDKFramework/MoPub.h>)
 #import <MoPubSDKFramework/MoPub.h>
+#elif __has_include(<MoPub.h>)
+#import <MoPub.h>
 #else
 #import "MPNativeCustomEvent.h"
 #endif
@@ -21,7 +23,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)requestRewardedVideoWithCustomEventInfo:(NSDictionary *)info;
 
-// Added by Shimon for Unity MoPub plugin
 - (void)requestRewardedVideoWithCustomEventInfo:(NSDictionary *)info adMarkup:(NSString *)adMarkup;
 
 @end

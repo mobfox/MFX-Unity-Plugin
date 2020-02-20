@@ -104,25 +104,26 @@
 }
 
 - (void)getInterstitial {
-    
-    NSLog(@"MobFox >> GADMAdapterMobFox >> Got Interstitial Ad Request");
-
-    NSString *invh = [[self.connector credentials] objectForKey:@"pubid"];
-    
-    //NSNumber* childDirectedTreatment = self.connector.childDirectedTreatment;
-    //NSNumber* underAgeOfConsent      = self.connector.underAgeOfConsent;
-    
-    self.interstitial = [MobFoxSDK createInterstitial:invh
-                                withRootViewContoller:nil
-                                         withDelegate:self];
-    
-    if (self.interstitial!=nil)
-    {
-        [self SetExtraGlobalParams];
-        [self SetExtraInterstitialParams];
-
-        [MobFoxSDK loadInterstitial:self.interstitial];
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSLog(@"MobFox >> GADMAdapterMobFox >> Got Interstitial Ad Request");
+        
+        NSString *invh = [[self.connector credentials] objectForKey:@"pubid"];
+        
+        //NSNumber* childDirectedTreatment = self.connector.childDirectedTreatment;
+        //NSNumber* underAgeOfConsent      = self.connector.underAgeOfConsent;
+        
+        self.interstitial = [MobFoxSDK createInterstitial:invh
+                                    withRootViewContoller:nil
+                                             withDelegate:self];
+        
+        if (self.interstitial!=nil)
+        {
+            [self SetExtraGlobalParams];
+            [self SetExtraInterstitialParams];
+            
+            [MobFoxSDK loadInterstitial:self.interstitial];
+        }
+    });
 }
 
 - (void)presentInterstitialFromRootViewController:(UIViewController *)rootViewController

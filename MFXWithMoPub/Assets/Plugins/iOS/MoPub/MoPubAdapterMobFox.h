@@ -6,6 +6,8 @@
 #import <MoPub/MoPub.h>
 #elif __has_include(<MoPubSDKFramework/MoPub.h>)
 #import <MoPubSDKFramework/MoPub.h>
+#elif __has_include(<MoPub.h>)
+#import <MoPub.h>
 #else
 #import "MPBannerCustomEvent.h"
 #import "MoPub.h"
@@ -15,7 +17,6 @@
 
 - (void)requestAdWithSize:(CGSize)size customEventInfo:(NSDictionary *)info;
 
-// Added by Shimon for Unity MoPub plugin
 - (void)requestAdWithSize:(CGSize)size customEventInfo:(NSDictionary *)info adMarkup:(NSString *)adMarkup;
 
 //- (BOOL)enableAutomaticImpressionAndClickTracking;
