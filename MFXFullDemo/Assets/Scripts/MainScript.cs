@@ -18,11 +18,19 @@ public class MainScript : MonoBehaviour
 	//------------------------------------------------------------
 
 	public Button btnSmallBanner;
+	public Text   lblSmallBanner;
 	public Button btnLargeBanner;
+	public Text   lblLargeBanner;
 	public Button btnVideoBanner;
+	public Text   lblVideoBanner;
 	public Button btnHtmlInterstitial;
+	public Text   lblHtmlInterstitial;
 	public Button btnVideoInterstitial;
+	public Text   lblVideoInterstitial;
+	public Button btnRewarded;
+	public Text   lblRewarded;
 	public Button btnNative;
+	public Text   lblNative;
 	
 	public Text   nativeTitle;
 	public Text   nativeDescription;
@@ -87,41 +95,76 @@ public class MainScript : MonoBehaviour
 			imgMoPub.sprite  = Resources.Load<Sprite>("mopub_logo_grey");
 			imgAdMob.sprite  = Resources.Load<Sprite>("admob_logo_grey");
 			
-			btnSmallBanner.interactable       = true;
-			btnLargeBanner.interactable       = true;
-			btnVideoBanner.interactable       = true;
-			btnHtmlInterstitial.interactable  = true;
-			btnVideoInterstitial.interactable = true;
-			btnNative.interactable            = true;
+			setBtnEnabled("SmallBanner"      , "lblSmallBanner"      , true);
+			setBtnEnabled("LargeBanner"      , "lblLargeBanner"      , true);
+			setBtnEnabled("VideoBanner"      , "lblVideoBanner"      , true);
+			setBtnEnabled("HtmlInterstitial" , "lblHtmlInterstitial" , true);
+			setBtnEnabled("VideoInterstitial", "lblVideoInterstitial", true);
+			setBtnEnabled("Rewarded"         , "lblRewarded"         , false);
+			setBtnEnabled("Native"           , "lblNative"           , true);
     		break;
     	case 1:	// MoPub
 			imgMobfox.sprite = Resources.Load<Sprite>("mobfox_logo_grey");
 			imgMoPub.sprite  = Resources.Load<Sprite>("mopub_logo");
 			imgAdMob.sprite  = Resources.Load<Sprite>("admob_logo_grey");
 			
-			btnSmallBanner.interactable       = true;
-			btnLargeBanner.interactable       = false;
-			btnVideoBanner.interactable       = false;
-			btnHtmlInterstitial.interactable  = true;
-			btnVideoInterstitial.interactable = true;
-			btnNative.interactable            = true;
+			setBtnEnabled("SmallBanner"      , "lblSmallBanner"      , true);
+			setBtnEnabled("LargeBanner"      , "lblLargeBanner"      , false);
+			setBtnEnabled("VideoBanner"      , "lblVideoBanner"      , false);
+			setBtnEnabled("HtmlInterstitial" , "lblHtmlInterstitial" , true);
+			setBtnEnabled("VideoInterstitial", "lblVideoInterstitial", true);
+			setBtnEnabled("Rewarded"         , "lblRewarded"         , true);
+			setBtnEnabled("Native"           , "lblNative"           , true);
     		break;
     	case 2:	// AdMob
 			imgMobfox.sprite = Resources.Load<Sprite>("mobfox_logo_grey");
 			imgMoPub.sprite  = Resources.Load<Sprite>("mopub_logo_grey");
 			imgAdMob.sprite  = Resources.Load<Sprite>("admob_logo");
 			
-			btnSmallBanner.interactable       = true;
-			btnLargeBanner.interactable       = true;
-			btnVideoBanner.interactable       = false;
-			btnHtmlInterstitial.interactable  = true;
-			btnVideoInterstitial.interactable = true;
-			btnNative.interactable            = true;
+			setBtnEnabled("SmallBanner"      , "lblSmallBanner"      , true);
+			setBtnEnabled("LargeBanner"      , "lblLargeBanner"      , true);
+			setBtnEnabled("VideoBanner"      , "lblVideoBanner"      , false);
+			setBtnEnabled("HtmlInterstitial" , "lblHtmlInterstitial" , true);
+			setBtnEnabled("VideoInterstitial", "lblVideoInterstitial", true);
+			setBtnEnabled("Rewarded"         , "lblRewarded"         , true);
+			setBtnEnabled("Native"           , "lblNative"           , true);
     		break;
     	}
     }
     
-    private void setBtnEnabled()
+    //------------------------------------------------------------
+    
+    private void setBtnEnabled(string btnTag, string lblTag, bool bOn)
+    {
+    	Button btn = GameObject.FindGameObjectWithTag(btnTag).GetComponent<Button>();
+    	Text   lbl = GameObject.FindGameObjectWithTag(lblTag).GetComponent<Text>();
+
+    	btn.interactable = bOn;
+    	lbl.color        = bOn?Color.black:Color.gray;
+    }
+    
+    //------------------------------------------------------------
+    
+    public void clearAllAds()
+    {
+    	hideBanner();
+    	hideNative();
+    	
+    	// clear all native fields:
+		MySetText(nativeTitle,        null);
+		MySetText(nativeDescription,  null);
+		MySetText(nativeCallToAction, null);
+		MySetText(nativeRating,       null);
+		MySetText(nativeSponsored,    null);
+
+		MySetImage(nativeIcon,        null);
+		MySetImage(nativeMainImage,   null);
+		
+		// release all ads
+		MobFox.Instance.ReleaseMobFoxBanner();
+		MobFox.Instance.ReleaseMobFoxInterstitial();
+		MobFox.Instance.ReleaseMobFoxNative();
+    }
     
     //############################################################
 	//#####   B u t t o n   p r e s s e s                    #####
@@ -150,6 +193,117 @@ public class MainScript : MonoBehaviour
 
 	//------------------------------------------------------------
 
+    public void btnSmallBannerPressed()
+    {
+	    clearAllAds();
+    
+    	switch (state)
+    	{
+    	case 0:	// Mobfox
+	    	startMobfoxSmallBanner();
+    		break;
+    	case 1:	// MoPub
+    		break;
+    	case 2:	// AdMob
+    		break;
+    	}
+    }
+    
+    public void btnLargeBannerPressed()
+    {
+	    clearAllAds();
+	    
+    	switch (state)
+    	{
+    	case 0:	// Mobfox
+		    startMobfoxLargeBanner();
+    		break;
+    	case 1:	// MoPub
+    		break;
+    	case 2:	// AdMob
+    		break;
+    	}
+    }
+    
+    public void btnVideoBannerPressed()
+    {
+	    clearAllAds();
+
+    	switch (state)
+    	{
+    	case 0:	// Mobfox
+		    startMobfoxVideoBanner();
+    		break;
+    	case 1:	// MoPub
+    		break;
+    	case 2:	// AdMob
+    		break;
+    	}
+    }
+
+    public void btnHtmlInterPressed()
+    {
+	    clearAllAds();
+    
+    	switch (state)
+    	{
+    	case 0:	// Mobfox
+		    startMobfoxHtmlInterstitial();
+    		break;
+    	case 1:	// MoPub
+    		break;
+    	case 2:	// AdMob
+    		break;
+    	}
+    }
+    
+    public void btnVideoInterPressed()
+    {
+	    clearAllAds();
+    
+    	switch (state)
+    	{
+    	case 0:	// Mobfox
+		    startMobfoxVideoInterstitial();
+    		break;
+    	case 1:	// MoPub
+    		break;
+    	case 2:	// AdMob
+    		break;
+    	}
+    }
+    
+    public void btnRewardedPressed()
+    {
+	    clearAllAds();
+    
+    	switch (state)
+    	{
+    	case 0:	// Mobfox
+	    	// NOP
+    		break;
+    	case 1:	// MoPub
+    		break;
+    	case 2:	// AdMob
+    		break;
+    	}
+    }
+    
+    public void btnNativePressed()
+    {
+	    clearAllAds();
+    
+    	switch (state)
+    	{
+    	case 0:	// Mobfox
+	    	startMobfoxNative();
+    		break;
+    	case 1:	// MoPub
+    		break;
+    	case 2:	// AdMob
+    		break;
+    	}
+    }
 
 	//############################################################
 	//#####   M O B F O X :                                  #####
@@ -182,50 +336,23 @@ public class MainScript : MonoBehaviour
     	NativeBlock.SetActive(true);
     }
     
-    public void clearAllAds()
-    {
-    	hideBanner();
-    	hideNative();
-    	
-    	// clear all native fields:
-		MySetText(nativeTitle,        null);
-		MySetText(nativeDescription,  null);
-		MySetText(nativeCallToAction, null);
-		MySetText(nativeRating,       null);
-		MySetText(nativeSponsored,    null);
-
-		MySetImage(nativeIcon,        null);
-		MySetImage(nativeMainImage,   null);
-		
-		// release all ads
-		MobFox.Instance.ReleaseMobFoxBanner();
-		MobFox.Instance.ReleaseMobFoxInterstitial();
-		MobFox.Instance.ReleaseMobFoxNative();
-    }
-    
     //============================================================
     
-    public void btnSmallBannerPressed()
+    public void startMobfoxSmallBanner()
     {
-	    clearAllAds();
-    
-		MobFox.Instance.RequestMobFoxBanner ( MobFoxBannerInventoryHash, 40, 200, 320, 50 );
+		MobFox.Instance.RequestMobFoxBanner ( MobFoxBannerInventoryHash, 40, 132, 320, 50 );
 		MobFox.Instance.setBannerRefresh(0);
     }
     
-    public void btnLargeBannerPressed()
+    public void startMobfoxLargeBanner()
     {
-	    clearAllAds();
-
-		MobFox.Instance.RequestMobFoxBanner ( MobFoxBannerInventoryHash, 50, 200, 300, 250 );
+		MobFox.Instance.RequestMobFoxBanner ( MobFoxBannerInventoryHash, 50, 132, 300, 250 );
 		MobFox.Instance.setBannerRefresh(0);
     }
     
-    public void btnVideoBannerPressed()
+    public void startMobfoxVideoBanner()
     {
-	    clearAllAds();
-
-		MobFox.Instance.RequestMobFoxBanner ( MobFoxVideoBannerInventoryHash, 50, 200, 300, 250 );
+		MobFox.Instance.RequestMobFoxBanner ( MobFoxVideoBannerInventoryHash, 50, 132, 300, 250 );
 		MobFox.Instance.setBannerRefresh(0);
     }
         
@@ -242,14 +369,14 @@ public class MainScript : MonoBehaviour
 
     //=============================================================
     
-    public void btnHtmlInterPressed()
+    public void startMobfoxHtmlInterstitial()
     {
 	    clearAllAds();
     
 		MobFox.Instance.RequestMobFoxInterstitial ( MobFoxInterstitialInventoryHash );
     }
     
-    public void btnVideoInterPressed()
+    public void startMobfoxVideoInterstitial()
     {
 	    clearAllAds();
     
@@ -269,10 +396,8 @@ public class MainScript : MonoBehaviour
 
     //=============================================================
 
-    public void btnNativePressed()
+    public void startMobfoxNative()
     {
-	    clearAllAds();
-
     	showNative();
     
     	MobFox.Instance.setNativeAdContext      ( MobFox.NativeAdContext.CONTENT );
