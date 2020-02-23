@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{25542B5B-D771-FCF1-8771-7BCAB1ACBAA2}</ProjectGuid>
+    <ProjectGuid>{C3E96782-B901-C4BE-31DC-29591CB24728}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -58,61 +58,61 @@
      <Compile Include="Assets\Scripts\MainScript.cs" />
      <Compile Include="Assets\Scripts\MobFox.cs" />
  <Reference Include="Unity.Timeline.Editor">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="com.unity.multiplayer-hlapi.Editor">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="com.unity.multiplayer-weaver.Editor">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.XR.LegacyInputHelpers">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Sprite.Editor">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Tilemap.Editor">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.SpatialTracking">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.SpatialTracking">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.DataPrivacy">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.XR.LegacyInputHelpers">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="com.unity.multiplayer-hlapi.Runtime">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>/Applications/Unity/Hub/Editor/2019.3.1f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -286,13 +286,13 @@
  <HintPath>/Applications/Unity/Hub/Editor/2019.3.1f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Tracker">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Tracker.dll</HintPath>
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Tracker.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Editor">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Editor.dll</HintPath>
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.StandardEvents">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXDemo/Library/PackageCache/com.unity.analytics@3.3.5/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/PackageCache/com.unity.analytics@3.3.5/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/Hub/Editor/2019.3.1f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

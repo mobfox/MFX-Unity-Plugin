@@ -6,14 +6,16 @@ using UnityEngine.Networking;
 
 public class MainScript : MonoBehaviour
 {
-	private string MobFoxBannerInventoryHash            = "fe96717d9875b9da4339ea5367eff1ec";
-	private string MobFoxVideoBannerInventoryHash       = "80187188f458cfde788d961b6882fd53";
-	private string MobFoxInterstitialInventoryHash      = "267d72ac3f77a3f447b32cf7ebf20673";
-	private string MobFoxVideoInterstitialInventoryHash = "80187188f458cfde788d961b6882fd53";
-	//private string MobFoxNativeInventoryHash            = "a764347547748896b84e0b8ccd90fd62";	// "normal" test hash
-	//private string MobFoxNativeInventoryHash            = "d8bd50e4ba71a708ad224464bdcdc237";	// "new" test hash
-	private string MobFoxNativeInventoryHash            = "d8bd50e4ba71a708ad224464bdcdc237";   //"d22bf35c596809155ec8520d283a9b09";	// "live" hash
+	public Button   btnMobfox;
+	public Image    imgMobfox;
+	
+	public Button   btnMoPub;
+	public Image    imgMoPub;
+	
+	public Button   btnAdMob;
+	public Image    imgAdMob;
 
+	//------------------------------------------------------------
 
 	public Button btnSmallBanner;
 	public Button btnLargeBanner;
@@ -32,6 +34,14 @@ public class MainScript : MonoBehaviour
 	
 	public GameObject NativeBlock;
 	
+	//------------------------------------------------------------
+
+	private int state = 0;
+	
+	//############################################################
+	//#####   U I :                                          #####
+	//############################################################
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,6 +66,8 @@ public class MainScript : MonoBehaviour
         MobFox.Instance.setCOPPA(true);
 
         clearAllAds();
+        
+        updateButtons();
     }
 
     // Update is called once per frame
@@ -64,7 +76,91 @@ public class MainScript : MonoBehaviour
         
     }
     
-    //============================================================
+    //------------------------------------------------------------
+    
+    private void updateButtons()
+    {
+    	switch (state)
+    	{
+    	case 0:	// Mobfox
+			imgMobfox.sprite = Resources.Load<Sprite>("mobfox_logo");
+			imgMoPub.sprite  = Resources.Load<Sprite>("mopub_logo_grey");
+			imgAdMob.sprite  = Resources.Load<Sprite>("admob_logo_grey");
+			
+			btnSmallBanner.interactable       = true;
+			btnLargeBanner.interactable       = true;
+			btnVideoBanner.interactable       = true;
+			btnHtmlInterstitial.interactable  = true;
+			btnVideoInterstitial.interactable = true;
+			btnNative.interactable            = true;
+    		break;
+    	case 1:	// MoPub
+			imgMobfox.sprite = Resources.Load<Sprite>("mobfox_logo_grey");
+			imgMoPub.sprite  = Resources.Load<Sprite>("mopub_logo");
+			imgAdMob.sprite  = Resources.Load<Sprite>("admob_logo_grey");
+			
+			btnSmallBanner.interactable       = true;
+			btnLargeBanner.interactable       = false;
+			btnVideoBanner.interactable       = false;
+			btnHtmlInterstitial.interactable  = true;
+			btnVideoInterstitial.interactable = true;
+			btnNative.interactable            = true;
+    		break;
+    	case 2:	// AdMob
+			imgMobfox.sprite = Resources.Load<Sprite>("mobfox_logo_grey");
+			imgMoPub.sprite  = Resources.Load<Sprite>("mopub_logo_grey");
+			imgAdMob.sprite  = Resources.Load<Sprite>("admob_logo");
+			
+			btnSmallBanner.interactable       = true;
+			btnLargeBanner.interactable       = true;
+			btnVideoBanner.interactable       = false;
+			btnHtmlInterstitial.interactable  = true;
+			btnVideoInterstitial.interactable = true;
+			btnNative.interactable            = true;
+    		break;
+    	}
+    }
+    
+    private void setBtnEnabled()
+    
+    //############################################################
+	//#####   B u t t o n   p r e s s e s                    #####
+	//############################################################
+
+    public void btnMobfoxPressed()
+    {
+	    clearAllAds();	    
+	    state = 0;
+	    updateButtons();
+    }
+
+    public void btnMoPubPressed()
+    {
+	    clearAllAds();	    
+	    state = 1;
+	    updateButtons();
+    }
+
+    public void btnAdMobPressed()
+    {
+	    clearAllAds();	    
+	    state = 2;
+	    updateButtons();
+    }
+
+	//------------------------------------------------------------
+
+
+	//############################################################
+	//#####   M O B F O X :                                  #####
+	//############################################################
+
+	private string MobFoxBannerInventoryHash            = "fe96717d9875b9da4339ea5367eff1ec";
+	private string MobFoxVideoBannerInventoryHash       = "80187188f458cfde788d961b6882fd53";
+	private string MobFoxInterstitialInventoryHash      = "267d72ac3f77a3f447b32cf7ebf20673";
+	private string MobFoxVideoInterstitialInventoryHash = "80187188f458cfde788d961b6882fd53";
+	private string MobFoxNativeInventoryHash            = "d8bd50e4ba71a708ad224464bdcdc237";   //"d22bf35c596809155ec8520d283a9b09";	// "live" hash
+
     
     public void hideBanner()
     {
@@ -113,7 +209,7 @@ public class MainScript : MonoBehaviour
     {
 	    clearAllAds();
     
-		MobFox.Instance.RequestMobFoxBanner ( MobFoxBannerInventoryHash, 40, 100, 320, 50 );
+		MobFox.Instance.RequestMobFoxBanner ( MobFoxBannerInventoryHash, 40, 200, 320, 50 );
 		MobFox.Instance.setBannerRefresh(0);
     }
     
@@ -121,7 +217,7 @@ public class MainScript : MonoBehaviour
     {
 	    clearAllAds();
 
-		MobFox.Instance.RequestMobFoxBanner ( MobFoxBannerInventoryHash, 50, 100, 300, 250 );
+		MobFox.Instance.RequestMobFoxBanner ( MobFoxBannerInventoryHash, 50, 200, 300, 250 );
 		MobFox.Instance.setBannerRefresh(0);
     }
     
@@ -129,7 +225,7 @@ public class MainScript : MonoBehaviour
     {
 	    clearAllAds();
 
-		MobFox.Instance.RequestMobFoxBanner ( MobFoxVideoBannerInventoryHash, 50, 100, 300, 250 );
+		MobFox.Instance.RequestMobFoxBanner ( MobFoxVideoBannerInventoryHash, 50, 200, 300, 250 );
 		MobFox.Instance.setBannerRefresh(0);
     }
         
