@@ -1,8 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using GoogleMobileAds;
+using GoogleMobileAds.Api;
 
 public class MainScript : MonoBehaviour
 {
@@ -67,7 +70,38 @@ public class MainScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+    	/*	
+    	if (asyncCommand!=null)
+    	{
+    		if (asyncCommand == "showInterstitial")
+    		{	
+ 				if ((adMobInterstitial!=null) && (adMobInterstitial.IsLoaded()))
+ 				{
+ 				    addLog("AdMob interstitial loaded, showing...");
+
+    				adMobInterstitial.Show();
+  				}
+    				
+    			asyncCommand = null;
+    			return;
+    		}
+    		
+    		if (asyncCommand == "showRewarded")
+    		{	
+ 				if ((adMobRewardedAd!=null) && (adMobRewardedAd.IsLoaded()))
+ 				{
+ 				    addLog("AdMob rewarded loaded, showing...");
+
+    				adMobRewardedAd.Show();
+  				}
+    				
+    			asyncCommand = null;
+    			return;
+    		}
+
+    		asyncCommand = null;
+    	}
+    	*/
     }
     
     //------------------------------------------------------------
@@ -140,6 +174,8 @@ public class MainScript : MonoBehaviour
     	
     	hideMoPubBanner();
     	
+    	hideAdMobBanner();
+    	
     	// clear all native fields:
 		MySetText(nativeTitle,        null);
 		MySetText(nativeDescription,  null);
@@ -156,6 +192,18 @@ public class MainScript : MonoBehaviour
 		MobFox.Instance.ReleaseMobFoxNative();
 		
 		MoPub.DestroyBanner(MoPubBannerInventoryHash);
+
+    	if (adMobBannerView!=null)
+    	{
+    		adMobBannerView.Destroy();
+    		adMobBannerView = null;
+    	}
+    	
+    	if (adMobInterstitial!=null)
+    	{
+    		adMobInterstitial.Destroy();
+    		adMobInterstitial = null;
+    	}
     }
         
     //------------------------------------------------------------
@@ -912,36 +960,334 @@ public class MainScript : MonoBehaviour
 	//#####   A D M O B :                                    #####
 	//############################################################
 
+    #if UNITY_ANDROID
+        string AdMobBannerHash       = "ca-app-pub-8111915318550857/5234422920";
+    	string AdMobBannerVideoInvh  = "ca-app-pub-6224828323195096/9231617215";   // sdk.mobfox.com.appcore
+		string AdMobInterstitialHash = "ca-app-pub-8111915318550857/9385420926";
+	    string AdMobInterVideoInvh   = "ca-app-pub-8111915318550857/7271416015";   // sdk.mobfox.com.appcore
+		string AdMobRewardedHash     = "ca-app-pub-6224828323195096/1152622735";
+	    string AdMobNativeInvh       = "ca-app-pub-6224828323195096/1268034150";   // Native Android For AdMob
+    #else
+        string AdMobBannerHash       = "ca-app-pub-6224828323195096/7846687276";
+		string AdMobInterstitialHash = "ca-app-pub-6224828323195096/7876284361";
+		string AdMobRewardedHash     = "ca-app-pub-6224828323195096/9409251358";
+    #endif
+
+	//private string asyncCommand = null;
+
+	private BannerView     adMobBannerView;
+    private InterstitialAd adMobInterstitial;
+    private RewardedAd     adMobRewardedAd;
+
+    //=============================================================
+
 	private void initAdMobSDK()
 	{
+        #if UNITY_ANDROID
+            string appId = "ca-app-pub-6224828323195096~8368193162";
+        #elif UNITY_IPHONE
+            string appId = "ca-app-pub-6224828323195096~3764142368";
+        #else
+            string appId = "unexpected_platform";
+        #endif
+
+		//asyncCommand = null;
+
+        MobileAds.SetiOSAppPauseOnBackground(true);
+    	
+        // Initialize the Google Mobile Ads SDK.
+        MobileAds.Initialize(appId);
 	}
 	
+    //============================================================
+    
+    public void hideAdMobBanner()
+    {
+    	if (adMobBannerView!=null)
+    	{
+    		adMobBannerView.Hide();
+    	}
+  	}
+    
+    public void showAdMobBanner()
+    {
+    	if (adMobBannerView!=null)
+    	{
+    		adMobBannerView.Show();
+    	}
+    }
+    
+    //============================================================
+
+	// Returns an ad request with custom ad targeting.
+    private AdRequest CreateAdRequest()
+    {
+        return new AdRequest.Builder()
+            //.AddTestDevice(AdRequest.TestDeviceSimulator)
+            //.AddKeyword("game")
+            //.SetGender(Gender.Male)
+            //.SetBirthday(new DateTime(1985, 1, 1))
+            //.TagForChildDirectedTreatment(false)
+            .Build();
+    }
+    
     //=============================================================
 
 	private void startAdMobSmallBanner()
 	{
+	    clearAllAds();
+
+		addLog("Loading AdMob banner...");
+
+        adMobBannerView = new BannerView(AdMobBannerHash, AdSize.Banner, 40, 130);
+
+        // Called when an ad request has successfully loaded.
+        adMobBannerView.OnAdLoaded += HandleOnAdLoaded;
+        // Called when an ad request failed to load.
+        adMobBannerView.OnAdFailedToLoad += HandleOnAdFailedToLoad;
+        // Called when an ad is clicked.
+        adMobBannerView.OnAdOpening += HandleOnAdOpened;
+        // Called when the user returned from the app after an ad click.
+        adMobBannerView.OnAdClosed += HandleOnAdClosed;
+        // Called when the ad click caused the user to leave the application.
+        adMobBannerView.OnAdLeavingApplication += HandleOnAdLeavingApplication;
+
+        // Load the banner with the request.
+        adMobBannerView.LoadAd(CreateAdRequest());
 	}
 	
 	private void startAdMobLargeBanner()
 	{
+	    clearAllAds();
+
+		addLog("Loading AdMob banner...");
+
+        adMobBannerView = new BannerView(AdMobBannerHash, AdSize.MediumRectangle, 50, 130);
+
+        // Called when an ad request has successfully loaded.
+        adMobBannerView.OnAdLoaded += HandleOnAdLoaded;
+        // Called when an ad request failed to load.
+        adMobBannerView.OnAdFailedToLoad += HandleOnAdFailedToLoad;
+        // Called when an ad is clicked.
+        adMobBannerView.OnAdOpening += HandleOnAdOpened;
+        // Called when the user returned from the app after an ad click.
+        adMobBannerView.OnAdClosed += HandleOnAdClosed;
+        // Called when the ad click caused the user to leave the application.
+        adMobBannerView.OnAdLeavingApplication += HandleOnAdLeavingApplication;
+
+        // Load the banner with the request.
+        adMobBannerView.LoadAd(CreateAdRequest());
 	}
 	
 	private void startAdMobVideoBanner()
 	{
+	    clearAllAds();
+
+		addLog("Loading AdMob banner...");
+
+        adMobBannerView = new BannerView(AdMobBannerVideoInvh, AdSize.MediumRectangle, 50, 130);
+
+        // Called when an ad request has successfully loaded.
+        adMobBannerView.OnAdLoaded += HandleOnAdLoaded;
+        // Called when an ad request failed to load.
+        adMobBannerView.OnAdFailedToLoad += HandleOnAdFailedToLoad;
+        // Called when an ad is clicked.
+        adMobBannerView.OnAdOpening += HandleOnAdOpened;
+        // Called when the user returned from the app after an ad click.
+        adMobBannerView.OnAdClosed += HandleOnAdClosed;
+        // Called when the ad click caused the user to leave the application.
+        adMobBannerView.OnAdLeavingApplication += HandleOnAdLeavingApplication;
+
+        // Load the banner with the request.
+        adMobBannerView.LoadAd(CreateAdRequest());
 	}
 	
+    //------------------------------------------------------------
+
+    public void HandleOnAdLoaded(object sender, EventArgs args)
+    {
+		addLog("AdMob Banner loaded");
+
+		showAdMobBanner();    	
+    }
+
+    public void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
+    {
+		addLog("AdMob Banner error: "+args.Message);
+
+    	showAdMobBanner();
+    }
+
+    public void HandleOnAdOpened(object sender, EventArgs args)
+    {
+		addLog("AdMob Banner clicked");
+    }
+
+    public void HandleOnAdClosed(object sender, EventArgs args)
+    {
+		addLog("AdMob Banner closed");
+    }
+
+    public void HandleOnAdLeavingApplication(object sender, EventArgs args)
+    {
+		addLog("AdMob Banner leaving app");
+    }
+
+    //=============================================================
+
 	private void startAdMobHtmlInterstitial()
 	{
+	    clearAllAds();
+    
+		addLog("Loading AdMob interstitial...");
+
+		// Initialize an InterstitialAd.
+    	adMobInterstitial = new InterstitialAd(AdMobInterstitialHash);
+    
+        // Called when an ad request has successfully loaded.
+    	adMobInterstitial.OnAdLoaded += OnInterstitialLoadedEvent;
+    	// Called when an ad request failed to load.
+    	adMobInterstitial.OnAdFailedToLoad += OnInterstitialFailedEvent;
+    	// Called when an ad is shown.
+    	adMobInterstitial.OnAdOpening += OnInterstitialOpened;
+    	// Called when the ad is closed.
+    	adMobInterstitial.OnAdClosed += OnInterstitialClosed;
+    	// Called when the ad click caused the user to leave the application.
+    	adMobInterstitial.OnAdLeavingApplication += OnInterstitialLeavingApplication;
+  
+    	// Load the interstitial with the request.
+    	adMobInterstitial.LoadAd(CreateAdRequest());
 	}
 	
 	private void startAdMobVideoInterstitial()
 	{
+	    clearAllAds();
+    
+		addLog("Loading AdMob interstitial...");
+
+		// Initialize an InterstitialAd.
+    	adMobInterstitial = new InterstitialAd(AdMobInterVideoInvh);
+    
+        // Called when an ad request has successfully loaded.
+    	adMobInterstitial.OnAdLoaded += OnInterstitialLoadedEvent;
+    	// Called when an ad request failed to load.
+    	adMobInterstitial.OnAdFailedToLoad += OnInterstitialFailedEvent;
+    	// Called when an ad is shown.
+    	adMobInterstitial.OnAdOpening += OnInterstitialOpened;
+    	// Called when the ad is closed.
+    	adMobInterstitial.OnAdClosed += OnInterstitialClosed;
+    	// Called when the ad click caused the user to leave the application.
+    	adMobInterstitial.OnAdLeavingApplication += OnInterstitialLeavingApplication;
+  
+    	// Load the interstitial with the request.
+    	adMobInterstitial.LoadAd(CreateAdRequest());
 	}
 	
+    //-------------------------------------------------------------
+    
+    void OnInterstitialLoadedEvent(object sender, EventArgs args)
+    {
+		addLog("AdMob Interstitial loaded");
+ 		
+ 		//asyncCommand = "showInterstitial";
+ 		if ((adMobInterstitial!=null) && (adMobInterstitial.IsLoaded()))
+ 		{
+ 			addLog("AdMob interstitial loaded, showing...");
+
+    		adMobInterstitial.Show();
+  		}
+    }
+
+	void OnInterstitialFailedEvent (object sender, AdFailedToLoadEventArgs args)
+    {
+		addLog("AdMob Interstitial error: "+args.Message);
+    }
+
+	public void OnInterstitialOpened(object sender, EventArgs args)
+	{
+    	addLog("AdMob Interstitial opened");
+	}
+
+	public void OnInterstitialClosed(object sender, EventArgs args)
+	{
+    	addLog("AdMob Interstitial closed");
+	}
+
+	public void OnInterstitialLeavingApplication(object sender, EventArgs args)
+	{
+    	addLog("AdMob Interstitial leaving app");
+	}
+
+    //=============================================================
+
 	private void startAdMobRewarded()
 	{
+	    clearAllAds();
+    
+		addLog("Loading AdMob rewarded...");
+		
+		adMobRewardedAd = new RewardedAd(AdMobRewardedHash);
+
+        // Called when an ad request has successfully loaded.
+        adMobRewardedAd.OnAdLoaded += OnRewardedAdLoaded;
+        // Called when an ad request failed to load.
+        adMobRewardedAd.OnAdFailedToLoad += OnRewardedAdFailedToLoad;
+        // Called when an ad is shown.
+        adMobRewardedAd.OnAdOpening += OnRewardedAdOpening;
+        // Called when an ad request failed to show.
+        adMobRewardedAd.OnAdFailedToShow += OnRewardedAdFailedToShow;
+        // Called when the user should be rewarded for interacting with the ad.
+        adMobRewardedAd.OnUserEarnedReward += OnUserEarnedReward;
+        // Called when the ad is closed.
+        adMobRewardedAd.OnAdClosed += OnRewardedAdClosed;
+
+		adMobRewardedAd.LoadAd(CreateAdRequest());
 	}
+
+    //-------------------------------------------------------------
+    
+    public void OnRewardedAdLoaded(object sender, EventArgs args)
+    {
+        addLog("Rewarded loaded");
+ 		
+ 		//asyncCommand = "showRewarded";
+ 		if ((adMobRewardedAd!=null) && (adMobRewardedAd.IsLoaded()))
+ 		{
+ 			addLog("AdMob rewarded loaded, showing...");
+
+    		adMobRewardedAd.Show();
+  		}
+    }
+
+    public void OnRewardedAdFailedToLoad(object sender, AdErrorEventArgs args)
+    {
+        addLog("Rewarded failed: " + args.Message);
+    }
+
+    public void OnRewardedAdOpening(object sender, EventArgs args)
+    {
+        addLog("Rewarded opening");
+    }
+
+    public void OnRewardedAdFailedToShow(object sender, AdErrorEventArgs args)
+    {
+        addLog("Rewarded failed to show: " + args.Message);
+    }
+
+    public void OnRewardedAdClosed(object sender, EventArgs args)
+    {
+        addLog("Rewarded closed");
+    }
+
+    public void OnUserEarnedReward(object sender, Reward args)
+    {
+        string type = args.Type;
+        double amount = args.Amount;
+		addLog("Got " + amount.ToString() + " " + type);
+    }
 	
+    //=============================================================
+
 	private void startAdMobbNative()
 	{
 	}

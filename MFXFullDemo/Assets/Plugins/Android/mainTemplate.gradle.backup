@@ -30,9 +30,12 @@ allprojects {
 }
 ([rootProject] + (rootProject.subprojects as List)).each { project ->
     project.repositories {
-        def unityProjectPath = "file:///" + file(rootProject.projectDir.path + "/../../").absolutePath
+        def unityProjectPath = $/file:///**DIR_UNITYPROJECT**/$.replace("\\", "/")
         maven {
             url "https://maven.google.com"
+        }
+        maven {
+            url "https://maven.google.com/" // Assets/GoogleMobileAds/Editor/GoogleMobileAdsDependencies.xml:7
         }
         mavenLocal()
         jcenter()
@@ -51,8 +54,7 @@ dependencies {
     implementation('com.google.android.gms:play-services-ads-identifier:16.0.0')
 
 // Android Resolver Dependencies Start
-    implementation 'androidx.appcompat:appcompat:1.1.0' // Assets/MoPub/Scripts/Editor/MoPubDependencies.xml:4
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0' // Assets/MoPub/Scripts/Editor/MoPubDependencies.xml:3
+    implementation 'com.google.android.gms:play-services-ads:18.3.0' // Assets/GoogleMobileAds/Editor/GoogleMobileAdsDependencies.xml:7
 // Android Resolver Dependencies End
 **DEPS**}
 

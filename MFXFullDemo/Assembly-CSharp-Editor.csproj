@@ -56,6 +56,11 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Editor\MobfoxModifyUnityAndroidAppManifest.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Editor\AndroidBuildPostProcessor.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Editor\GoogleMobileAdsSettings.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Editor\GoogleMobileAdsSettingsEditor.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Editor\ManifestProcessor.cs" />
+     <Compile Include="Assets\GoogleMobileAds\Editor\PListProcessor.cs" />
      <Compile Include="Assets\MoPub\Scripts\Editor\MoPubAboutDialog.cs" />
      <Compile Include="Assets\MoPub\Scripts\Editor\MoPubManagerEditor.cs" />
      <Compile Include="Assets\MoPub\Scripts\Editor\MoPubManagerTestingEditor.cs" />
@@ -74,7 +79,8 @@
      <Compile Include="Assets\MoPub\Scripts\ThirdParty\EditorCoroutines\Editor\EditorCoroutineExtensions.cs" />
      <Compile Include="Assets\MoPub\Scripts\ThirdParty\EditorCoroutines\Editor\EditorCoroutines.cs" />
      <None Include="Assets\MoPub\Scripts\Editor\MoPubDependencies.xml" />
-     <None Include="Assets\PlayServicesResolver\Editor\play-services-resolver_v1.2.122.0.txt" />
+     <None Include="Assets\PlayServicesResolver\Editor\play-services-resolver_v1.2.135.0.txt" />
+     <None Include="Assets\GoogleMobileAds\Editor\GoogleMobileAdsDependencies.xml" />
  <Reference Include="UnityEditor.TestRunner">
  <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
  </Reference>
@@ -330,17 +336,17 @@
  <Reference Include="UnityEditor.iOS.Extensions">
  <HintPath>/Applications/Unity/Hub/Editor/2019.3.1f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll</HintPath>
  </Reference>
+ <Reference Include="Google.IOSResolver_v1.2.135.0">
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Assets/PlayServicesResolver/Editor/Google.IOSResolver_v1.2.135.0.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.VersionHandlerImpl_v1.2.135.0">
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Assets/PlayServicesResolver/Editor/Google.VersionHandlerImpl_v1.2.135.0.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.JarResolver_v1.2.135.0">
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Assets/PlayServicesResolver/Editor/Google.JarResolver_v1.2.135.0.dll</HintPath>
+ </Reference>
  <Reference Include="Google.VersionHandler">
  <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Assets/PlayServicesResolver/Editor/Google.VersionHandler.dll</HintPath>
- </Reference>
- <Reference Include="Google.JarResolver_v1.2.122.0">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Assets/PlayServicesResolver/Editor/Google.JarResolver_v1.2.122.0.dll</HintPath>
- </Reference>
- <Reference Include="Google.VersionHandlerImpl_v1.2.122.0">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Assets/PlayServicesResolver/Editor/Google.VersionHandlerImpl_v1.2.122.0.dll</HintPath>
- </Reference>
- <Reference Include="Google.IOSResolver_v1.2.122.0">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Assets/PlayServicesResolver/Editor/Google.IOSResolver_v1.2.122.0.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
