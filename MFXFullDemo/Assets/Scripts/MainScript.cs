@@ -98,7 +98,7 @@ public class MainScript : MonoBehaviour
 			setBtnEnabled("HtmlInterstitial" , "lblHtmlInterstitial" , true);
 			setBtnEnabled("VideoInterstitial", "lblVideoInterstitial", true);
 			setBtnEnabled("Rewarded"         , "lblRewarded"         , true);
-			setBtnEnabled("Native"           , "lblNative"           , true);
+			setBtnEnabled("Native"           , "lblNative"           , false);
     		break;
     	case 2:	// AdMob
 			imgMobfox.sprite = Resources.Load<Sprite>("mobfox_logo_grey");
@@ -825,7 +825,7 @@ public class MainScript : MonoBehaviour
 
 	private void startMoPubNative()
 	{
-		// mytodo:
+		// mytodo: not implemented yet - MoPub does not support mediation in Unity
 	}
 
 	//############################################################
