@@ -391,8 +391,8 @@ public class MainScript : MonoBehaviour
 	    clearAllAds();
     
     	addLog("Loading Mobfox banner");
-    
-		MobFox.Instance.RequestMobFoxBanner ( MobFoxBannerInventoryHash, 40, 92, 320, 50 );
+    	
+		MobFox.Instance.RequestMobFoxBanner ( MobFoxBannerInventoryHash, 40, 130, 320, 50 );
 		MobFox.Instance.setBannerRefresh(0);
     }
     
@@ -402,7 +402,7 @@ public class MainScript : MonoBehaviour
     
     	addLog("Loading Mobfox banner");
     
-		MobFox.Instance.RequestMobFoxBanner ( MobFoxBannerInventoryHash, 50, 92, 300, 250 );
+		MobFox.Instance.RequestMobFoxBanner ( MobFoxBannerInventoryHash, 50, 130, 300, 250 );
 		MobFox.Instance.setBannerRefresh(0);
     }
     
@@ -412,7 +412,7 @@ public class MainScript : MonoBehaviour
     
     	addLog("Loading Mobfox banner");
     
-		MobFox.Instance.RequestMobFoxBanner ( MobFoxVideoBannerInventoryHash, 50, 92, 300, 250 );
+		MobFox.Instance.RequestMobFoxBanner ( MobFoxVideoBannerInventoryHash, 50, 130, 300, 250 );
 		MobFox.Instance.setBannerRefresh(0);
     }
         
@@ -707,8 +707,9 @@ public class MainScript : MonoBehaviour
 		string[] _rewardedAdUnits = new string[] {MoPubRewardedInventoryHash};
 	 	MoPub.LoadRewardedVideoPluginsForAdUnits(_rewardedAdUnits);
 
-		string[] _nativeAdUnits = new string[] {MoPubNativeInvh};
-	 	// mytodo: MoPub.LoadNativePluginsForAdUnits(_nativeAdUnits);
+		// not implemented yet - MoPub does not support mediation in Unity
+		//string[] _nativeAdUnits = new string[] {MoPubNativeInvh};
+	 	//MoPub.LoadNativePluginsForAdUnits(_nativeAdUnits);
     }
 
     //============================================================
@@ -730,7 +731,7 @@ public class MainScript : MonoBehaviour
 	    clearAllAds();
 
 		mCurrentMoPubBannerHash = MoPubBannerInventoryHash;
-    	MoPub.RequestBanner(mCurrentMoPubBannerHash, MoPub.AdPosition.Centered, MoPub.MaxAdSize.Width320Height50);
+    	MoPub.RequestBanner(mCurrentMoPubBannerHash, MoPub.AdPosition.BottomCenter, MoPub.MaxAdSize.Width320Height50);
 
 		addLog("Loading MoPub banner");
     }
@@ -740,7 +741,7 @@ public class MainScript : MonoBehaviour
 	    clearAllAds();
 
 		mCurrentMoPubBannerHash = MoPubBannerLargeInvh;
-    	MoPub.RequestBanner(mCurrentMoPubBannerHash, MoPub.AdPosition.Centered, MoPub.MaxAdSize.Width300Height250);
+    	MoPub.RequestBanner(mCurrentMoPubBannerHash, MoPub.AdPosition.BottomCenter, MoPub.MaxAdSize.Width300Height250);
 
 		addLog("Loading MoPub banner");
 	}
@@ -750,7 +751,7 @@ public class MainScript : MonoBehaviour
 	    clearAllAds();
 
 		mCurrentMoPubBannerHash = MoPubBannerVideoInvh;
-    	MoPub.RequestBanner(mCurrentMoPubBannerHash, MoPub.AdPosition.Centered, MoPub.MaxAdSize.Width300Height250);
+    	MoPub.RequestBanner(mCurrentMoPubBannerHash, MoPub.AdPosition.BottomCenter, MoPub.MaxAdSize.Width300Height250);
 
 		addLog("Loading MoPub banner");
 	}
@@ -904,7 +905,7 @@ public class MainScript : MonoBehaviour
 
 	private void startMoPubNative()
 	{
-		// mytodo: not implemented yet - MoPub does not support mediation in Unity
+		// not implemented yet - MoPub does not support mediation in Unity
 	}
 
 	//############################################################
