@@ -330,6 +330,18 @@
  <Reference Include="UnityEditor.iOS.Extensions">
  <HintPath>/Applications/Unity/Hub/Editor/2019.3.1f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll</HintPath>
  </Reference>
+ <Reference Include="Google.VersionHandler">
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Assets/PlayServicesResolver/Editor/Google.VersionHandler.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.JarResolver_v1.2.122.0">
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Assets/PlayServicesResolver/Editor/Google.JarResolver_v1.2.122.0.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.VersionHandlerImpl_v1.2.122.0">
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Assets/PlayServicesResolver/Editor/Google.VersionHandlerImpl_v1.2.122.0.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.IOSResolver_v1.2.122.0">
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Assets/PlayServicesResolver/Editor/Google.IOSResolver_v1.2.122.0.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
@@ -344,18 +356,6 @@
  </Reference>
  <Reference Include="UnityEditor.Purchasing">
  <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll</HintPath>
- </Reference>
- <Reference Include="Google.JarResolver_v1.2.122.0">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Assets/PlayServicesResolver/Editor/Google.JarResolver_v1.2.122.0.dll</HintPath>
- </Reference>
- <Reference Include="Google.VersionHandler">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Assets/PlayServicesResolver/Editor/Google.VersionHandler.dll</HintPath>
- </Reference>
- <Reference Include="Google.VersionHandlerImpl_v1.2.122.0">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Assets/PlayServicesResolver/Editor/Google.VersionHandlerImpl_v1.2.122.0.dll</HintPath>
- </Reference>
- <Reference Include="Google.IOSResolver_v1.2.122.0">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Assets/PlayServicesResolver/Editor/Google.IOSResolver_v1.2.122.0.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
  <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>

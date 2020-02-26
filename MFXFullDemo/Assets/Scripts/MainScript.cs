@@ -42,6 +42,8 @@ public class MainScript : MonoBehaviour
 	
 	public GameObject NativeBlock;
 	
+	public Text   lblLog;
+	
 	//------------------------------------------------------------
 
 	private int state = 0;
@@ -131,6 +133,8 @@ public class MainScript : MonoBehaviour
     
     public void clearAllAds()
     {
+    	lblLog.text = "";
+    
     	hideMobfoxBanner();
     	hideMobfoxNative();
     	
@@ -154,20 +158,13 @@ public class MainScript : MonoBehaviour
 		MoPub.DestroyBanner(MoPubBannerInventoryHash);
     }
         
-    private void _ShowAndroidToastMessage(string message)
-    {
-        AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-        AndroidJavaObject unityActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
+    //------------------------------------------------------------
 
-        if (unityActivity != null)
-        {
-            AndroidJavaClass toastClass = new AndroidJavaClass("android.widget.Toast");
-            unityActivity.Call("runOnUiThread", new AndroidJavaRunnable(() =>
-            {
-                AndroidJavaObject toastObject = toastClass.CallStatic<AndroidJavaObject>("makeText", unityActivity, message, 0);
-                toastObject.Call("show");
-            }));
-        }
+    private void addLog(string message)
+    {
+    	string txt = lblLog.text;
+    	txt = txt + message + "\n";
+    	lblLog.text = txt;
     }
     
     //############################################################
@@ -360,15 +357,24 @@ public class MainScript : MonoBehaviour
     	MobFox.CreateSingletone ( );
     
     	// set listeners:
-        MobFox.OnBannerReady       += onBannerLoaded;
-        MobFox.OnBannerError       += onBannerError;
+        MobFox.OnBannerReady          += onBannerLoaded;
+        MobFox.OnBannerError          += onBannerError;
+        MobFox.OnBannerShown          += onBannerShown;
+        MobFox.OnBannerClicked        += onBannerClicked;
+        MobFox.OnBannerFinished       += onBannerFinished;
+        MobFox.OnBannerClosed         += onBannerClosed;
         
-    	MobFox.OnInterstitialReady += onInterLoaded;
-    	MobFox.OnInterstitialError += onInterError;
+    	MobFox.OnInterstitialReady    += onInterLoaded;
+    	MobFox.OnInterstitialError    += onInterError;
+        MobFox.OnInterstitialShown    += onInterShown;
+        MobFox.OnInterstitialClicked  += onInterClicked;
+        MobFox.OnInterstitialFinished += onInterFinished;
+        MobFox.OnInterstitialClosed   += onInterClosed;
 
-        MobFox.OnNativeReady       += onNativeReady;
-        MobFox.OnNativeError       += onNativeError;
-        
+        MobFox.OnNativeReady          += onNativeReady;
+        MobFox.OnNativeError          += onNativeError;
+        MobFox.OnNativeClicked        += onNativeClicked;
+
         MobFox.Instance.setDemoAge("32");
         MobFox.Instance.setDemoGender("male");
         MobFox.Instance.setDemoKeywords("basketball,tennis");
@@ -382,18 +388,30 @@ public class MainScript : MonoBehaviour
     
     public void startMobfoxSmallBanner()
     {
+	    clearAllAds();
+    
+    	addLog("Loading Mobfox banner");
+    
 		MobFox.Instance.RequestMobFoxBanner ( MobFoxBannerInventoryHash, 40, 92, 320, 50 );
 		MobFox.Instance.setBannerRefresh(0);
     }
     
     public void startMobfoxLargeBanner()
     {
+	    clearAllAds();
+    
+    	addLog("Loading Mobfox banner");
+    
 		MobFox.Instance.RequestMobFoxBanner ( MobFoxBannerInventoryHash, 50, 92, 300, 250 );
 		MobFox.Instance.setBannerRefresh(0);
     }
     
     public void startMobfoxVideoBanner()
     {
+	    clearAllAds();
+    
+    	addLog("Loading Mobfox banner");
+    
 		MobFox.Instance.RequestMobFoxBanner ( MobFoxVideoBannerInventoryHash, 50, 92, 300, 250 );
 		MobFox.Instance.setBannerRefresh(0);
     }
@@ -402,11 +420,33 @@ public class MainScript : MonoBehaviour
     
     public void onBannerLoaded()
     {
+    	addLog("Mobfox banner loaded");
 	    showMobfoxBanner();
     }
 
     public void onBannerError( string msg)
     {
+    	addLog("Mobfox banner err: "+msg);
+    }
+
+    public void onBannerShown()
+    {
+    	addLog("Mobfox banner shown");
+    }
+
+    public void onBannerClicked(string url)
+    {
+    	addLog("Mobfox banner clicked");
+    }
+
+    public void onBannerFinished()
+    {
+    	addLog("Mobfox banner finished");
+    }
+
+    public void onBannerClosed()
+    {
+    	addLog("Mobfox banner closed");
     }
 
     //=============================================================
@@ -415,6 +455,8 @@ public class MainScript : MonoBehaviour
     {
 	    clearAllAds();
     
+        addLog("Loading Mobfox interstitial");
+
 		MobFox.Instance.RequestMobFoxInterstitial ( MobFoxInterstitialInventoryHash );
     }
     
@@ -422,6 +464,8 @@ public class MainScript : MonoBehaviour
     {
 	    clearAllAds();
     
+        addLog("Loading Mobfox interstitial");
+
 		MobFox.Instance.RequestMobFoxInterstitial ( MobFoxVideoInterstitialInventoryHash );
     }
     
@@ -429,17 +473,44 @@ public class MainScript : MonoBehaviour
     
     public void onInterLoaded()
     {
+    	addLog("Mobfox interstitial loaded");
+
     	MobFox.Instance.ShowMobFoxInterstitial();
     }
     
     public void onInterError( string msg)
     {
+    	addLog("Mobfox interstitial err: "+msg);
+    }
+
+    public void onInterShown()
+    {
+    	addLog("Mobfox interstitial shown");
+    }
+
+    public void onInterClicked(string url)
+    {
+    	addLog("Mobfox interstitial clicked");
+    }
+
+    public void onInterFinished()
+    {
+    	addLog("Mobfox interstitial finished");
+    }
+
+    public void onInterClosed()
+    {
+    	addLog("Mobfox interstitial closed");
     }
 
     //=============================================================
 
     public void startMobfoxNative()
     {
+    	clearAllAds();
+
+        addLog("Loading Mobfox native");
+
     	showMobfoxNative();
     
     	MobFox.Instance.setNativeAdContext      ( MobFox.NativeAdContext.CONTENT );
@@ -462,10 +533,13 @@ public class MainScript : MonoBehaviour
         
     public void onNativeError( string msg)
     {
+    	addLog("Mobfox native err: "+msg);
     }
 
     public void onNativeReady(string msg)
     {
+    	addLog("Mobfox native loaded");
+
     	MobFox.NativeInfo nativeInfo = JsonUtility.FromJson<MobFox.NativeInfo>(msg);
 
 		MySetText(nativeTitle,        nativeInfo.title);
@@ -478,6 +552,11 @@ public class MainScript : MonoBehaviour
 		MySetImage(nativeMainImage,   nativeInfo.mainImageUrl);
   	}
     
+    public void onNativeClicked()
+    {
+    	addLog("Mobfox native clicked");
+    }
+
     //-------------------------------------------------------------
 
 	private void MySetText(Text trg, string txt)
@@ -617,7 +696,7 @@ public class MainScript : MonoBehaviour
     void OnSdkInitializedEvent(string adUnitId)
     {
     	// The SDK is initialized here. Ready to make ad requests.
-		_ShowAndroidToastMessage("MoPub initialized");
+		addLog("MoPub initialized");
 
 		string[] _bannerAdUnits = new string[] {MoPubBannerInventoryHash, MoPubBannerLargeInvh, MoPubBannerVideoInvh};
 	 	MoPub.LoadBannerPluginsForAdUnits(_bannerAdUnits);
@@ -653,7 +732,7 @@ public class MainScript : MonoBehaviour
 		mCurrentMoPubBannerHash = MoPubBannerInventoryHash;
     	MoPub.RequestBanner(mCurrentMoPubBannerHash, MoPub.AdPosition.Centered, MoPub.MaxAdSize.Width320Height50);
 
-		_ShowAndroidToastMessage("Loading MoPub banner");
+		addLog("Loading MoPub banner");
     }
     
     private void startMoPubLargeBanner()
@@ -663,7 +742,7 @@ public class MainScript : MonoBehaviour
 		mCurrentMoPubBannerHash = MoPubBannerLargeInvh;
     	MoPub.RequestBanner(mCurrentMoPubBannerHash, MoPub.AdPosition.Centered, MoPub.MaxAdSize.Width300Height250);
 
-		_ShowAndroidToastMessage("Loading MoPub banner");
+		addLog("Loading MoPub banner");
 	}
 	
 	private void startMoPubVideoBanner()
@@ -673,38 +752,38 @@ public class MainScript : MonoBehaviour
 		mCurrentMoPubBannerHash = MoPubBannerVideoInvh;
     	MoPub.RequestBanner(mCurrentMoPubBannerHash, MoPub.AdPosition.Centered, MoPub.MaxAdSize.Width300Height250);
 
-		_ShowAndroidToastMessage("Loading MoPub banner");
+		addLog("Loading MoPub banner");
 	}
 
     //------------------------------------------------------------
         
     void OnAdLoadedEvent(string adUnitId, float height)
     {    
-		_ShowAndroidToastMessage("MoPub banner loaded");
+		addLog("MoPub banner loaded");
 
     	showMoPubBanner();
     }
     
     void OnAdFailedEvent(string adUnitId, string errMsg)
     {
-		_ShowAndroidToastMessage("MoPub banner load err: "+errMsg);
+		addLog("MoPub banner load err: "+errMsg);
 
     	showMoPubBanner();
     }
 
     void OnAdClickedEvent(string adUnitId)
     {
-		_ShowAndroidToastMessage("MoPub banner clicked");
+		addLog("MoPub banner clicked");
     }
 
     void OnAdExpandedEvent(string adUnitId)
     {
-		_ShowAndroidToastMessage("MoPub banner ad expanded");
+		addLog("MoPub banner ad expanded");
     }
 
     void OnAdCollapsedEvent(string adUnitId)
     {
-		_ShowAndroidToastMessage("MoPub banner ad collapsed");
+		addLog("MoPub banner ad collapsed");
     }
 
     //=============================================================
@@ -713,7 +792,7 @@ public class MainScript : MonoBehaviour
     {
 	    clearAllAds();
     
-		_ShowAndroidToastMessage("Loading MoPub interstitial");
+		addLog("Loading MoPub interstitial");
 
 	     MoPub.RequestInterstitialAd(MoPubInterstitialInventoryHash);
     }
@@ -722,7 +801,7 @@ public class MainScript : MonoBehaviour
 	{
 	    clearAllAds();
     
-		_ShowAndroidToastMessage("Loading MoPub interstitial");
+		addLog("Loading MoPub interstitial");
 
 	     MoPub.RequestInterstitialAd(MoPubInterVideoInvh);
 	}
@@ -731,34 +810,34 @@ public class MainScript : MonoBehaviour
     
     void OnInterstitialLoadedEvent (string adUnitId)
     {
-		_ShowAndroidToastMessage("MoPub interstitial loaded");
+		addLog("MoPub interstitial loaded");
 
  		MoPub.ShowInterstitialAd (adUnitId);
     }
 
 	void OnInterstitialFailedEvent (string adUnitId, string errorCode)
     {
-		_ShowAndroidToastMessage("MoPub interstitial error: "+errorCode);
+		addLog("MoPub interstitial error: "+errorCode);
     }
 
 	void OnInterstitialDismissedEvent (string adUnitId)
     {
-		_ShowAndroidToastMessage("MoPub interstitial loaded");
+		addLog("MoPub interstitial loaded");
     }
 
 	void OnInterstitialExpiredEvent (string adUnitId)
     {
-		_ShowAndroidToastMessage("MoPub interstitial expired");
+		addLog("MoPub interstitial expired");
     }
 
 	void OnInterstitialShownEvent (string adUnitId)
     {
-		_ShowAndroidToastMessage("MoPub interstitial shown");
+		addLog("MoPub interstitial shown");
     }
 
 	void OnInterstitialClickedEvent (string adUnitId)
     {
-		_ShowAndroidToastMessage("MoPub interstitial clicked");
+		addLog("MoPub interstitial clicked");
     }
 
     //=============================================================
@@ -767,7 +846,7 @@ public class MainScript : MonoBehaviour
     {
 	    clearAllAds();
     
-    	_ShowAndroidToastMessage("Loading MoPub rewarded");
+    	addLog("Loading MoPub rewarded");
 
 		MoPub.RequestRewardedVideo(MoPubRewardedInventoryHash);
     }
@@ -776,49 +855,49 @@ public class MainScript : MonoBehaviour
     
 	void OnRewardedVideoLoadedEvent (string adUnitId)
     {
-		_ShowAndroidToastMessage("MoPub rewarded loaded");
+		addLog("MoPub rewarded loaded");
 
 		MoPub.ShowRewardedVideo(adUnitId);
     }
 
 	void OnRewardedVideoFailedEvent (string adUnitId, string errorMsg)
     {
-		_ShowAndroidToastMessage("MoPub rewarded load failed: "+errorMsg);
+		addLog("MoPub rewarded load failed: "+errorMsg);
     }
 
 	void OnRewardedVideoExpiredEvent (string adUnitId)
     {
-		_ShowAndroidToastMessage("MoPub rewarded expired");
+		addLog("MoPub rewarded expired");
     }
 
 	void OnRewardedVideoShownEvent (string adUnitId)
     {
-		_ShowAndroidToastMessage("MoPub rewarded shown");
+		addLog("MoPub rewarded shown");
     }
 
 	void OnRewardedVideoClickedEvent (string adUnitId)
     {
-		_ShowAndroidToastMessage("MoPub rewarded clicked");
+		addLog("MoPub rewarded clicked");
     }
 
 	void OnRewardedVideoFailedToPlayEvent (string adUnitId, string errorMsg)
     {
-		_ShowAndroidToastMessage("MoPub rewarded play failed: "+errorMsg);
+		addLog("MoPub rewarded play failed: "+errorMsg);
     }
 
 	void OnRewardedVideoReceivedRewardEvent (string adUnitId, string label, float amount)
     {
-		_ShowAndroidToastMessage("MoPub received reward: "+amount+" "+label);
+		addLog("MoPub received reward: "+amount+" "+label);
     }
 
 	void OnRewardedVideoClosedEvent (string adUnitId)
     {
-		_ShowAndroidToastMessage("MoPub rewarded closed");
+		addLog("MoPub rewarded closed");
     }
 
 	void OnRewardedVideoLeavingApplicationEvent (string adUnitId)
     {
-		_ShowAndroidToastMessage("MoPub rewarded leaving app");
+		addLog("MoPub rewarded leaving app");
     }
     
     //=============================================================
