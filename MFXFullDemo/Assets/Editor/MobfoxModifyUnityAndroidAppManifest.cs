@@ -26,7 +26,7 @@ public class MobfoxModifyUnityAndroidAppManifest : IPostGenerateGradleAndroidPro
         androidManifest.AddService();
         
         androidManifest.AddClearTextSupport();
-        androidManifest.AddNetworkSecurityConfig();
+        //@@@androidManifest.AddNetworkSecurityConfig();
         
         androidManifest.SetHardwareAccel();
 
