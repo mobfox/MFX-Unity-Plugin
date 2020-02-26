@@ -109,8 +109,8 @@ public class MainScript : MonoBehaviour
 			imgAdMob.sprite  = Resources.Load<Sprite>("admob_logo_grey");
 			
 			setBtnEnabled("SmallBanner"      , "lblSmallBanner"      , true);
-			setBtnEnabled("LargeBanner"      , "lblLargeBanner"      , false);
-			setBtnEnabled("VideoBanner"      , "lblVideoBanner"      , false);
+			setBtnEnabled("LargeBanner"      , "lblLargeBanner"      , true);
+			setBtnEnabled("VideoBanner"      , "lblVideoBanner"      , true);
 			setBtnEnabled("HtmlInterstitial" , "lblHtmlInterstitial" , true);
 			setBtnEnabled("VideoInterstitial", "lblVideoInterstitial", true);
 			setBtnEnabled("Rewarded"         , "lblRewarded"         , true);
@@ -123,7 +123,7 @@ public class MainScript : MonoBehaviour
 			
 			setBtnEnabled("SmallBanner"      , "lblSmallBanner"      , true);
 			setBtnEnabled("LargeBanner"      , "lblLargeBanner"      , true);
-			setBtnEnabled("VideoBanner"      , "lblVideoBanner"      , false);
+			setBtnEnabled("VideoBanner"      , "lblVideoBanner"      , true);
 			setBtnEnabled("HtmlInterstitial" , "lblHtmlInterstitial" , true);
 			setBtnEnabled("VideoInterstitial", "lblVideoInterstitial", true);
 			setBtnEnabled("Rewarded"         , "lblRewarded"         , true);
@@ -313,8 +313,7 @@ public class MainScript : MonoBehaviour
 	private string MobFoxVideoBannerInventoryHash       = "80187188f458cfde788d961b6882fd53";
 	private string MobFoxInterstitialInventoryHash      = "267d72ac3f77a3f447b32cf7ebf20673";
 	private string MobFoxVideoInterstitialInventoryHash = "80187188f458cfde788d961b6882fd53";
-	private string MobFoxNativeInventoryHash            = "d8bd50e4ba71a708ad224464bdcdc237";   //"d22bf35c596809155ec8520d283a9b09";	// "live" hash
-
+	private string MobFoxNativeInventoryHash            = "d8bd50e4ba71a708ad224464bdcdc237"; 
     
     public void hideBanner()
     {
@@ -340,19 +339,19 @@ public class MainScript : MonoBehaviour
     
     public void startMobfoxSmallBanner()
     {
-		MobFox.Instance.RequestMobFoxBanner ( MobFoxBannerInventoryHash, 40, 132, 320, 50 );
+		MobFox.Instance.RequestMobFoxBanner ( MobFoxBannerInventoryHash, 40, 92, 320, 50 );
 		MobFox.Instance.setBannerRefresh(0);
     }
     
     public void startMobfoxLargeBanner()
     {
-		MobFox.Instance.RequestMobFoxBanner ( MobFoxBannerInventoryHash, 50, 132, 300, 250 );
+		MobFox.Instance.RequestMobFoxBanner ( MobFoxBannerInventoryHash, 50, 92, 300, 250 );
 		MobFox.Instance.setBannerRefresh(0);
     }
     
     public void startMobfoxVideoBanner()
     {
-		MobFox.Instance.RequestMobFoxBanner ( MobFoxVideoBannerInventoryHash, 50, 132, 300, 250 );
+		MobFox.Instance.RequestMobFoxBanner ( MobFoxVideoBannerInventoryHash, 50, 92, 300, 250 );
 		MobFox.Instance.setBannerRefresh(0);
     }
         
@@ -469,6 +468,19 @@ public class MainScript : MonoBehaviour
     	else
         	trg.texture = ((DownloadHandlerTexture) request.downloadHandler).texture;
 	} 
+
+	//############################################################
+	//#####   M O P U B :                                    #####
+	//############################################################
+
+    private string mopubBannerInvh          = "4ad212b1d0104c5998b288e7a8e35967";    // Android MobFox Adapter / Test Hash Banner(DONT CHANGE)
+    private string mopubBannerLargeInvh     = "9cae0a5af35c4a96b033a67f4b49160c";    // Android MobFox Adapter / Test Hash Large Banner(DONT CHANGE)
+    private string mopubBannerVideoInvh     = "ce377e29b9e94ca484efbbf8201f7e36";    // Android MobFox Adapter / Test Hash Video Banner(DONT CHANGE)
+    private string mopubInterstitialInvh    = "3fd85a3e7a9d43ea993360a2536b7bbd";    // Android MobFox Adapter / Test Hash Interstitial(DONT CHANGE)
+    private string mopubInterVideoInvh      = "6ee6c2cf27074af8a1a7117f8b21b0d9";    // Android MobFox Adapter / Test Hash Inter Video (DONT CHANGE)
+    private string mopubNativeInvh          = "e2758ffdaf0d426aa19a633bab6bbc3a";    // Android MobFox Adapter / Test Hash Native (DONT CHANGE)
+    private string mopubRewardedInvh        = "005491feb31848a0ae7b9daf4a46c701";    // Android MobFox Adapter / Test Hash Rewarded (DONT CHANGE)
+    
 
     //=============================================================
 }
