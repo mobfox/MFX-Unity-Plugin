@@ -713,39 +713,52 @@ public class MainScript : MonoBehaviour
     {
 	    clearAllAds();
     
+		_ShowAndroidToastMessage("Loading MoPub interstitial");
+
 	     MoPub.RequestInterstitialAd(MoPubInterstitialInventoryHash);
     }
     
 	private void startMoPubVideoInterstitial()
 	{
-		// mytodo:
+	    clearAllAds();
+    
+		_ShowAndroidToastMessage("Loading MoPub interstitial");
+
+	     MoPub.RequestInterstitialAd(MoPubInterVideoInvh);
 	}
 	
     //-------------------------------------------------------------
     
     void OnInterstitialLoadedEvent (string adUnitId)
     {
+		_ShowAndroidToastMessage("MoPub interstitial loaded");
+
  		MoPub.ShowInterstitialAd (adUnitId);
     }
 
 	void OnInterstitialFailedEvent (string adUnitId, string errorCode)
     {
+		_ShowAndroidToastMessage("MoPub interstitial error: "+errorCode);
     }
 
 	void OnInterstitialDismissedEvent (string adUnitId)
     {
+		_ShowAndroidToastMessage("MoPub interstitial loaded");
     }
 
 	void OnInterstitialExpiredEvent (string adUnitId)
     {
+		_ShowAndroidToastMessage("MoPub interstitial expired");
     }
 
 	void OnInterstitialShownEvent (string adUnitId)
     {
+		_ShowAndroidToastMessage("MoPub interstitial shown");
     }
 
 	void OnInterstitialClickedEvent (string adUnitId)
     {
+		_ShowAndroidToastMessage("MoPub interstitial clicked");
     }
 
     //=============================================================
@@ -754,6 +767,8 @@ public class MainScript : MonoBehaviour
     {
 	    clearAllAds();
     
+    	_ShowAndroidToastMessage("Loading MoPub rewarded");
+
 		MoPub.RequestRewardedVideo(MoPubRewardedInventoryHash);
     }
     
@@ -761,39 +776,49 @@ public class MainScript : MonoBehaviour
     
 	void OnRewardedVideoLoadedEvent (string adUnitId)
     {
+		_ShowAndroidToastMessage("MoPub rewarded loaded");
+
 		MoPub.ShowRewardedVideo(adUnitId);
     }
 
 	void OnRewardedVideoFailedEvent (string adUnitId, string errorMsg)
     {
+		_ShowAndroidToastMessage("MoPub rewarded load failed: "+errorMsg);
     }
 
 	void OnRewardedVideoExpiredEvent (string adUnitId)
     {
+		_ShowAndroidToastMessage("MoPub rewarded expired");
     }
 
 	void OnRewardedVideoShownEvent (string adUnitId)
     {
+		_ShowAndroidToastMessage("MoPub rewarded shown");
     }
 
 	void OnRewardedVideoClickedEvent (string adUnitId)
     {
+		_ShowAndroidToastMessage("MoPub rewarded clicked");
     }
 
 	void OnRewardedVideoFailedToPlayEvent (string adUnitId, string errorMsg)
     {
+		_ShowAndroidToastMessage("MoPub rewarded play failed: "+errorMsg);
     }
 
 	void OnRewardedVideoReceivedRewardEvent (string adUnitId, string label, float amount)
     {
+		_ShowAndroidToastMessage("MoPub received reward: "+amount+" "+label);
     }
 
 	void OnRewardedVideoClosedEvent (string adUnitId)
     {
+		_ShowAndroidToastMessage("MoPub rewarded closed");
     }
 
 	void OnRewardedVideoLeavingApplicationEvent (string adUnitId)
     {
+		_ShowAndroidToastMessage("MoPub rewarded leaving app");
     }
     
     //=============================================================
