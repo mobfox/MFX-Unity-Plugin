@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5f25cb0673cc48a98f8f72db28b948b7
+guid: 10ef848964ba4c87ac2f9b2b0700b39f
 labels:
 - gvh
 - gvh_version-4.2.1.1
@@ -66,7 +66,7 @@ PluginImporter:
       settings:
         CPU: AnyCPU
     iOS:
-      enabled: 0
+      enabled: 1
       settings:
         CompileFlags:
         FrameworkDependencies:

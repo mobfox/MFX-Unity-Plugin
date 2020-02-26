@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5f25cb0673cc48a98f8f72db28b948b7
+guid: 3fbd85863e7246c8b9de13243cc83b5d
 labels:
 - gvh
 - gvh_version-4.2.1.1
@@ -11,7 +11,7 @@ PluginImporter:
   isPreloaded: 0
   platformData:
     Android:
-      enabled: 1
+      enabled: 0
       settings:
         CPU: AnyCPU
     Any:
@@ -66,7 +66,7 @@ PluginImporter:
       settings:
         CPU: AnyCPU
     iOS:
-      enabled: 0
+      enabled: 1
       settings:
         CompileFlags:
         FrameworkDependencies:

@@ -966,6 +966,7 @@ public class MainScript : MonoBehaviour
 	    string AdMobInterVideoInvh   = "ca-app-pub-8111915318550857/7271416015";   // sdk.mobfox.com.appcore
 		string AdMobRewardedHash     = "ca-app-pub-6224828323195096/1152622735";
 	    string AdMobNativeInvh       = "ca-app-pub-6224828323195096/1268034150";   // Native Android For AdMob
+	    //string AdMobNativeInvh       = "ca-app-pub-3940256099942544/2247696110";	// AdMob test ad
     #else
         string AdMobBannerHash       = "ca-app-pub-6224828323195096/7846687276";
 		string AdMobInterstitialHash = "ca-app-pub-6224828323195096/7876284361";
@@ -974,9 +975,10 @@ public class MainScript : MonoBehaviour
 
 	//private string asyncCommand = null;
 
-	private BannerView     adMobBannerView;
-    private InterstitialAd adMobInterstitial;
-    private RewardedAd     adMobRewardedAd;
+	private BannerView      adMobBannerView;
+    private InterstitialAd  adMobInterstitial;
+    private RewardedAd      adMobRewardedAd;
+	private UnifiedNativeAd adMobNativeAd;
 
     //=============================================================
 
@@ -1022,7 +1024,7 @@ public class MainScript : MonoBehaviour
     private AdRequest CreateAdRequest()
     {
         return new AdRequest.Builder()
-            //.AddTestDevice(AdRequest.TestDeviceSimulator)
+            .AddTestDevice("82109714761F90BAAD73679C21E34E56")
             //.AddKeyword("game")
             //.SetGender(Gender.Male)
             //.SetBirthday(new DateTime(1985, 1, 1))
@@ -1289,6 +1291,30 @@ public class MainScript : MonoBehaviour
 
 	private void startAdMobbNative()
 	{
+	    clearAllAds();
+    
+		addLog("Loading AdMob native...");
+		
+    	AdLoader adLoader = new AdLoader.Builder(AdMobNativeInvh)
+        	.ForUnifiedNativeAd()
+        	.Build();
+    	adLoader.OnUnifiedNativeAdLoaded += this.HandleUnifiedNativeAdLoaded;
+    	adLoader.OnAdFailedToLoad += this.HandleNativeAdFailedToLoad;
+    	adLoader.LoadAd(CreateAdRequest());
+	}
+
+    //-------------------------------------------------------------
+
+	private void HandleNativeAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
+	{
+		addLog("AdMob native err: " + args.Message);
+	}
+
+	private void HandleUnifiedNativeAdLoaded(object sender, UnifiedNativeAdEventArgs args)
+	{
+		addLog("AdMob native loaded");
+
+    	adMobNativeAd = args.nativeAd;
 	}
 
     //=============================================================
