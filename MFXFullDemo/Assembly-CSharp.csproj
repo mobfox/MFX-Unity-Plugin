@@ -55,8 +55,40 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\MoPub\Sample\GravityController.cs" />
+     <Compile Include="Assets\MoPub\Sample\MoPubDemoGUI.cs" />
+     <Compile Include="Assets\MoPub\Sample\MoPubEventListener.cs" />
+     <Compile Include="Assets\MoPub\Scripts\Internal\AbstractNativeAd.cs" />
+     <Compile Include="Assets\MoPub\Scripts\Internal\MoPubAdSizeMapping.cs" />
+     <Compile Include="Assets\MoPub\Scripts\Internal\MoPubAdUnit.cs" />
+     <Compile Include="Assets\MoPub\Scripts\Internal\MoPubAndroid.cs" />
+     <Compile Include="Assets\MoPub\Scripts\Internal\MoPubAndroidAdUnit.cs" />
+     <Compile Include="Assets\MoPub\Scripts\Internal\MoPubAndroidBanner.cs" />
+     <Compile Include="Assets\MoPub\Scripts\Internal\MoPubAndroidInterstitial.cs" />
+     <Compile Include="Assets\MoPub\Scripts\Internal\MoPubAndroidNative.cs" />
+     <Compile Include="Assets\MoPub\Scripts\Internal\MoPubAndroidRewardedVideo.cs" />
+     <Compile Include="Assets\MoPub\Scripts\Internal\MoPubBase.cs" />
+     <Compile Include="Assets\MoPub\Scripts\Internal\MoPubBinding.cs" />
+     <Compile Include="Assets\MoPub\Scripts\Internal\MoPubLog.cs" />
+     <Compile Include="Assets\MoPub\Scripts\Internal\MoPubNativeAdsToggler.cs" />
+     <Compile Include="Assets\MoPub\Scripts\Internal\MoPubNetworkConfig.cs" />
+     <Compile Include="Assets\MoPub\Scripts\Internal\MoPubPlatformApi.cs" />
+     <Compile Include="Assets\MoPub\Scripts\Internal\MoPubStaticNativeAd.cs" />
+     <Compile Include="Assets\MoPub\Scripts\Internal\MoPubUnityEditor.cs" />
+     <Compile Include="Assets\MoPub\Scripts\Internal\MoPubUnityEditorAdUnit.cs" />
+     <Compile Include="Assets\MoPub\Scripts\Internal\MoPubUtils.cs" />
+     <Compile Include="Assets\MoPub\Scripts\Internal\MoPubiOS.cs" />
+     <Compile Include="Assets\MoPub\Scripts\Internal\MoPubiOsAdUnit.cs" />
+     <Compile Include="Assets\MoPub\Scripts\Internal\NativeAdClickHandler.cs" />
+     <Compile Include="Assets\MoPub\Scripts\Internal\PackageConfig.cs" />
+     <Compile Include="Assets\MoPub\Scripts\MoPub.cs" />
+     <Compile Include="Assets\MoPub\Scripts\MoPubConsent.cs" />
+     <Compile Include="Assets\MoPub\Scripts\MoPubManager.cs" />
+     <Compile Include="Assets\MoPub\Scripts\MoPubManagerTesting.cs" />
+     <Compile Include="Assets\MoPub\Scripts\ThirdParty\MiniJSON.cs" />
      <Compile Include="Assets\Scripts\MainScript.cs" />
      <Compile Include="Assets\Scripts\MobFox.cs" />
+     <None Include="Assets\MoPub\Plugins\Android\MoPub.plugin\AndroidManifest.xml" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

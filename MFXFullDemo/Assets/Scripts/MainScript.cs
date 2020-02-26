@@ -153,6 +153,22 @@ public class MainScript : MonoBehaviour
 		
 		MoPub.DestroyBanner(MoPubBannerInventoryHash);
     }
+        
+    private void _ShowAndroidToastMessage(string message)
+    {
+        AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+        AndroidJavaObject unityActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
+
+        if (unityActivity != null)
+        {
+            AndroidJavaClass toastClass = new AndroidJavaClass("android.widget.Toast");
+            unityActivity.Call("runOnUiThread", new AndroidJavaRunnable(() =>
+            {
+                AndroidJavaObject toastObject = toastClass.CallStatic<AndroidJavaObject>("makeText", unityActivity, message, 0);
+                toastObject.Call("show");
+            }));
+        }
+    }
     
     //############################################################
 	//#####   B u t t o n   p r e s s e s                    #####
@@ -502,11 +518,11 @@ public class MainScript : MonoBehaviour
 
 #if UNITY_ANDROID
 	private string MoPubBannerInventoryHash       = "4ad212b1d0104c5998b288e7a8e35967";	// Android MobFox Adapter / Test Hash Banner(DONT CHANGE)
-    private string MoPubBannerLargeInvh           = "9cae0a5af35c4a96b033a67f4b49160c";    // Android MobFox Adapter / Test Hash Large Banner(DONT CHANGE)
-    private string MoPubBannerVideoInvh           = "ce377e29b9e94ca484efbbf8201f7e36";    // Android MobFox Adapter / Test Hash Video Banner(DONT CHANGE)
+    private string MoPubBannerLargeInvh           = "9cae0a5af35c4a96b033a67f4b49160c"; // Android MobFox Adapter / Test Hash Large Banner(DONT CHANGE)
+    private string MoPubBannerVideoInvh           = "ce377e29b9e94ca484efbbf8201f7e36"; // Android MobFox Adapter / Test Hash Video Banner(DONT CHANGE)
 	private string MoPubInterstitialInventoryHash = "3fd85a3e7a9d43ea993360a2536b7bbd";	// Android MobFox Adapter / Test Hash Interstitial(DONT CHANGE)
-    private string MoPubInterVideoInvh            = "6ee6c2cf27074af8a1a7117f8b21b0d9";    // Android MobFox Adapter / Test Hash Inter Video (DONT CHANGE)
-    private string MoPubNativeInvh                = "e2758ffdaf0d426aa19a633bab6bbc3a";    // Android MobFox Adapter / Test Hash Native (DONT CHANGE)
+    private string MoPubInterVideoInvh            = "6ee6c2cf27074af8a1a7117f8b21b0d9"; // Android MobFox Adapter / Test Hash Inter Video (DONT CHANGE)
+    private string MoPubNativeInvh                = "e2758ffdaf0d426aa19a633bab6bbc3a"; // Android MobFox Adapter / Test Hash Native (DONT CHANGE)
 	private string MoPubRewardedInventoryHash     = "005491feb31848a0ae7b9daf4a46c701";	// Android MobFox Adapter / Test Hash Rewarded (DONT CHANGE)
 #else
 	private string MoPubBannerInventoryHash             = "234dd5a1b1bf4a5f9ab50431f9615784";	// Mobfox test banner
@@ -601,15 +617,19 @@ public class MainScript : MonoBehaviour
     void OnSdkInitializedEvent(string adUnitId)
     {
     	// The SDK is initialized here. Ready to make ad requests.
+		_ShowAndroidToastMessage("MoPub initialized");
 
-		string[] _bannerAdUnits = new string[] {MoPubBannerInventoryHash};
+		string[] _bannerAdUnits = new string[] {MoPubBannerInventoryHash, MoPubBannerLargeInvh, MoPubBannerVideoInvh};
 	 	MoPub.LoadBannerPluginsForAdUnits(_bannerAdUnits);
 
-		string[] _interAdUnits = new string[] {MoPubInterstitialInventoryHash};
+		string[] _interAdUnits = new string[] {MoPubInterstitialInventoryHash, MoPubInterVideoInvh};
 	 	MoPub.LoadInterstitialPluginsForAdUnits(_interAdUnits);
 
 		string[] _rewardedAdUnits = new string[] {MoPubRewardedInventoryHash};
 	 	MoPub.LoadRewardedVideoPluginsForAdUnits(_rewardedAdUnits);
+
+		string[] _nativeAdUnits = new string[] {MoPubNativeInvh};
+	 	// mytodo: MoPub.LoadNativePluginsForAdUnits(_nativeAdUnits);
     }
 
     //============================================================
@@ -632,6 +652,8 @@ public class MainScript : MonoBehaviour
 
 		mCurrentMoPubBannerHash = MoPubBannerInventoryHash;
     	MoPub.RequestBanner(mCurrentMoPubBannerHash, MoPub.AdPosition.Centered, MoPub.MaxAdSize.Width320Height50);
+
+		_ShowAndroidToastMessage("Loading MoPub banner");
     }
     
     private void startMoPubLargeBanner()
@@ -640,6 +662,8 @@ public class MainScript : MonoBehaviour
 
 		mCurrentMoPubBannerHash = MoPubBannerLargeInvh;
     	MoPub.RequestBanner(mCurrentMoPubBannerHash, MoPub.AdPosition.Centered, MoPub.MaxAdSize.Width300Height250);
+
+		_ShowAndroidToastMessage("Loading MoPub banner");
 	}
 	
 	private void startMoPubVideoBanner()
@@ -648,30 +672,39 @@ public class MainScript : MonoBehaviour
 
 		mCurrentMoPubBannerHash = MoPubBannerVideoInvh;
     	MoPub.RequestBanner(mCurrentMoPubBannerHash, MoPub.AdPosition.Centered, MoPub.MaxAdSize.Width300Height250);
+
+		_ShowAndroidToastMessage("Loading MoPub banner");
 	}
 
     //------------------------------------------------------------
         
     void OnAdLoadedEvent(string adUnitId, float height)
-    {
+    {    
+		_ShowAndroidToastMessage("MoPub banner loaded");
+
     	showMoPubBanner();
     }
     
     void OnAdFailedEvent(string adUnitId, string errMsg)
     {
+		_ShowAndroidToastMessage("MoPub banner load err: "+errMsg);
+
     	showMoPubBanner();
     }
 
     void OnAdClickedEvent(string adUnitId)
     {
+		_ShowAndroidToastMessage("MoPub banner clicked");
     }
 
     void OnAdExpandedEvent(string adUnitId)
     {
+		_ShowAndroidToastMessage("MoPub banner ad expanded");
     }
 
     void OnAdCollapsedEvent(string adUnitId)
     {
+		_ShowAndroidToastMessage("MoPub banner ad collapsed");
     }
 
     //=============================================================
