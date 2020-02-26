@@ -744,7 +744,6 @@ public class MainScript : MonoBehaviour
     void OnSdkInitializedEvent(string adUnitId)
     {
     	// The SDK is initialized here. Ready to make ad requests.
-		addLog("MoPub initialized");
 
 		string[] _bannerAdUnits = new string[] {MoPubBannerInventoryHash, MoPubBannerLargeInvh, MoPubBannerVideoInvh};
 	 	MoPub.LoadBannerPluginsForAdUnits(_bannerAdUnits);
