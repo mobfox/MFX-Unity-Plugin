@@ -102,6 +102,13 @@ public class MainScript : MonoBehaviour
     		asyncCommand = null;
     	}
     	*/
+    	
+    	// AdMob native ad reading assets
+    	if (this.unifiedNativeAdLoaded)
+    	{
+        	this.unifiedNativeAdLoaded = false;        	
+        	updateAdMobNativeAd();
+    	}
     }
     
     //------------------------------------------------------------
@@ -557,9 +564,9 @@ public class MainScript : MonoBehaviour
     {
     	clearAllAds();
 
-        addLog("Loading Mobfox native");
-
     	showMobfoxNative();
+
+        addLog("Loading Mobfox native");
     
     	MobFox.Instance.setNativeAdContext      ( MobFox.NativeAdContext.CONTENT );
     	MobFox.Instance.setNativeAdPlacementType( MobFox.NativeAdPlacementType.ATOMIC );
@@ -952,7 +959,12 @@ public class MainScript : MonoBehaviour
 
 	private void startMoPubNative()
 	{
+		clearAllAds();
+		
+    	showMobfoxNative();
+
 		// not implemented yet - MoPub does not support mediation in Unity
+
 	}
 
 	//############################################################
@@ -979,6 +991,8 @@ public class MainScript : MonoBehaviour
     private InterstitialAd  adMobInterstitial;
     private RewardedAd      adMobRewardedAd;
 	private UnifiedNativeAd adMobNativeAd;
+
+	private bool            unifiedNativeAdLoaded;
 
     //=============================================================
 
@@ -1024,7 +1038,7 @@ public class MainScript : MonoBehaviour
     private AdRequest CreateAdRequest()
     {
         return new AdRequest.Builder()
-            .AddTestDevice("82109714761F90BAAD73679C21E34E56")
+            //.AddTestDevice("82109714761F90BAAD73679C21E34E56")
             //.AddKeyword("game")
             //.SetGender(Gender.Male)
             //.SetBirthday(new DateTime(1985, 1, 1))
@@ -1292,9 +1306,13 @@ public class MainScript : MonoBehaviour
 	private void startAdMobbNative()
 	{
 	    clearAllAds();
-    
+    		
+    	showMobfoxNative();
+
 		addLog("Loading AdMob native...");
-		
+	
+	    this.unifiedNativeAdLoaded = false;
+	
     	AdLoader adLoader = new AdLoader.Builder(AdMobNativeInvh)
         	.ForUnifiedNativeAd()
         	.Build();
@@ -1315,7 +1333,70 @@ public class MainScript : MonoBehaviour
 		addLog("AdMob native loaded");
 
     	adMobNativeAd = args.nativeAd;
+	    this.unifiedNativeAdLoaded = true;
 	}
+
+    private void updateAdMobNativeAd()
+    {    	    
+        addLog("AdMob native - rendering");
+    
+    	//----- register UI objects for clicking, etc.: -------
+    	
+	    this.adMobNativeAd.RegisterIconImageGameObject(nativeTitle.gameObject);
+	    this.adMobNativeAd.RegisterIconImageGameObject(nativeDescription.gameObject);
+	    this.adMobNativeAd.RegisterIconImageGameObject(nativeCallToAction.gameObject);
+	    this.adMobNativeAd.RegisterIconImageGameObject(nativeRating.gameObject);
+	    this.adMobNativeAd.RegisterIconImageGameObject(nativeSponsored.gameObject);
+	    this.adMobNativeAd.RegisterIconImageGameObject(nativeIcon.gameObject);
+	    this.adMobNativeAd.RegisterIconImageGameObject(nativeMainImage.gameObject);
+
+		//----- read assets and update display: ---------------
+
+        // Get strings of native ad.
+	    string headline    = this.adMobNativeAd.GetHeadlineText();	     
+	    string description = this.adMobNativeAd.GetBodyText();
+	    string cta         = this.adMobNativeAd.GetCallToActionText();
+		string advertiser  = this.adMobNativeAd.GetAdvertiserText();
+		double rating      = this.adMobNativeAd.GetStarRating();
+		string strRating;
+		if (rating<0.0)
+		{
+			strRating = "";
+		} else {
+			strRating = rating.ToString();
+		}
+			    
+	    MySetText(nativeTitle,        headline);
+		MySetText(nativeDescription,  description);
+		MySetText(nativeCallToAction, cta);
+		MySetText(nativeSponsored,    advertiser);
+		MySetText(nativeRating,       strRating);
+
+	    // Get Texture2D for icon asset of native ad.
+    	Texture2D iconTexture = this.adMobNativeAd.GetIconTexture();
+		if (iconTexture==null)
+		{
+    		addLog("AdMob native - no icon image");
+			nativeIcon.enabled = false;
+		} else {
+			nativeIcon.enabled = true;
+		    nativeIcon.texture = iconTexture;
+		}
+		
+		Texture2D mainTexture = null;
+		if (this.adMobNativeAd.GetImageTextures().Count > 0)
+        {
+    		mainTexture = this.adMobNativeAd.GetImageTextures()[0];
+		}
+    	if (mainTexture==null)
+    	{
+    		addLog("AdMob native - no main image");
+    		nativeMainImage.enabled = false;
+    	} else {
+    		nativeMainImage.enabled = true;
+			nativeMainImage.texture = mainTexture;
+    	}
+    }
 
     //=============================================================
 }

@@ -56,7 +56,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Editor\MobfoxModifyUnityAndroidAppManifest.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Editor\AndroidBuildPostProcessor.cs" />
      <Compile Include="Assets\GoogleMobileAds\Editor\GoogleMobileAdsSettings.cs" />
      <Compile Include="Assets\GoogleMobileAds\Editor\GoogleMobileAdsSettingsEditor.cs" />
      <Compile Include="Assets\GoogleMobileAds\Editor\ManifestProcessor.cs" />
@@ -347,6 +346,12 @@
  </Reference>
  <Reference Include="Google.VersionHandler">
  <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Assets/PlayServicesResolver/Editor/Google.VersionHandler.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.MiniJson">
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Assets/Plugins/Google.MiniJson.dll</HintPath>
+ </Reference>
+ <Reference Include="GoogleMobileAds">
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Assets/GoogleMobileAds/GoogleMobileAds.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
