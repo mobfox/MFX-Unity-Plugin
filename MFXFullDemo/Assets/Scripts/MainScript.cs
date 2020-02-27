@@ -663,9 +663,15 @@ public class MainScript : MonoBehaviour
     private string MoPubNativeInvh                = "e2758ffdaf0d426aa19a633bab6bbc3a"; // Android MobFox Adapter / Test Hash Native (DONT CHANGE)
 	private string MoPubRewardedInventoryHash     = "005491feb31848a0ae7b9daf4a46c701";	// Android MobFox Adapter / Test Hash Rewarded (DONT CHANGE)
 #else
-	private string MoPubBannerInventoryHash             = "234dd5a1b1bf4a5f9ab50431f9615784";	// Mobfox test banner
-	private string MoPubInterstitialInventoryHash       = "a5277fa1fd57418b867cfaa949df3b4a";
-	private string MoPubRewardedInventoryHash           = "e3d4c8701d4547e68e8f837fa4fe5122";
+	private string MoPubBannerInventoryHash       = "234dd5a1b1bf4a5f9ab50431f9615784";	// Mobfox test banner
+	private string MoPubBannerLargeInvh           = "234dd5a1b1bf4a5f9ab50431f9615784";	// Mobfox test banner
+	private string MoPubBannerVideoInvh           = "234dd5a1b1bf4a5f9ab50431f9615784";	// Mobfox test banner
+
+	private string MoPubInterstitialInventoryHash = "a5277fa1fd57418b867cfaa949df3b4a";
+	private string MoPubInterVideoInvh            = "a5277fa1fd57418b867cfaa949df3b4a";
+
+    private string MoPubNativeInvh                = "97ea9854b278483bb455c899002a3f79";
+	private string MoPubRewardedInventoryHash     = "e3d4c8701d4547e68e8f837fa4fe5122";
 #endif
 
 	private string mCurrentMoPubBannerHash = null;
@@ -991,8 +997,17 @@ public class MainScript : MonoBehaviour
 	    //string AdMobNativeInvh       = "ca-app-pub-3940256099942544/2247696110";	// AdMob test ad
     #else
         string AdMobBannerHash       = "ca-app-pub-6224828323195096/7846687276";
+        string AdMobBannerVideoInvh  = "ca-app-pub-6224828323195096/7846687276";
+
 		string AdMobInterstitialHash = "ca-app-pub-6224828323195096/7876284361";
+		string AdMobInterVideoInvh   = "ca-app-pub-6224828323195096/7876284361";
+		
 		string AdMobRewardedHash     = "ca-app-pub-6224828323195096/9409251358";
+
+	    string AdMobNativeInvh       = "ca-app-pub-6224828323195096/6049137964";
+
+//#define ADMOB_HASH_BANNER_HTML  @"ca-app-pub-6224828323195096/5240875564"
+
     #endif
 
 	//private string asyncCommand = null;
@@ -1048,7 +1063,7 @@ public class MainScript : MonoBehaviour
     private AdRequest CreateAdRequest()
     {
         return new AdRequest.Builder()
-            //.AddTestDevice("82109714761F90BAAD73679C21E34E56")
+            .AddTestDevice("82109714761F90BAAD73679C21E34E56")
             //.AddKeyword("game")
             //.SetGender(Gender.Male)
             //.SetBirthday(new DateTime(1985, 1, 1))
