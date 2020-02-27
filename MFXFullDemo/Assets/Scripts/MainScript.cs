@@ -198,7 +198,11 @@ public class MainScript : MonoBehaviour
 		MobFox.Instance.ReleaseMobFoxInterstitial();
 		MobFox.Instance.ReleaseMobFoxNative();
 		
-		MoPub.DestroyBanner(MoPubBannerInventoryHash);
+    	if (mCurrentMoPubBannerHash!=null)
+    	{
+			MoPub.DestroyBanner(mCurrentMoPubBannerHash);
+			mCurrentMoPubBannerHash = null;
+    	}
 
     	if (adMobBannerView!=null)
     	{
@@ -664,7 +668,7 @@ public class MainScript : MonoBehaviour
 	private string MoPubRewardedInventoryHash           = "e3d4c8701d4547e68e8f837fa4fe5122";
 #endif
 
-	private string mCurrentMoPubBannerHash = "";
+	private string mCurrentMoPubBannerHash = null;
 
     //=============================================================
     
@@ -770,12 +774,18 @@ public class MainScript : MonoBehaviour
     
     public void hideMoPubBanner()
     {
-  		MoPub.ShowBanner (mCurrentMoPubBannerHash, false);   // hides the banner
+    	if (mCurrentMoPubBannerHash!=null)
+    	{
+	  		MoPub.ShowBanner (mCurrentMoPubBannerHash, false);   // hides the banner
+    	}
   	}
     
     public void showMoPubBanner()
     {
-  		MoPub.ShowBanner (mCurrentMoPubBannerHash, true);   // shows the banner
+    	if (mCurrentMoPubBannerHash!=null)
+    	{
+	  		MoPub.ShowBanner (mCurrentMoPubBannerHash, true);   // shows the banner
+    	}
     }
     
     //============================================================
