@@ -1000,12 +1000,13 @@ public class MainScript : MonoBehaviour
         string AdMobBannerVideoInvh  = "ca-app-pub-6224828323195096/7835888455";	// Test iOS Banner Video
 
 		string AdMobInterstitialHash = "ca-app-pub-6224828323195096/7876284361";	// Test iOS Inter
-		string AdMobInterVideoInvh   = "ca-app-pub-6224828323195096/4689197973";	// Test iOS Inter Video
+		
+		//string AdMobInterVideoInvh   = "ca-app-pub-6224828323195096/4689197973";	// Test iOS Inter Video
+		string AdMobInterVideoInvh   = "ca-app-pub-6224828323195096/4477534086";	// inter video
 		
 		string AdMobRewardedHash     = "ca-app-pub-6224828323195096/9409251358";	// rewarded_adunit_for_testing
 
-	    string AdMobNativeInvh       = "ca-app-pub-6224828323195096/8474848014";	// Unity AdMob Test App
-	    //string AdMobNativeInvh       = "ca-app-pub-6224828323195096/9365553005";	// AdMob Native iOS
+	    string AdMobNativeInvh       = "ca-app-pub-6224828323195096/9365553005";	// AdMob Native iOS
 	    //string AdMobNativeInvh       = "ca-app-pub-3940256099942544/3986624511";	// AdMob test ad
 
 //#define ADMOB_HASH_BANNER_HTML  @"ca-app-pub-6224828323195096/5240875564"
