@@ -1200,7 +1200,7 @@ public class MainScript : MonoBehaviour
 
     public void HandleOnAdLeavingApplication(object sender, EventArgs args)
     {
-		addLog("AdMob Banner leaving app");
+		addLog("AdMob Banner clicked");
     }
 
     //=============================================================
@@ -1285,7 +1285,7 @@ public class MainScript : MonoBehaviour
 
 	public void OnInterstitialLeavingApplication(object sender, EventArgs args)
 	{
-    	addLog("AdMob Interstitial leaving app");
+    	addLog("AdMob Interstitial clicked");
 	}
 
     //=============================================================
