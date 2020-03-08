@@ -45,6 +45,9 @@ public class MainScript : MonoBehaviour
 	
 	public GameObject NativeBlock;
 	
+	public Button btnNativeCallToAction;
+	public Button btnNativeBlock;
+	
 	public Text   lblLog;
 	
 	//------------------------------------------------------------
@@ -374,7 +377,40 @@ public class MainScript : MonoBehaviour
 	    	startMoPubNative();
     		break;
     	case 2:	// AdMob
-	    	startAdMobbNative();
+	    	startAdMobNative();
+    		break;
+    	}
+    }
+
+
+    public void btnNativeCallToActionPressed()
+    {
+    	switch (state)
+    	{
+    	case 0:	// Mobfox
+		    handleMobfoxNativeClick();
+    		break;
+    	case 1:	// MoPub
+    		handleMoPubNativeClick();
+    		break;
+    	case 2:	// AdMob
+    		handleAdMobNativeClick();
+    		break;
+    	}
+    }
+
+    public void btnNativeBlockPressed()
+    {
+    	switch (state)
+    	{
+    	case 0:	// Mobfox
+		    handleMobfoxNativeClick();
+    		break;
+    	case 1:	// MoPub
+    		handleMoPubNativeClick();
+    		break;
+    	case 2:	// AdMob
+    		handleAdMobNativeClick();
     		break;
     	}
     }
@@ -582,37 +618,10 @@ public class MainScript : MonoBehaviour
     
 		MobFox.Instance.RequestMobFoxNative ( MobFoxNativeInventoryHash );
     }
-
-    public void btnNativeCallToActionPressed()
+    
+    private void handleMobfoxNativeClick()
     {
-    	switch (state)
-    	{
-    	case 0:	// Mobfox
-		    MobFox.Instance.callToActionClicked();
-    		break;
-    	case 1:	// MoPub
-    		// NOP
-    		break;
-    	case 2:	// AdMob
-    		// mytodo: 
-    		break;
-    	}
-    }
-
-    public void btnNativeBlockPressed()
-    {
-    	switch (state)
-    	{
-    	case 0:	// Mobfox
-		    MobFox.Instance.callToActionClicked();
-    		break;
-    	case 1:	// MoPub
-    		// NOP
-    		break;
-    	case 2:	// AdMob
-    		// mytodo: 
-    		break;
-    	}
+		MobFox.Instance.callToActionClicked();
     }
     
     //-------------------------------------------------------------
@@ -1010,6 +1019,11 @@ public class MainScript : MonoBehaviour
 
 	}
 
+    private void handleMoPubNativeClick()
+    {
+		// not implemented yet - MoPub does not support mediation in Unity
+    }
+
 	//############################################################
 	//#####   A D M O B :                                    #####
 	//############################################################
@@ -1358,7 +1372,7 @@ public class MainScript : MonoBehaviour
 	
     //=============================================================
 
-	private void startAdMobbNative()
+	private void startAdMobNative()
 	{
 	    clearAllAds();
     		
@@ -1378,6 +1392,13 @@ public class MainScript : MonoBehaviour
 
     //-------------------------------------------------------------
 
+    private void handleAdMobNativeClick()
+    {
+		// mytodo:
+    }
+
+    //-------------------------------------------------------------
+
 	private void HandleNativeAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
 	{
 		addLog("AdMob native err: " + args.Message);
@@ -1394,16 +1415,6 @@ public class MainScript : MonoBehaviour
     private void updateAdMobNativeAd()
     {    	    
         addLog("AdMob native - rendering");
-    
-    	//----- register UI objects for clicking, etc.: -------
-    	
-	    this.adMobNativeAd.RegisterIconImageGameObject(nativeTitle.gameObject);
-	    this.adMobNativeAd.RegisterIconImageGameObject(nativeDescription.gameObject);
-	    this.adMobNativeAd.RegisterIconImageGameObject(nativeCallToAction.gameObject);
-	    this.adMobNativeAd.RegisterIconImageGameObject(nativeRating.gameObject);
-	    this.adMobNativeAd.RegisterIconImageGameObject(nativeSponsored.gameObject);
-	    this.adMobNativeAd.RegisterIconImageGameObject(nativeIcon.gameObject);
-	    this.adMobNativeAd.RegisterIconImageGameObject(nativeMainImage.gameObject);
 
 		//----- read assets and update display: ---------------
 
@@ -1451,6 +1462,76 @@ public class MainScript : MonoBehaviour
     		nativeMainImage.enabled = true;
 			nativeMainImage.texture = mainTexture;
     	}
+
+    	//----- register UI objects for clicking, etc.: -------
+    	
+    	nativeTitle.gameObject.AddComponent<BoxCollider>();
+	    if (!this.adMobNativeAd.RegisterIconImageGameObject(nativeTitle.gameObject))
+	    {
+        	addLog("AdMob native - did not register nativeTitle");
+	    } else {
+        	addLog("AdMob native - registered nativeTitle");
+	    }
+
+    	nativeDescription.gameObject.AddComponent<BoxCollider>();
+	    if (!this.adMobNativeAd.RegisterIconImageGameObject(nativeDescription.gameObject))
+	    {
+        	addLog("AdMob native - did not register nativeDescription");
+	    } else {
+        	addLog("AdMob native - registered nativeDescription");
+	    }
+    	nativeCallToAction.gameObject.AddComponent<BoxCollider>();
+	    if (!this.adMobNativeAd.RegisterIconImageGameObject(nativeCallToAction.gameObject))
+	    {
+        	addLog("AdMob native - did not register nativeCallToAction");
+	    } else {
+        	addLog("AdMob native - registered nativeCallToAction");
+	    }
+    	nativeRating.gameObject.AddComponent<BoxCollider>();
+	    if (!this.adMobNativeAd.RegisterIconImageGameObject(nativeRating.gameObject))
+	    {
+        	addLog("AdMob native - did not register nativeRating");
+	    } else {
+        	addLog("AdMob native - registered nativeRating");
+	    }
+    	nativeSponsored.gameObject.AddComponent<BoxCollider>();
+	    if (!this.adMobNativeAd.RegisterIconImageGameObject(nativeSponsored.gameObject))
+	    {
+        	addLog("AdMob native - did not register nativeSponsored");
+	    } else {
+        	addLog("AdMob native - registered nativeSponsored");
+	    }
+    	nativeIcon.gameObject.AddComponent<BoxCollider>();
+	    if (!this.adMobNativeAd.RegisterIconImageGameObject(nativeIcon.gameObject))
+	    {
+        	addLog("AdMob native - did not register nativeIcon");
+	    } else {
+        	addLog("AdMob native - registered nativeIcon");
+	    }
+    	nativeMainImage.gameObject.AddComponent<BoxCollider>();
+	    if (!this.adMobNativeAd.RegisterIconImageGameObject(nativeMainImage.gameObject))
+	    {
+        	addLog("AdMob native - did not register nativeMainImage");
+	    } else {
+        	addLog("AdMob native - registered nativeMainImage");
+	    }
+
+
+    	btnNativeCallToAction.gameObject.AddComponent<BoxCollider>();
+	    if (!this.adMobNativeAd.RegisterIconImageGameObject(btnNativeCallToAction.gameObject))
+	    {
+        	addLog("AdMob native - did not register btnNativeCallToAction");
+	    } else {
+        	addLog("AdMob native - registered btnNativeCallToAction");
+	    }
+
+    	btnNativeBlock.gameObject.AddComponent<BoxCollider>();
+	    if (!this.adMobNativeAd.RegisterIconImageGameObject(btnNativeBlock.gameObject))
+	    {
+        	addLog("AdMob native - did not register btnNativeBlock");
+	    } else {
+        	addLog("AdMob native - registered btnNativeBlock");
+	    }
     }
 
     //=============================================================

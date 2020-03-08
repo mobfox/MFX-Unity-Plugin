@@ -3220,6 +3220,8 @@ MonoBehaviour:
   nativeIcon: {fileID: 1275384393}
   nativeMainImage: {fileID: 235326525}
   NativeBlock: {fileID: 834930236}
+  btnNativeCallToAction: {fileID: 819144773}
+  btnNativeBlock: {fileID: 1795703877}
   lblLog: {fileID: 827774467}
 --- !u!224 &1957287984
 RectTransform:
