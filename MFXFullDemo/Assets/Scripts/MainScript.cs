@@ -585,7 +585,34 @@ public class MainScript : MonoBehaviour
 
     public void btnNativeCallToActionPressed()
     {
-	    MobFox.Instance.callToActionClicked();
+    	switch (state)
+    	{
+    	case 0:	// Mobfox
+		    MobFox.Instance.callToActionClicked();
+    		break;
+    	case 1:	// MoPub
+    		// NOP
+    		break;
+    	case 2:	// AdMob
+    		// mytodo: 
+    		break;
+    	}
+    }
+
+    public void btnNativeBlockPressed()
+    {
+    	switch (state)
+    	{
+    	case 0:	// Mobfox
+		    MobFox.Instance.callToActionClicked();
+    		break;
+    	case 1:	// MoPub
+    		// NOP
+    		break;
+    	case 2:	// AdMob
+    		// mytodo: 
+    		break;
+    	}
     }
     
     //-------------------------------------------------------------
