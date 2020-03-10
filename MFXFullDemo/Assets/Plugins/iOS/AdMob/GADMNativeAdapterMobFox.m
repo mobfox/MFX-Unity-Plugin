@@ -7,7 +7,7 @@
 //
 
 #import "GADMNativeAdapterMobFox.h"
-
+#import "MFMediatedNativeContentAd.h"
 
 @implementation GADMNativeAdapterMobFox
 
@@ -51,9 +51,6 @@
     {
         [MobFoxSDK loadNativeAd:self.native];
     }
-    
-    //MFMediatedNativeContentAd_ *media = [[MFMediatedNativeContentAd_ alloc] initWithMFNativeContentAd:nil];
-    
 }
 
 /*
@@ -89,26 +86,22 @@
 {
     NSLog(@"MobFox >> GADMNativeAdapterMobFox >> Native Ad Loaded");
         
-    //MFMediatedNativeContentAd_ *mediatedNativeContentAd = [[MFMediatedNativeContentAd_ alloc] initWithMFNativeContentAd:adData];
-    // MFMediatedNativeContentAd_ *mediatedNativeContentAd = [[MFMediatedNativeContentAd_ alloc] init];
-    // [self.delegate customEventNativeAd:self didReceiveMediatedNativeAd:mediatedNativeContentAd];
-    
-    
-    //MFMediatedNativeContentAd_ *media = [[MFMediatedNativeContentAd_ alloc] init];
-    //[media changeStatus];
-    
-    //MFMediatedNativeContentAd_ *media = [[MFMediatedNativeContentAd_ alloc] initWithMFNativeContentAd:nil];
-    
-    
-    
+    [MobFoxSDK loadNativeAdImages:native];
 }
 
 - (void)nativeAdImagesReady:(MFXNativeAd *)native
 {
+    NSLog(@"MobFox >> GADMNativeAdapterMobFox >> Native Ad Images Loaded");
+        
+    MFMediatedNativeContentAd* adMobNativeAd = [[MFMediatedNativeContentAd alloc] initWithSampleNativeAd:native
+                                                                                   nativeAdViewAdOptions:nil];
+    
+    [self.delegate customEventNativeAd:self didReceiveMediatedUnifiedNativeAd:adMobNativeAd];
 }
 
 - (void)nativeAdClicked:(MFXNativeAd *)native
 {
+    NSLog(@"MobFox >> GADMNativeAdapterMobFox >> Native Ad Clicked");
 }
 
 

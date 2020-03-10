@@ -699,15 +699,13 @@ public class MainScript : MonoBehaviour
     private string MoPubNativeInvh                = "e2758ffdaf0d426aa19a633bab6bbc3a"; // Android MobFox Adapter / Test Hash Native (DONT CHANGE)
 	private string MoPubRewardedInventoryHash     = "005491feb31848a0ae7b9daf4a46c701";	// Android MobFox Adapter / Test Hash Rewarded (DONT CHANGE)
 #else
-	private string MoPubBannerInventoryHash       = "234dd5a1b1bf4a5f9ab50431f9615784";	// Banner Ad
-	private string MoPubBannerLargeInvh           = "234dd5a1b1bf4a5f9ab50431f9615784";	// Banner Ad
-	private string MoPubBannerVideoInvh           = "62f37ebc4c0b40359a26af136d1e0866";	// Banner Video
-
-	private string MoPubInterstitialInventoryHash = "6aee1c416d44412ca9978b4355902d3f";	// iOS Inter html
-	private string MoPubInterVideoInvh            = "a5277fa1fd57418b867cfaa949df3b4a";	// Fullscreen Ad-demoApp
-
-    private string MoPubNativeInvh                = "97ea9854b278483bb455c899002a3f79";
-	private string MoPubRewardedInventoryHash     = "e3d4c8701d4547e68e8f837fa4fe5122";	// iOS Rewarded
+	private string MoPubBannerInventoryHash       = "234dd5a1b1bf4a5f9ab50431f9615784";	// Test iOS App / Banner Ad
+	private string MoPubBannerLargeInvh           = "234dd5a1b1bf4a5f9ab50431f9615784";	// Test iOS App / Banner Ad
+	private string MoPubBannerVideoInvh           = "62f37ebc4c0b40359a26af136d1e0866";	// Test iOS App / Banner Video
+	private string MoPubInterstitialInventoryHash = "6aee1c416d44412ca9978b4355902d3f";	// Test iOS App / iOS Inter html
+	private string MoPubInterVideoInvh            = "a5277fa1fd57418b867cfaa949df3b4a";	// Test iOS App / Fullscreen Ad-demoApp
+	private string MoPubRewardedInventoryHash     = "e3d4c8701d4547e68e8f837fa4fe5122";	// Test iOS App / iOS Rewarded
+    private string MoPubNativeInvh                = "ac0f139a2d9544fface76d06e27bc02a"; // "97ea9854b278483bb455c899002a3f79"; // Test iOS App / Native Ad
 #endif
 
 	private string mCurrentMoPubBannerHash = null;
@@ -1037,17 +1035,12 @@ public class MainScript : MonoBehaviour
 	    string AdMobNativeInvh       = "ca-app-pub-6224828323195096/1268034150";   // Native Android For AdMob
 	    //string AdMobNativeInvh       = "ca-app-pub-3940256099942544/2247696110";	// AdMob test ad
     #else
-        string AdMobBannerHash       = "ca-app-pub-6224828323195096/7846687276";	// Test iOS Banner
-        string AdMobBannerVideoInvh  = "ca-app-pub-6224828323195096/7835888455";	// Test iOS Banner Video
-
-		string AdMobInterstitialHash = "ca-app-pub-6224828323195096/7876284361";	// Test iOS Inter
-		
-		//string AdMobInterVideoInvh   = "ca-app-pub-6224828323195096/4689197973";	// Test iOS Inter Video
-		string AdMobInterVideoInvh   = "ca-app-pub-6224828323195096/4477534086";	// inter video
-		
-		string AdMobRewardedHash     = "ca-app-pub-6224828323195096/9409251358";	// rewarded_adunit_for_testing
-
-	    string AdMobNativeInvh       = "ca-app-pub-6224828323195096/9365553005";	// AdMob Native iOS
+        string AdMobBannerHash       = "ca-app-pub-6224828323195096/7846687276";	// Test iOS - Test iOS Banner
+        string AdMobBannerVideoInvh  = "ca-app-pub-6224828323195096/7835888455";	// Test iOS - Test iOS Banner Video
+		string AdMobInterstitialHash = "ca-app-pub-6224828323195096/7876284361";	// Test iOS - Test iOS Inter		
+		string AdMobInterVideoInvh   = "ca-app-pub-6224828323195096/4477534086";	// Test iOS - inter video
+		string AdMobRewardedHash     = "ca-app-pub-6224828323195096/9409251358";	// Test iOS - rewarded_adunit_for_testing
+	    string AdMobNativeInvh       = "ca-app-pub-6224828323195096/9365553005";	// Test iOS - AdMob Native iOS
 	    //string AdMobNativeInvh       = "ca-app-pub-3940256099942544/3986624511";	// AdMob test ad
 
 //#define ADMOB_HASH_BANNER_HTML  @"ca-app-pub-6224828323195096/5240875564"

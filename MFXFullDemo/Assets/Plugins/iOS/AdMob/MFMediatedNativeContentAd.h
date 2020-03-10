@@ -10,12 +10,9 @@
 #import <GoogleMobileAds/GoogleMobileAds.h>
 #import <MFXSDKCore/MFXSDKCore.h>
 
-/*
-@interface MFMediatedNativeContentAd : NSObject <GADMediatedNativeContentAd>
+@interface MFMediatedNativeContentAd : NSObject <GADMediatedUnifiedNativeAd, GADMediatedNativeAdDelegate>
 
+- (instancetype _Nullable )initWithSampleNativeAd:(nullable MFXNativeAd *)mobfoxNativeAd
+                 nativeAdViewAdOptions:(nullable GADNativeAdViewAdOptions *)nativeAdViewAdOptions;
 
-    
-- (instancetype)initWithMFNativeContentAd:(MobFoxNativeData*)mobFoxNativeData;
-- (void)changeStataus;
 @end
- */
