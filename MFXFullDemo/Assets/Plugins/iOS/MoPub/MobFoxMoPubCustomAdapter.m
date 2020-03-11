@@ -126,7 +126,7 @@
  */
 
 - (void)displayContentForURL:(NSURL *)URL rootViewController:(UIViewController *)controller {
-    // [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[self.localProperties objectForKey:kDefaultActionURLKey]]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[self.localProperties objectForKey:kDefaultActionURLKey]]];
 }
 
 - (NSDictionary *)properties {

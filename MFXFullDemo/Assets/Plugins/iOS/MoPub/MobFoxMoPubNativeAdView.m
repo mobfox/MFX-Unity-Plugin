@@ -38,6 +38,7 @@
 
         [self addSubview:self.iconImageView];
         [self addSubview:self.mainImageView];
+        [self addSubview:self.privacyInformationIconImageView];
     }
     
     return self;
@@ -59,6 +60,8 @@
     
     self.iconImageView.frame     = CGRectMake(    0,   0,    58, 58);
     self.mainImageView.frame     = CGRectMake(w-293,  83,   293, 115);
+    
+    self.privacyInformationIconImageView.frame = CGRectMake(w-30, 0, 30, 30);
 }
 
 - (void)layoutCustomAssetsWithProperties:(NSDictionary *)customProperties imageLoader:(MPNativeAdRenderingImageLoader *)imageLoader

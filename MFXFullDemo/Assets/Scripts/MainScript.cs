@@ -64,6 +64,8 @@ public class MainScript : MonoBehaviour
     	initMobfoxSDK();
     	
     	initMoPubSDK();
+    	
+    	initAdMobSDK();
 
         clearAllAds();
         
@@ -157,7 +159,7 @@ public class MainScript : MonoBehaviour
 			setBtnEnabled("HtmlInterstitial" , "lblHtmlInterstitial" , true);
 			setBtnEnabled("VideoInterstitial", "lblVideoInterstitial", true);
 			setBtnEnabled("Rewarded"         , "lblRewarded"         , true);
-			setBtnEnabled("Native"           , "lblNative"           , true);
+			setBtnEnabled("Native"           , "lblNative"           , false);
     		break;
     	}
     }
@@ -1100,7 +1102,11 @@ public class MainScript : MonoBehaviour
     private AdRequest CreateAdRequest()
     {
         return new AdRequest.Builder()
+#if UNITY_ANDROID
             .AddTestDevice("82109714761F90BAAD73679C21E34E56")
+#else // UNITY_IOS
+            .AddTestDevice("a7976a724a3aba85f2dd656fd180c203")
+#endif
             //.AddKeyword("game")
             //.SetGender(Gender.Male)
             //.SetBirthday(new DateTime(1985, 1, 1))

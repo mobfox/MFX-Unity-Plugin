@@ -7,150 +7,139 @@
 //
 
 #import "MFMediatedNativeContentAd.h"
+#import "MFNativeAdImage.h"
+#import <GoogleMobileAds/GoogleMobileAds.h>
 
 @interface MFMediatedNativeContentAd()
 
-@property (nonatomic) NSString *my_headline;
-@property (nonatomic) NSString *my_body;
-@property (nonatomic) NSString *my_callToAction;
-@property (nonatomic) NSString *my_store;
-@property (nonatomic) NSString *my_price;
-@property (nonatomic) NSString *my_advertiser;
-@property (nonatomic) NSDictionary *extras;
-@property (nonatomic) NSDecimalNumber *nsRating;
+@property (nonatomic, strong) MFXNativeAd *mfNative;
 
+@property(nonatomic, strong) GADUnifiedNativeAd *gadNative;
 
-@property(nonatomic, strong) MFXNativeAd *mobfoxAd;
-@property (nonatomic) NSArray *mappedImages;
-@property (nonatomic) GADNativeAdImage *mappedIcon;
+/// Headline.
+@property(nonatomic, copy, nullable) NSString *my_headline;
 
-@property(nonatomic, strong) GADNativeAdViewAdOptions *nativeAdViewAdOptions;
+/// Description.
+@property(nonatomic, copy, nullable) NSString *my_body;
+
+/// Text that encourages user to take some action with the ad. For example "Install".
+@property(nonatomic, copy, nullable) NSString *my_callToAction;
+
+/// App store rating (0 to 5).
+@property(nonatomic, copy, nullable) NSDecimalNumber *my_starRating;
+
+/// The app store name. For example, "App Store".
+@property(nonatomic, copy, nullable) NSString *my_store;
+
+/// String representation of the app's price.
+@property(nonatomic, copy, nullable) NSString *my_price;
+
+/// Identifies the advertiser. For example, the advertiser’s name or visible URL.
+@property(nonatomic, copy, nullable) NSString *my_advertiser;
+
+/// Icon image.
+@property(nonatomic, nullable) GADNativeAdImage *my_icon;
+
+/// Array of GADNativeAdImage objects.
+@property(nonatomic, nullable) NSArray<GADNativeAdImage *> *my_images;
 
 @end
 
-
 @implementation MFMediatedNativeContentAd
 
-- (instancetype _Nullable )initWithSampleNativeAd:(nullable MFXNativeAd *)mobfoxNativeAd
-                            nativeAdViewAdOptions:(nullable GADNativeAdViewAdOptions *)nativeAdViewAdOptions
-{
-        if (mobfoxNativeAd == nil) {
-            return nil;
-        }
+@synthesize advertiser;
+
+- (instancetype)initWithMFNativeContentAd:(MFXNativeAd *)mfNative {
+    if (mfNative == nil) {
+        return nil;
+    }
     
-
-        self = [super init];
-        if (self) {
-            
-            _mobfoxAd = mobfoxNativeAd;
-            
-            NSDictionary* dictTexts = [MobFoxSDK getNativeAdTexts:_mobfoxAd];
-            
-            _my_headline     = [NSString stringWithString:[dictTexts objectForKey:@"title"]];
-            _my_body         = [dictTexts objectForKey:@"desc"];
-            _nsRating        = [NSDecimalNumber decimalNumberWithString:[dictTexts objectForKey:@"rating"]];
-            _my_advertiser   = [dictTexts objectForKey:@"sponsored"];
-            _my_callToAction = [dictTexts objectForKey:@"ctatext"];
-
-            NSString*     iconUrl = nil;
-            NSString*     mainUrl = nil;
-            NSDictionary* dictUrls = [MobFoxSDK getNativeAdImageUrls:_mobfoxAd];
-            if (dictUrls != nil)
-            {
-                iconUrl  = [dictUrls objectForKey:@"icon"];
-                mainUrl  = [dictUrls objectForKey:@"main"];
-            }
-
-            UIImage* iconImg = nil;
-            UIImage* mainImg = nil;
-            NSDictionary* dictImages = [MobFoxSDK getNativeAdImages:_mobfoxAd];
-            if (dictImages != nil)
-            {
-                iconImg = [dictImages objectForKey:@"icon"];
-                mainImg = [dictImages objectForKey:@"main"];
-            }
-
-            if (iconImg!=nil)
-            {
-                _mappedIcon = [[GADNativeAdImage alloc] initWithImage:iconImg];
-            } else {
-                if (iconUrl != nil) {
-                    _mappedIcon = [[GADNativeAdImage alloc] initWithURL:[NSURL URLWithString:iconUrl] scale:0];
-                }
-            }
-
-            if (mainImg!=nil)
-            {
-                _mappedImages = @[ [[GADNativeAdImage alloc] initWithImage:mainImg]];
-            } else {
-                if (mainUrl != nil) {
-                    _mappedImages = @[ [[GADNativeAdImage alloc] initWithURL:[NSURL URLWithString:mainUrl] scale:0] ];
-                }
-            }
-
-            //[MobFoxSDK registerNativeAdForInteraction:native onView:_viewNative];
-
-            
-           
+    self = [super init];
+    if (self) {
+        
+        self.mfNative = mfNative;
+        //self.gadNative = [[GADNativeAd alloc] init];
+        
+        NSDictionary *dictTexts  = [MobFoxSDK getNativeAdTexts:mfNative];
+                
+        self.my_headline     = [dictTexts objectForKey:@"title"];
+        self.my_body         = [dictTexts objectForKey:@"desc"];
+        self.my_starRating   = [[NSDecimalNumber alloc] initWithString:[dictTexts objectForKey:@"rating"]];
+        self.my_advertiser   = [dictTexts objectForKey:@"sponsored"];
+        self.my_callToAction = [dictTexts objectForKey:@"ctatext"];
+        //self.my_store        = [dictTexts objectForKey:@"store"];
+        
+        NSDictionary *dictImageUrls = [MobFoxSDK getNativeAdImageUrls:mfNative];
+        NSDictionary *dictImages = [MobFoxSDK getNativeAdImages:mfNative];
+        
+        NSString *iconUrl = [dictImageUrls objectForKey:@"icon"];
+        UIImage *iconImg = [dictImages objectForKey:@"icon"];
+        if (iconUrl != nil && iconImg != nil) {
+            self.my_icon = [[MFNativeAdImage alloc] initWithURL:iconUrl
+                                                       andImage:iconImg];
         }
-        return self;
+        
+        NSString *mainUrl = [dictImageUrls objectForKey:@"main"];
+        UIImage *mainImg = [dictImages objectForKey:@"main"];
+        if (mainUrl != nil && mainImg != nil) {
+            self.my_images = @[
+                [[MFNativeAdImage alloc] initWithURL:mainUrl andImage:mainImg]
+            ];
+        }
+    }
+
+    return self;
 }
 
-- (GADNativeAdImage *)icon {
-    return self.mappedIcon;
-}
-
-- (NSArray *)images {
-    return self.mappedImages;
-}
-    
 - (NSString *)headline {
     return self.my_headline;
+}
+    
+- (NSArray *)images {
+    return self.my_images;
 }
     
 - (NSString *)body {
     return self.my_body;
 }
-        
+    
+- (GADNativeAdImage *)icon {
+    return self.my_icon;
+}
+    
 - (NSString *)callToAction {
     return self.my_callToAction;
 }
     
 - (NSDecimalNumber *)starRating {
-    return self.nsRating;
+    return self.my_starRating;
 }
     
 - (NSString *)store {
     return self.my_store;
 }
     
-- (NSString *)advertiser {
-    return self.my_advertiser;
-}
-    
 - (NSString *)price {
     return self.my_price;
 }
     
-- (NSDictionary *)extraAssets {
-    return self.extras;
+- (NSString *)advertiser {
+    return self.my_advertiser;
 }
-    
-#pragma mark - GADMediatedNativeAdDelegate implementation
-    
-- (void)mediatedNativeAdDidRecordImpression:(id<GADMediatedNativeAd>)mediatedNativeAd {
-    NSLog(@"mediatedNativeAdDidRecordImpression:");
-  
-}
-    
-- (void)mediatedNativeAd:(id<GADMediatedNativeAd>)mediatedNativeAd
-didRecordClickOnAssetWithName:(NSString *)assetName
-                    view:(UIView *)view
-          viewController:(UIViewController *)viewController {
-    NSLog(@"mediatedNativeAd:didRecordClickOnAssetWithName:view:viewController:");
-    
 
+- (NSDictionary *)extraAssets {
+    return nil;//self.extras;
+}
+    
+#pragma mark - Impressions and Clicks
+    
+- (void)didRecordImpression {
+}
+
+- (void)didRecordClickOnAssetWithName:(GADUnifiedNativeAssetIdentifier)assetName
+                                 view:(UIView *)view
+                       viewController:(UIViewController *)viewController {
+    [self.mfNative callToActionClicked];
 }
 
 @end
- 

@@ -6,13 +6,11 @@
 //  Copyright © 2017 Matomy Media Group Ltd. All rights reserved.
 //
 
-
-#import <GoogleMobileAds/GoogleMobileAds.h>
 #import <MFXSDKCore/MFXSDKCore.h>
+#import <GoogleMobileAds/GoogleMobileAds.h>
 
-@interface MFMediatedNativeContentAd : NSObject <GADMediatedUnifiedNativeAd, GADMediatedNativeAdDelegate>
+@interface MFMediatedNativeContentAd : NSObject <GADMediatedUnifiedNativeAd>
 
-- (instancetype _Nullable )initWithSampleNativeAd:(nullable MFXNativeAd *)mobfoxNativeAd
-                 nativeAdViewAdOptions:(nullable GADNativeAdViewAdOptions *)nativeAdViewAdOptions;
+- (instancetype)initWithMFNativeContentAd:(MFXNativeAd*)mfNative;
 
 @end
