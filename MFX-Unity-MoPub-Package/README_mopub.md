@@ -16,6 +16,7 @@ Thanks for electing to show Mobfox ads in your Unity app.
 * Mobfox Unity Plugins works on **Android** devices with OS version **4.4.x (19)** and up.
 * Mobfox Unity Plugins requires an internet access.
 * You will need a [Mobfox](https://mobfox.atlassian.net/wiki/spaces/PUMD/pages/354549848/Setup+MobFox+Account) account.
+* In order to build **64bit on Android**, you need to use Unity editor version **2019.3.0** and up.
 
 # Other use cases - Mobfox or AdMob?
 
@@ -28,7 +29,7 @@ This document describes the use of **Mobfox** under **MoPub** mediation in Unity
 
 Clone or download **MFX-Unity-Plugin** from [here](https://github.com/mobfox/MFX-Unity-Plugin), and extract it on your computer.
 
-In it you will find a demo application (under the **MFXWithMoPub** directory) for displaying **MoPub** banner, interstitial, and rewarded ads.
+In it you will find a demo application (under the **MFXFullDemo** directory) for how the Mobfox Unity Plugin and/or adapters (AdMob & MoPub) can be used. You can use this as a basis, and build you app on it.
 
 If you already have an existing project, or want to create a new one,
 first integrate **MoPub** SDK following the instructions at [MoPub website](https://developers.mopub.com/publishers/unity/integrate/).
@@ -44,7 +45,12 @@ Done. Now you should be able to see Mobfox ads mediated via your MoPub account.
  
 # Important note - iOS
 
-After building the iOS version - remember to go to that XCode project, into "Build Settings", and set "Enable Modules" to YES.
+After building the iOS version - remember you need to first:
+
+* Run '**pod install**' in tyour XCode project root folder.
+* Now open the iOS project in XCode.
+* In "**Build Settings**", set "**Enable Modules**" to **YES**.
+* In "**Build Settings**", add '**-ObjC**' flag at "**Other Linker Flags**".
 
 # Support
 
