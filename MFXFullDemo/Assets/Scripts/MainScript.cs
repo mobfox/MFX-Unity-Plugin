@@ -53,7 +53,7 @@ public class MainScript : MonoBehaviour
 	//------------------------------------------------------------
 
 	private int state = 0;
-	
+		
 	//############################################################
 	//#####   U I :                                          #####
 	//############################################################
@@ -225,7 +225,7 @@ public class MainScript : MonoBehaviour
     }
         
     //------------------------------------------------------------
-
+    
     private void addLog(string message)
     {
     	string txt = lblLog.text;

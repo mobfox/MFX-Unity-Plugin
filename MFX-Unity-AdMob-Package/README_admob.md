@@ -17,6 +17,7 @@ Thanks for electing to show Mobfox ads in your Unity app.
 * Mobfox Unity Plugins requires an internet access.
 * You will need a [Mobfox](https://mobfox.atlassian.net/wiki/spaces/PUMD/pages/354549848/Setup+MobFox+Account) account.
 * In order to build **64bit on Android**, you need to use Unity editor version **2019.3.0** and up.
+* In case you have build errors, make sure you have **Unity ads** updated to version **3.4.4** - open "**Window => Package Manager**" in Unity, select "**Ads**", and update to **3.4.4**.
 
 # Other use cases - Mobfox or MoPub?
 
@@ -47,10 +48,8 @@ Done. Now you should be able to see Mobfox ads mediated via your AdMob account.
 
 After building the iOS version - remember you need to first:
 
-* Run '**pod install**' in tyour XCode project root folder.
-* Now open the iOS project in XCode.
+* Open the iOS project in XCode.
 * In "**Build Settings**", set "**Enable Modules**" to **YES**.
-* In "**Build Settings**", add '**-ObjC**' flag at "**Other Linker Flags**".
 
 # Support
 

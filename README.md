@@ -15,6 +15,7 @@ Thanks for electing to show Mobfox ads in your Unity app.
 * Mobfox Unity Plugins requires an internet access.
 * You will need a [Mobfox](https://mobfox.atlassian.net/wiki/spaces/PUMD/pages/354549848/Setup+MobFox+Account) account.
 * In order to build **64bit on Android**, you need to use Unity editor version **2019.3.0** and up.
+* In case you have build errors, make sure you have **Unity ads** updated to version **3.4.4** - open "**Window => Package Manager**" in Unity, select "**Ads**", and update to **3.4.4**.
 
 # Use cases - what plugin do I use?
 
