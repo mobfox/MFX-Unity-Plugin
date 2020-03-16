@@ -47,6 +47,15 @@ extern "C"
 }
 
 //======================================================================================
+//======  H E L P E R S                                                           ======
+//======================================================================================
+
+-(void) showMessage:(NSString*)message
+{
+    NSLog(@"dbg: ### MobFoxUnityPlugin >> log(%@)",message);
+}
+
+//======================================================================================
 //======  G L O B A L                                                             ======
 //======================================================================================
 
@@ -162,8 +171,6 @@ extern "C"
 - (void)bannerAdLoaded:(MFXBannerAd *)banner
 {
     //show banner
-    NSLog(@"dbg: ### bannerAdLoaded ###");
- 
     UIViewController* vc = UnityGetGLViewController();
     [vc.view addSubview:self.mBannerView];
     
@@ -185,7 +192,8 @@ extern "C"
 
 - (void)bannerAdShown:(MFXBannerAd *)banner
 {
-    NSLog(@"dbg: ### bannerAdShown ###");
+    NSLog(@"dbg: ### MobFoxUnityPlugin >> MobFoxAdShown:");
+    if (self.gameObject!=nil) UnitySendMessage([self.gameObject UTF8String], "bannerShown", "MobFoxAdShown msg");
 }
 
 - (void)bannerAdClicked:(MFXBannerAd *)banner
@@ -275,7 +283,8 @@ extern "C"
 
 - (void)interstitialAdShown:(MFXInterstitialAd *)interstitial
 {
-    NSLog(@"dbg: ### interstitialAdShown ###");
+    NSLog(@"dbg: ### MobFoxUnityPlugin >> MobFoxInterstitialAdShown:");
+    if (self.gameObject!=nil) UnitySendMessage([self.gameObject UTF8String], "interstitialShown", "MobFoxInterstitialAdShown msg");
 }
 
 - (void)interstitialAdClicked:(MFXInterstitialAd *)interstitial withUrl:(NSString*)url
@@ -468,6 +477,13 @@ extern "C"
     
     void _setGameObject(const char* gameObject){
         plugin.gameObject = [NSString stringWithUTF8String:gameObject];
+    }
+    
+    //----------------------------------------------------------------------
+
+    void _showMessage(const char* val){
+    
+    	[plugin showMessage:[NSString stringWithUTF8String:val]];
     }
     
     //----------------------------------------------------------------------

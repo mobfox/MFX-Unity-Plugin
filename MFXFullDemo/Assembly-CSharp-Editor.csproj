@@ -89,11 +89,17 @@
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="UnityEngine.Monetization">
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/UnityEngine.Monetization.dll</HintPath>
+ </Reference>
  <Reference Include="com.unity.multiplayer-hlapi.Editor">
  <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
  <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
@@ -354,7 +360,7 @@
  <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Assets/GoogleMobileAds/GoogleMobileAds.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Advertisements">
- <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/PackageCache/com.unity.ads@3.4.4/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Tracker">
  <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Tracker.dll</HintPath>

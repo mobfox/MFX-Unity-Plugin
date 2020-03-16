@@ -12,6 +12,9 @@
 @interface MobFoxUnityPlugin : NSObject<MFXBannerAdDelegate,MFXInterstitialAdDelegate,MFXNativeAdDelegate>
 
 
+-(void) showMessage:(NSString*)message;
+
+
 -(void) setDemoAge:(NSString*)val;
 -(void) setDemoGender:(NSString*)val;
 -(void) setDemoKeywords:(NSString*)val;

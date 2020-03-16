@@ -10,6 +10,10 @@ public class MobFox :MonoBehaviour
 	
 
 	[DllImport ( "__Internal" )]
+	public static extern void _showMessage (string message);
+
+
+	[DllImport ( "__Internal" )]
 	public static extern void _setCOPPA (bool subjectToCOPPA);
 
 	[DllImport ( "__Internal" )]
@@ -241,6 +245,12 @@ public class MobFox :MonoBehaviour
 					} ) );
 			}
 		}
+		else
+		{
+#if UNITY_IOS
+			_showMessage ( message );
+#endif
+		}
 	}
 
 	public static void CreateSingletone ()
@@ -277,7 +287,12 @@ public class MobFox :MonoBehaviour
 	{
 		LogMessage(msg, false);
 	}
-
+	
+	public string getUnityPluginVersion()
+	{
+		return "4.1.6";
+	}
+	
 	//======================================================================================
 	//======  iOS functions                                                           ======
 	//======================================================================================

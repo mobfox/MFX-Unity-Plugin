@@ -70,6 +70,8 @@ public class MainScript : MonoBehaviour
         clearAllAds();
         
         updateButtons();
+        
+        addLog("Unity plugin version: "+MobFox.Instance.getUnityPluginVersion());
     }
 
     // Update is called once per frame
@@ -229,6 +231,8 @@ public class MainScript : MonoBehaviour
     	string txt = lblLog.text;
     	txt = txt + message + "\n";
     	lblLog.text = txt;
+    	
+    	MobFox.Instance.Log(message);
     }
     
     //############################################################
