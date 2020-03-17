@@ -30,7 +30,7 @@ This document describes the use of **Mobfox** under **MoPub** mediation in Unity
 
 Clone or download **MFX-Unity-Plugin** from [here](https://github.com/mobfox/MFX-Unity-Plugin), and extract it on your computer.
 
-In it you will find a demo application (under the **MFXFullDemo** directory) for how the Mobfox Unity Plugin and/or adapters (AdMob & MoPub) can be used. You can use this as a basis, and build you app on it.
+In it you will find a demo application (under the **MFXFullDemo** directory) for how the Mobfox Unity Plugin and/or adapters (AdMob & MoPub) can be used. You can use this as a basis, and build your app on it.
 
 If you already have an existing project, or want to create a new one,
 first integrate **MoPub** SDK following the instructions at [MoPub website](https://developers.mopub.com/publishers/unity/integrate/).
@@ -49,7 +49,7 @@ Done. Now you should be able to see Mobfox ads mediated via your MoPub account.
 After building the iOS version - remember you need to first:
 
 * Open the iOS project in XCode.
-* In "**Build Settings**", set "**Enable Modules**" to **YES**.
+* In "**Build Settings**", set "**Enable Modules**" to **YES** for **all** modules.
 
 # Support
 
