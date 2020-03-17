@@ -64,7 +64,7 @@ In order to build **64bit on Android**, you need to use Unity editor version **2
 
 # Usage
 
-You an look at the **MainSript.cs** sript in the MFXDemo project to see examples of the ode to use for the plugin.
+You can look at the **MainSript.cs** sript in the **MFXFullDemo** project to see examples of the code to use for the plugin.
 
 ## Initializing the SDK
 
