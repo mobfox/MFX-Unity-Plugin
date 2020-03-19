@@ -494,7 +494,7 @@ public class MainScript : MonoBehaviour
     	addLog("Loading Mobfox banner");
     	
 		MobFox.Instance.RequestMobFoxBanner ( MobFoxBannerInventoryHash, 40, 130, 320, 50 );
-		MobFox.Instance.setBannerRefresh(0);
+		MobFox.Instance.setBannerRefresh(30);
     }
     
     public void startMobfoxLargeBanner()
@@ -504,7 +504,7 @@ public class MainScript : MonoBehaviour
     	addLog("Loading Mobfox banner");
     
 		MobFox.Instance.RequestMobFoxBanner ( MobFoxBannerInventoryHash, 50, 130, 300, 250 );
-		MobFox.Instance.setBannerRefresh(0);
+		MobFox.Instance.setBannerRefresh(30);
     }
     
     public void startMobfoxVideoBanner()
