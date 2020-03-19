@@ -53,7 +53,10 @@ public class MainScript : MonoBehaviour
 	//------------------------------------------------------------
 
 	private int state = 0;
-		
+	
+	private string asyncMoPubCommand = null;
+	private string asyncMoPubParam   = null;
+	
 	//############################################################
 	//#####   U I :                                          #####
 	//############################################################
@@ -77,39 +80,37 @@ public class MainScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    	/*	
-    	if (asyncCommand!=null)
+    	if (asyncMoPubCommand!=null)
     	{
-    		if (asyncCommand == "showInterstitial")
+    		if (asyncMoPubCommand == "showMoPubInterstitial")
     		{	
- 				if ((adMobInterstitial!=null) && (adMobInterstitial.IsLoaded()))
- 				{
- 				    addLog("AdMob interstitial loaded, showing...");
-
-    				adMobInterstitial.Show();
-  				}
+    			if (asyncMoPubParam!=null)
+    			{
+ 				    addLog("MoPub interstitial showing...");
+    				MoPub.ShowInterstitialAd (asyncMoPubParam);
+    				asyncMoPubParam = null;
+    			}
     				
-    			asyncCommand = null;
+    			asyncMoPubCommand = null;
     			return;
     		}
     		
-    		if (asyncCommand == "showRewarded")
+    		if (asyncMoPubCommand == "showMoPubRewarded")
     		{	
- 				if ((adMobRewardedAd!=null) && (adMobRewardedAd.IsLoaded()))
- 				{
- 				    addLog("AdMob rewarded loaded, showing...");
-
-    				adMobRewardedAd.Show();
-  				}
+    			if (asyncMoPubParam!=null)
+    			{
+ 				    addLog("MoPub rewareded showing...");
+    				MoPub.ShowRewardedVideo (asyncMoPubParam);
+    				asyncMoPubParam = null;
+    			}
     				
-    			asyncCommand = null;
+    			asyncMoPubCommand = null;
     			return;
     		}
 
-    		asyncCommand = null;
+    		asyncMoPubCommand = null;
     	}
-    	*/
-    	
+    
     	// AdMob native ad reading assets
     	if (this.unifiedNativeAdLoaded)
     	{
@@ -228,8 +229,9 @@ public class MainScript : MonoBehaviour
     
     private void addLog(string message)
     {
-    	string txt = lblLog.text;
-    	txt = txt + message + "\n";
+    	string txt  = lblLog.text;
+    	string time = System.DateTime.Now.ToString("[HH:mm:ss] ");
+    	txt = txt + time + message + "\n";
     	lblLog.text = txt;
     	
     	MobFox.Instance.Log(message);
@@ -722,6 +724,8 @@ public class MainScript : MonoBehaviour
     {
         var value = "bla bla";
 
+		asyncMoPubCommand = null;
+
         // register for initialized callback event in the app
         MoPubManager.OnSdkInitializedEvent += OnSdkInitializedEvent;
         
@@ -905,7 +909,7 @@ public class MainScript : MonoBehaviour
     
 		addLog("Loading MoPub interstitial");
 
-	     MoPub.RequestInterstitialAd(MoPubInterstitialInventoryHash);
+		MoPub.RequestInterstitialAd(MoPubInterstitialInventoryHash);
     }
     
 	private void startMoPubVideoInterstitial()
@@ -914,7 +918,7 @@ public class MainScript : MonoBehaviour
     
 		addLog("Loading MoPub interstitial");
 
-	     MoPub.RequestInterstitialAd(MoPubInterVideoInvh);
+		MoPub.RequestInterstitialAd(MoPubInterVideoInvh);
 	}
 	
     //-------------------------------------------------------------
@@ -923,7 +927,9 @@ public class MainScript : MonoBehaviour
     {
 		addLog("MoPub interstitial loaded");
 
- 		MoPub.ShowInterstitialAd (adUnitId);
+ 		//MoPub.ShowInterstitialAd (adUnitId);
+		asyncMoPubCommand = "showMoPubInterstitial";
+		asyncMoPubParam   = adUnitId;
     }
 
 	void OnInterstitialFailedEvent (string adUnitId, string errorCode)
@@ -933,7 +939,7 @@ public class MainScript : MonoBehaviour
 
 	void OnInterstitialDismissedEvent (string adUnitId)
     {
-		addLog("MoPub interstitial loaded");
+		addLog("MoPub interstitial closed");
     }
 
 	void OnInterstitialExpiredEvent (string adUnitId)
@@ -968,7 +974,9 @@ public class MainScript : MonoBehaviour
     {
 		addLog("MoPub rewarded loaded");
 
-		MoPub.ShowRewardedVideo(adUnitId);
+		//MoPub.ShowRewardedVideo(adUnitId);
+		asyncMoPubCommand = "showMoPubRewarded";
+		asyncMoPubParam   = adUnitId;
     }
 
 	void OnRewardedVideoFailedEvent (string adUnitId, string errorMsg)
@@ -1053,8 +1061,6 @@ public class MainScript : MonoBehaviour
 
     #endif
 
-	//private string asyncCommand = null;
-
 	private BannerView      adMobBannerView;
     private InterstitialAd  adMobInterstitial;
     private RewardedAd      adMobRewardedAd;
@@ -1073,8 +1079,6 @@ public class MainScript : MonoBehaviour
         #else
             string appId = "unexpected_platform";
         #endif
-
-		//asyncCommand = null;
 
         MobileAds.SetiOSAppPauseOnBackground(true);
     	
@@ -1276,10 +1280,9 @@ public class MainScript : MonoBehaviour
     {
 		addLog("AdMob Interstitial loaded");
  		
- 		//asyncCommand = "showInterstitial";
  		if ((adMobInterstitial!=null) && (adMobInterstitial.IsLoaded()))
  		{
- 			addLog("AdMob interstitial loaded, showing...");
+ 			addLog("AdMob interstitial showing...");
 
     		adMobInterstitial.Show();
   		}
@@ -1292,7 +1295,7 @@ public class MainScript : MonoBehaviour
 
 	public void OnInterstitialOpened(object sender, EventArgs args)
 	{
-    	addLog("AdMob Interstitial opened");
+    	addLog("AdMob Interstitial shown");
 	}
 
 	public void OnInterstitialClosed(object sender, EventArgs args)
@@ -1335,12 +1338,11 @@ public class MainScript : MonoBehaviour
     
     public void OnRewardedAdLoaded(object sender, EventArgs args)
     {
-        addLog("Rewarded loaded");
+        addLog("AdMob Rewarded loaded");
  		
- 		//asyncCommand = "showRewarded";
  		if ((adMobRewardedAd!=null) && (adMobRewardedAd.IsLoaded()))
  		{
- 			addLog("AdMob rewarded loaded, showing...");
+ 			addLog("AdMob rewarded showing...");
 
     		adMobRewardedAd.Show();
   		}
@@ -1348,29 +1350,29 @@ public class MainScript : MonoBehaviour
 
     public void OnRewardedAdFailedToLoad(object sender, AdErrorEventArgs args)
     {
-        addLog("Rewarded failed: " + args.Message);
+        addLog("AdMob Rewarded failed: " + args.Message);
     }
 
     public void OnRewardedAdOpening(object sender, EventArgs args)
     {
-        addLog("Rewarded opening");
+        addLog("AdMob Rewarded shown");
     }
 
     public void OnRewardedAdFailedToShow(object sender, AdErrorEventArgs args)
     {
-        addLog("Rewarded failed to show: " + args.Message);
+        addLog("AdMob Rewarded failed to show: " + args.Message);
     }
 
     public void OnRewardedAdClosed(object sender, EventArgs args)
     {
-        addLog("Rewarded closed");
+        addLog("AdMob Rewarded closed");
     }
 
     public void OnUserEarnedReward(object sender, Reward args)
     {
         string type = args.Type;
         double amount = args.Amount;
-		addLog("Got " + amount.ToString() + " " + type);
+		addLog("AdMob Got " + amount.ToString() + " " + type);
     }
 	
     //=============================================================
