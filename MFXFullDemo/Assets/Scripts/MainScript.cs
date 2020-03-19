@@ -458,23 +458,23 @@ public class MainScript : MonoBehaviour
     	MobFox.CreateSingletone ( );
     
     	// set listeners:
-        MobFox.OnBannerReady          += onBannerLoaded;
-        MobFox.OnBannerError          += onBannerError;
-        MobFox.OnBannerShown          += onBannerShown;
-        MobFox.OnBannerClicked        += onBannerClicked;
-        MobFox.OnBannerFinished       += onBannerFinished;
-        MobFox.OnBannerClosed         += onBannerClosed;
+        MobFox.OnBannerReady          += onMobfoxBannerLoaded;
+        MobFox.OnBannerError          += onMobfoxBannerError;
+        MobFox.OnBannerShown          += onMobfoxBannerShown;
+        MobFox.OnBannerClicked        += onMobfoxBannerClicked;
+        MobFox.OnBannerFinished       += onMobfoxBannerFinished;
+        MobFox.OnBannerClosed         += onMobfoxBannerClosed;
         
-    	MobFox.OnInterstitialReady    += onInterLoaded;
-    	MobFox.OnInterstitialError    += onInterError;
-        MobFox.OnInterstitialShown    += onInterShown;
-        MobFox.OnInterstitialClicked  += onInterClicked;
-        MobFox.OnInterstitialFinished += onInterFinished;
-        MobFox.OnInterstitialClosed   += onInterClosed;
+    	MobFox.OnInterstitialReady    += onMobfoxInterLoaded;
+    	MobFox.OnInterstitialError    += onMobfoxInterError;
+        MobFox.OnInterstitialShown    += onMobfoxInterShown;
+        MobFox.OnInterstitialClicked  += onMobfoxInterClicked;
+        MobFox.OnInterstitialFinished += onMobfoxInterFinished;
+        MobFox.OnInterstitialClosed   += onMobfoxInterClosed;
 
-        MobFox.OnNativeReady          += onNativeReady;
-        MobFox.OnNativeError          += onNativeError;
-        MobFox.OnNativeClicked        += onNativeClicked;
+        MobFox.OnNativeReady          += onMobfoxNativeReady;
+        MobFox.OnNativeError          += onMobfoxNativeError;
+        MobFox.OnNativeClicked        += onMobfoxNativeClicked;
 
         MobFox.Instance.setDemoAge("32");
         MobFox.Instance.setDemoGender("male");
@@ -519,33 +519,33 @@ public class MainScript : MonoBehaviour
         
     //-------------------------------------------------------------
     
-    public void onBannerLoaded()
+    public void onMobfoxBannerLoaded()
     {
     	addLog("Mobfox banner loaded");
 	    showMobfoxBanner();
     }
 
-    public void onBannerError( string msg)
+    public void onMobfoxBannerError( string msg)
     {
     	addLog("Mobfox banner err: "+msg);
     }
 
-    public void onBannerShown()
+    public void onMobfoxBannerShown()
     {
     	addLog("Mobfox banner shown");
     }
 
-    public void onBannerClicked(string url)
+    public void onMobfoxBannerClicked(string url)
     {
     	addLog("Mobfox banner clicked");
     }
 
-    public void onBannerFinished()
+    public void onMobfoxBannerFinished()
     {
     	addLog("Mobfox banner finished");
     }
 
-    public void onBannerClosed()
+    public void onMobfoxBannerClosed()
     {
     	addLog("Mobfox banner closed");
     }
@@ -572,34 +572,34 @@ public class MainScript : MonoBehaviour
     
     //-------------------------------------------------------------
     
-    public void onInterLoaded()
+    public void onMobfoxInterLoaded()
     {
     	addLog("Mobfox interstitial loaded");
 
     	MobFox.Instance.ShowMobFoxInterstitial();
     }
     
-    public void onInterError( string msg)
+    public void onMobfoxInterError( string msg)
     {
     	addLog("Mobfox interstitial err: "+msg);
     }
 
-    public void onInterShown()
+    public void onMobfoxInterShown()
     {
     	addLog("Mobfox interstitial shown");
     }
 
-    public void onInterClicked(string url)
+    public void onMobfoxInterClicked(string url)
     {
     	addLog("Mobfox interstitial clicked");
     }
 
-    public void onInterFinished()
+    public void onMobfoxInterFinished()
     {
     	addLog("Mobfox interstitial finished");
     }
 
-    public void onInterClosed()
+    public void onMobfoxInterClosed()
     {
     	addLog("Mobfox interstitial closed");
     }
@@ -632,12 +632,12 @@ public class MainScript : MonoBehaviour
     
     //-------------------------------------------------------------
         
-    public void onNativeError( string msg)
+    public void onMobfoxNativeError( string msg)
     {
     	addLog("Mobfox native err: "+msg);
     }
 
-    public void onNativeReady(string msg)
+    public void onMobfoxNativeReady(string msg)
     {
     	addLog("Mobfox native loaded");
 
@@ -653,7 +653,7 @@ public class MainScript : MonoBehaviour
 		MySetImage(nativeMainImage,   nativeInfo.mainImageUrl);
   	}
     
-    public void onNativeClicked()
+    public void onMobfoxNativeClicked()
     {
     	addLog("Mobfox native clicked");
     }
@@ -725,28 +725,28 @@ public class MainScript : MonoBehaviour
         // register for initialized callback event in the app
         MoPubManager.OnSdkInitializedEvent += OnSdkInitializedEvent;
         
-        MoPubManager.OnAdLoadedEvent       += OnAdLoadedEvent;
-        MoPubManager.OnAdFailedEvent       += OnAdFailedEvent;
-        MoPubManager.OnAdClickedEvent      += OnAdClickedEvent;
-        MoPubManager.OnAdExpandedEvent     += OnAdExpandedEvent;
-        MoPubManager.OnAdCollapsedEvent    += OnAdCollapsedEvent;
+        MoPubManager.OnAdLoadedEvent       += onMoPobBannerLoadedEvent;
+        MoPubManager.OnAdFailedEvent       += onMoPobBannerFailedEvent;
+        MoPubManager.OnAdClickedEvent      += onMoPobBannerClickedEvent;
+        MoPubManager.OnAdExpandedEvent     += onMoPobBannerExpandedEvent;
+        MoPubManager.OnAdCollapsedEvent    += onMoPobBannerCollapsedEvent;
 
-        MoPubManager.OnInterstitialLoadedEvent    += OnInterstitialLoadedEvent;
-        MoPubManager.OnInterstitialFailedEvent    += OnInterstitialFailedEvent;
-        MoPubManager.OnInterstitialDismissedEvent += OnInterstitialDismissedEvent;
-        MoPubManager.OnInterstitialExpiredEvent   += OnInterstitialExpiredEvent;
-        MoPubManager.OnInterstitialShownEvent     += OnInterstitialShownEvent;
-        MoPubManager.OnInterstitialClickedEvent   += OnInterstitialClickedEvent;
+        MoPubManager.OnInterstitialLoadedEvent    += onMoPobInterstitialLoadedEvent;
+        MoPubManager.OnInterstitialFailedEvent    += onMoPobInterstitialFailedEvent;
+        MoPubManager.OnInterstitialDismissedEvent += onMoPobInterstitialDismissedEvent;
+        MoPubManager.OnInterstitialExpiredEvent   += onMoPobInterstitialExpiredEvent;
+        MoPubManager.OnInterstitialShownEvent     += onMoPobInterstitialShownEvent;
+        MoPubManager.OnInterstitialClickedEvent   += onMoPobInterstitialClickedEvent;
         
-        MoPubManager.OnRewardedVideoLoadedEvent             += OnRewardedVideoLoadedEvent;
-        MoPubManager.OnRewardedVideoFailedEvent             += OnRewardedVideoFailedEvent;
-        MoPubManager.OnRewardedVideoExpiredEvent            += OnRewardedVideoExpiredEvent;
-        MoPubManager.OnRewardedVideoShownEvent              += OnRewardedVideoShownEvent;
-        MoPubManager.OnRewardedVideoClickedEvent            += OnRewardedVideoClickedEvent;
-        MoPubManager.OnRewardedVideoFailedToPlayEvent       += OnRewardedVideoFailedToPlayEvent;
-        MoPubManager.OnRewardedVideoReceivedRewardEvent     += OnRewardedVideoReceivedRewardEvent;
-        MoPubManager.OnRewardedVideoClosedEvent             += OnRewardedVideoClosedEvent;
-        MoPubManager.OnRewardedVideoLeavingApplicationEvent += OnRewardedVideoLeavingApplicationEvent;
+        MoPubManager.OnRewardedVideoLoadedEvent             += onMoPobRewardedVideoLoadedEvent;
+        MoPubManager.OnRewardedVideoFailedEvent             += onMoPobRewardedVideoFailedEvent;
+        MoPubManager.OnRewardedVideoExpiredEvent            += onMoPobRewardedVideoExpiredEvent;
+        MoPubManager.OnRewardedVideoShownEvent              += onMoPobRewardedVideoShownEvent;
+        MoPubManager.OnRewardedVideoClickedEvent            += onMoPobRewardedVideoClickedEvent;
+        MoPubManager.OnRewardedVideoFailedToPlayEvent       += onMoPobRewardedVideoFailedToPlayEvent;
+        MoPubManager.OnRewardedVideoReceivedRewardEvent     += onMoPobRewardedVideoReceivedRewardEvent;
+        MoPubManager.OnRewardedVideoClosedEvent             += onMoPobRewardedVideoClosedEvent;
+        MoPubManager.OnRewardedVideoLeavingApplicationEvent += onMoPobRewardedVideoLeavingApplicationEvent;
 
         MoPub.SdkConfiguration mopConfig = new MoPub.SdkConfiguration ();
         mopConfig.LogLevel = MoPub.LogLevel.Debug;
@@ -868,31 +868,31 @@ public class MainScript : MonoBehaviour
 
     //------------------------------------------------------------
         
-    void OnAdLoadedEvent(string adUnitId, float height)
+    void onMoPobBannerLoadedEvent(string adUnitId, float height)
     {    
 		addLog("MoPub banner loaded");
 
     	showMoPubBanner();
     }
     
-    void OnAdFailedEvent(string adUnitId, string errMsg)
+    void onMoPobBannerFailedEvent(string adUnitId, string errMsg)
     {
 		addLog("MoPub banner load err: "+errMsg);
 
     	showMoPubBanner();
     }
 
-    void OnAdClickedEvent(string adUnitId)
+    void onMoPobBannerClickedEvent(string adUnitId)
     {
 		addLog("MoPub banner clicked");
     }
 
-    void OnAdExpandedEvent(string adUnitId)
+    void onMoPobBannerExpandedEvent(string adUnitId)
     {
 		addLog("MoPub banner ad expanded");
     }
 
-    void OnAdCollapsedEvent(string adUnitId)
+    void onMoPobBannerCollapsedEvent(string adUnitId)
     {
 		addLog("MoPub banner ad collapsed");
     }
@@ -919,34 +919,34 @@ public class MainScript : MonoBehaviour
 	
     //-------------------------------------------------------------
     
-    void OnInterstitialLoadedEvent (string adUnitId)
+    void onMoPobInterstitialLoadedEvent (string adUnitId)
     {
 		addLog("MoPub interstitial loaded");
 
  		MoPub.ShowInterstitialAd (adUnitId);
     }
 
-	void OnInterstitialFailedEvent (string adUnitId, string errorCode)
+	void onMoPobInterstitialFailedEvent (string adUnitId, string errorCode)
     {
 		addLog("MoPub interstitial error: "+errorCode);
     }
 
-	void OnInterstitialDismissedEvent (string adUnitId)
+	void onMoPobInterstitialDismissedEvent (string adUnitId)
     {
 		addLog("MoPub interstitial loaded");
     }
 
-	void OnInterstitialExpiredEvent (string adUnitId)
+	void onMoPobInterstitialExpiredEvent (string adUnitId)
     {
 		addLog("MoPub interstitial expired");
     }
 
-	void OnInterstitialShownEvent (string adUnitId)
+	void onMoPobInterstitialShownEvent (string adUnitId)
     {
 		addLog("MoPub interstitial shown");
     }
 
-	void OnInterstitialClickedEvent (string adUnitId)
+	void onMoPobInterstitialClickedEvent (string adUnitId)
     {
 		addLog("MoPub interstitial clicked");
     }
@@ -964,49 +964,49 @@ public class MainScript : MonoBehaviour
     
     //-------------------------------------------------------------
     
-	void OnRewardedVideoLoadedEvent (string adUnitId)
+	void onMoPobRewardedVideoLoadedEvent (string adUnitId)
     {
 		addLog("MoPub rewarded loaded");
 
 		MoPub.ShowRewardedVideo(adUnitId);
     }
 
-	void OnRewardedVideoFailedEvent (string adUnitId, string errorMsg)
+	void onMoPobRewardedVideoFailedEvent (string adUnitId, string errorMsg)
     {
 		addLog("MoPub rewarded load failed: "+errorMsg);
     }
 
-	void OnRewardedVideoExpiredEvent (string adUnitId)
+	void onMoPobRewardedVideoExpiredEvent (string adUnitId)
     {
 		addLog("MoPub rewarded expired");
     }
 
-	void OnRewardedVideoShownEvent (string adUnitId)
+	void onMoPobRewardedVideoShownEvent (string adUnitId)
     {
 		addLog("MoPub rewarded shown");
     }
 
-	void OnRewardedVideoClickedEvent (string adUnitId)
+	void onMoPobRewardedVideoClickedEvent (string adUnitId)
     {
 		addLog("MoPub rewarded clicked");
     }
 
-	void OnRewardedVideoFailedToPlayEvent (string adUnitId, string errorMsg)
+	void onMoPobRewardedVideoFailedToPlayEvent (string adUnitId, string errorMsg)
     {
 		addLog("MoPub rewarded play failed: "+errorMsg);
     }
 
-	void OnRewardedVideoReceivedRewardEvent (string adUnitId, string label, float amount)
+	void onMoPobRewardedVideoReceivedRewardEvent (string adUnitId, string label, float amount)
     {
 		addLog("MoPub received reward: "+amount+" "+label);
     }
 
-	void OnRewardedVideoClosedEvent (string adUnitId)
+	void onMoPobRewardedVideoClosedEvent (string adUnitId)
     {
 		addLog("MoPub rewarded closed");
     }
 
-	void OnRewardedVideoLeavingApplicationEvent (string adUnitId)
+	void onMoPobRewardedVideoLeavingApplicationEvent (string adUnitId)
     {
 		addLog("MoPub rewarded leaving app");
     }
@@ -1129,15 +1129,15 @@ public class MainScript : MonoBehaviour
         adMobBannerView = new BannerView(AdMobBannerHash, AdSize.Banner, 40, 130);
 
         // Called when an ad request has successfully loaded.
-        adMobBannerView.OnAdLoaded += HandleOnAdLoaded;
+        adMobBannerView.OnAdLoaded += onAdMobBannerLoaded;
         // Called when an ad request failed to load.
-        adMobBannerView.OnAdFailedToLoad += HandleOnAdFailedToLoad;
+        adMobBannerView.OnAdFailedToLoad += onAdMobBannerFailedToLoad;
         // Called when an ad is clicked.
-        adMobBannerView.OnAdOpening += HandleOnAdOpened;
+        adMobBannerView.OnAdOpening += onAdMobBannerOpened;
         // Called when the user returned from the app after an ad click.
-        adMobBannerView.OnAdClosed += HandleOnAdClosed;
+        adMobBannerView.OnAdClosed += onAdMobBannerClosed;
         // Called when the ad click caused the user to leave the application.
-        adMobBannerView.OnAdLeavingApplication += HandleOnAdLeavingApplication;
+        adMobBannerView.OnAdLeavingApplication += onAdMobBannerLeavingApplication;
 
         // Load the banner with the request.
         adMobBannerView.LoadAd(CreateAdRequest());
@@ -1152,15 +1152,15 @@ public class MainScript : MonoBehaviour
         adMobBannerView = new BannerView(AdMobBannerHash, AdSize.MediumRectangle, 50, 130);
 
         // Called when an ad request has successfully loaded.
-        adMobBannerView.OnAdLoaded += HandleOnAdLoaded;
+        adMobBannerView.OnAdLoaded += onAdMobBannerLoaded;
         // Called when an ad request failed to load.
-        adMobBannerView.OnAdFailedToLoad += HandleOnAdFailedToLoad;
+        adMobBannerView.OnAdFailedToLoad += onAdMobBannerFailedToLoad;
         // Called when an ad is clicked.
-        adMobBannerView.OnAdOpening += HandleOnAdOpened;
+        adMobBannerView.OnAdOpening += onAdMobBannerOpened;
         // Called when the user returned from the app after an ad click.
-        adMobBannerView.OnAdClosed += HandleOnAdClosed;
+        adMobBannerView.OnAdClosed += onAdMobBannerClosed;
         // Called when the ad click caused the user to leave the application.
-        adMobBannerView.OnAdLeavingApplication += HandleOnAdLeavingApplication;
+        adMobBannerView.OnAdLeavingApplication += onAdMobBannerLeavingApplication;
 
         // Load the banner with the request.
         adMobBannerView.LoadAd(CreateAdRequest());
@@ -1175,15 +1175,15 @@ public class MainScript : MonoBehaviour
         adMobBannerView = new BannerView(AdMobBannerVideoInvh, AdSize.MediumRectangle, 50, 130);
 
         // Called when an ad request has successfully loaded.
-        adMobBannerView.OnAdLoaded += HandleOnAdLoaded;
+        adMobBannerView.OnAdLoaded += onAdMobBannerLoaded;
         // Called when an ad request failed to load.
-        adMobBannerView.OnAdFailedToLoad += HandleOnAdFailedToLoad;
+        adMobBannerView.OnAdFailedToLoad += onAdMobBannerFailedToLoad;
         // Called when an ad is clicked.
-        adMobBannerView.OnAdOpening += HandleOnAdOpened;
+        adMobBannerView.OnAdOpening += onAdMobBannerOpened;
         // Called when the user returned from the app after an ad click.
-        adMobBannerView.OnAdClosed += HandleOnAdClosed;
+        adMobBannerView.OnAdClosed += onAdMobBannerClosed;
         // Called when the ad click caused the user to leave the application.
-        adMobBannerView.OnAdLeavingApplication += HandleOnAdLeavingApplication;
+        adMobBannerView.OnAdLeavingApplication += onAdMobBannerLeavingApplication;
 
         // Load the banner with the request.
         adMobBannerView.LoadAd(CreateAdRequest());
@@ -1191,31 +1191,31 @@ public class MainScript : MonoBehaviour
 	
     //------------------------------------------------------------
 
-    public void HandleOnAdLoaded(object sender, EventArgs args)
+    public void onAdMobBannerLoaded(object sender, EventArgs args)
     {
 		addLog("AdMob Banner loaded");
 
 		showAdMobBanner();    	
     }
 
-    public void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
+    public void onAdMobBannerFailedToLoad(object sender, AdFailedToLoadEventArgs args)
     {
 		addLog("AdMob Banner error: "+args.Message);
 
     	showAdMobBanner();
     }
 
-    public void HandleOnAdOpened(object sender, EventArgs args)
+    public void onAdMobBannerOpened(object sender, EventArgs args)
     {
 		addLog("AdMob Banner clicked");
     }
 
-    public void HandleOnAdClosed(object sender, EventArgs args)
+    public void onAdMobBannerClosed(object sender, EventArgs args)
     {
 		addLog("AdMob Banner closed");
     }
 
-    public void HandleOnAdLeavingApplication(object sender, EventArgs args)
+    public void onAdMobBannerLeavingApplication(object sender, EventArgs args)
     {
 		addLog("AdMob Banner clicked");
     }
@@ -1232,15 +1232,15 @@ public class MainScript : MonoBehaviour
     	adMobInterstitial = new InterstitialAd(AdMobInterstitialHash);
     
         // Called when an ad request has successfully loaded.
-    	adMobInterstitial.OnAdLoaded += OnInterstitialLoadedEvent;
+    	adMobInterstitial.OnAdLoaded += onAdMobInterstitialLoadedEvent;
     	// Called when an ad request failed to load.
-    	adMobInterstitial.OnAdFailedToLoad += OnInterstitialFailedEvent;
+    	adMobInterstitial.OnAdFailedToLoad += onAdMobInterstitialFailedEvent;
     	// Called when an ad is shown.
-    	adMobInterstitial.OnAdOpening += OnInterstitialOpened;
+    	adMobInterstitial.OnAdOpening += onAdMobInterstitialOpened;
     	// Called when the ad is closed.
-    	adMobInterstitial.OnAdClosed += OnInterstitialClosed;
+    	adMobInterstitial.OnAdClosed += onAdMobInterstitialClosed;
     	// Called when the ad click caused the user to leave the application.
-    	adMobInterstitial.OnAdLeavingApplication += OnInterstitialLeavingApplication;
+    	adMobInterstitial.OnAdLeavingApplication += onAdMobInterstitialLeavingApplication;
   
     	// Load the interstitial with the request.
     	adMobInterstitial.LoadAd(CreateAdRequest());
@@ -1256,15 +1256,15 @@ public class MainScript : MonoBehaviour
     	adMobInterstitial = new InterstitialAd(AdMobInterVideoInvh);
     
         // Called when an ad request has successfully loaded.
-    	adMobInterstitial.OnAdLoaded += OnInterstitialLoadedEvent;
+    	adMobInterstitial.OnAdLoaded += onAdMobInterstitialLoadedEvent;
     	// Called when an ad request failed to load.
-    	adMobInterstitial.OnAdFailedToLoad += OnInterstitialFailedEvent;
+    	adMobInterstitial.OnAdFailedToLoad += onAdMobInterstitialFailedEvent;
     	// Called when an ad is shown.
-    	adMobInterstitial.OnAdOpening += OnInterstitialOpened;
+    	adMobInterstitial.OnAdOpening += onAdMobInterstitialOpened;
     	// Called when the ad is closed.
-    	adMobInterstitial.OnAdClosed += OnInterstitialClosed;
+    	adMobInterstitial.OnAdClosed += onAdMobInterstitialClosed;
     	// Called when the ad click caused the user to leave the application.
-    	adMobInterstitial.OnAdLeavingApplication += OnInterstitialLeavingApplication;
+    	adMobInterstitial.OnAdLeavingApplication += onAdMobInterstitialLeavingApplication;
   
     	// Load the interstitial with the request.
     	adMobInterstitial.LoadAd(CreateAdRequest());
@@ -1272,7 +1272,7 @@ public class MainScript : MonoBehaviour
 	
     //-------------------------------------------------------------
     
-    void OnInterstitialLoadedEvent(object sender, EventArgs args)
+    public void onAdMobInterstitialLoadedEvent(object sender, EventArgs args)
     {
 		addLog("AdMob Interstitial loaded");
  		
@@ -1285,22 +1285,22 @@ public class MainScript : MonoBehaviour
   		}
     }
 
-	void OnInterstitialFailedEvent (object sender, AdFailedToLoadEventArgs args)
+	public void onAdMobInterstitialFailedEvent (object sender, AdFailedToLoadEventArgs args)
     {
 		addLog("AdMob Interstitial error: "+args.Message);
     }
 
-	public void OnInterstitialOpened(object sender, EventArgs args)
+	public void onAdMobInterstitialOpened(object sender, EventArgs args)
 	{
     	addLog("AdMob Interstitial opened");
 	}
 
-	public void OnInterstitialClosed(object sender, EventArgs args)
+	public void onAdMobInterstitialClosed(object sender, EventArgs args)
 	{
     	addLog("AdMob Interstitial closed");
 	}
 
-	public void OnInterstitialLeavingApplication(object sender, EventArgs args)
+	public void onAdMobInterstitialLeavingApplication(object sender, EventArgs args)
 	{
     	addLog("AdMob Interstitial clicked");
 	}
@@ -1316,24 +1316,24 @@ public class MainScript : MonoBehaviour
 		adMobRewardedAd = new RewardedAd(AdMobRewardedHash);
 
         // Called when an ad request has successfully loaded.
-        adMobRewardedAd.OnAdLoaded += OnRewardedAdLoaded;
+        adMobRewardedAd.OnAdLoaded += onAdMobRewardedAdLoaded;
         // Called when an ad request failed to load.
-        adMobRewardedAd.OnAdFailedToLoad += OnRewardedAdFailedToLoad;
+        adMobRewardedAd.OnAdFailedToLoad += onAdMobRewardedAdFailedToLoad;
         // Called when an ad is shown.
-        adMobRewardedAd.OnAdOpening += OnRewardedAdOpening;
+        adMobRewardedAd.OnAdOpening += onAdMobRewardedAdOpening;
         // Called when an ad request failed to show.
-        adMobRewardedAd.OnAdFailedToShow += OnRewardedAdFailedToShow;
+        adMobRewardedAd.OnAdFailedToShow += onAdMobRewardedAdFailedToShow;
         // Called when the user should be rewarded for interacting with the ad.
-        adMobRewardedAd.OnUserEarnedReward += OnUserEarnedReward;
+        adMobRewardedAd.OnUserEarnedReward += onAdMobUserEarnedReward;
         // Called when the ad is closed.
-        adMobRewardedAd.OnAdClosed += OnRewardedAdClosed;
+        adMobRewardedAd.OnAdClosed += onAdMobRewardedAdClosed;
 
 		adMobRewardedAd.LoadAd(CreateAdRequest());
 	}
 
     //-------------------------------------------------------------
     
-    public void OnRewardedAdLoaded(object sender, EventArgs args)
+    public void onAdMobRewardedAdLoaded(object sender, EventArgs args)
     {
         addLog("Rewarded loaded");
  		
@@ -1346,27 +1346,27 @@ public class MainScript : MonoBehaviour
   		}
     }
 
-    public void OnRewardedAdFailedToLoad(object sender, AdErrorEventArgs args)
+    public void onAdMobRewardedAdFailedToLoad(object sender, AdErrorEventArgs args)
     {
         addLog("Rewarded failed: " + args.Message);
     }
 
-    public void OnRewardedAdOpening(object sender, EventArgs args)
+    public void onAdMobRewardedAdOpening(object sender, EventArgs args)
     {
         addLog("Rewarded opening");
     }
 
-    public void OnRewardedAdFailedToShow(object sender, AdErrorEventArgs args)
+    public void onAdMobRewardedAdFailedToShow(object sender, AdErrorEventArgs args)
     {
         addLog("Rewarded failed to show: " + args.Message);
     }
 
-    public void OnRewardedAdClosed(object sender, EventArgs args)
+    public void onAdMobRewardedAdClosed(object sender, EventArgs args)
     {
         addLog("Rewarded closed");
     }
 
-    public void OnUserEarnedReward(object sender, Reward args)
+    public void onAdMobUserEarnedReward(object sender, Reward args)
     {
         string type = args.Type;
         double amount = args.Amount;
@@ -1388,8 +1388,8 @@ public class MainScript : MonoBehaviour
     	AdLoader adLoader = new AdLoader.Builder(AdMobNativeInvh)
         	.ForUnifiedNativeAd()
         	.Build();
-    	adLoader.OnUnifiedNativeAdLoaded += this.HandleUnifiedNativeAdLoaded;
-    	adLoader.OnAdFailedToLoad += this.HandleNativeAdFailedToLoad;
+    	adLoader.OnUnifiedNativeAdLoaded += this.onAdMobUnifiedNativeAdLoaded;
+    	adLoader.OnAdFailedToLoad += this.onAdMobNativeAdFailedToLoad;
     	adLoader.LoadAd(CreateAdRequest());
 	}
 
@@ -1402,12 +1402,12 @@ public class MainScript : MonoBehaviour
 
     //-------------------------------------------------------------
 
-	private void HandleNativeAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
+	private void onAdMobNativeAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
 	{
 		addLog("AdMob native err: " + args.Message);
 	}
 
-	private void HandleUnifiedNativeAdLoaded(object sender, UnifiedNativeAdEventArgs args)
+	private void onAdMobUnifiedNativeAdLoaded(object sender, UnifiedNativeAdEventArgs args)
 	{
 		addLog("AdMob native loaded");
 
