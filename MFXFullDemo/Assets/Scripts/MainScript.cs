@@ -713,7 +713,7 @@ public class MainScript : MonoBehaviour
 	private string MoPubInterstitialInventoryHash = "6aee1c416d44412ca9978b4355902d3f";	// Test iOS App / iOS Inter html
 	private string MoPubInterVideoInvh            = "a5277fa1fd57418b867cfaa949df3b4a";	// Test iOS App / Fullscreen Ad-demoApp
 	private string MoPubRewardedInventoryHash     = "e3d4c8701d4547e68e8f837fa4fe5122";	// Test iOS App / iOS Rewarded
-    private string MoPubNativeInvh                = "ac0f139a2d9544fface76d06e27bc02a"; // "97ea9854b278483bb455c899002a3f79"; // Test iOS App / Native Ad
+    private string MoPubNativeInvh                = "ac0f139a2d9544fface76d06e27bc02a"; // Test iOS App / Native Ad
 #endif
 
 	private string mCurrentMoPubBannerHash = null;
