@@ -12,6 +12,9 @@ public class MobFox :MonoBehaviour
 	[DllImport ( "__Internal" )]
 	public static extern void _showMessage (string message);
 
+	[DllImport ( "__Internal" )]
+	public static extern string _getSDKVersion ();
+
 
 	[DllImport ( "__Internal" )]
 	public static extern void _setCOPPA (bool subjectToCOPPA);
@@ -290,7 +293,16 @@ public class MobFox :MonoBehaviour
 	
 	public string getUnityPluginVersion()
 	{
-		return "4.1.6.1";
+		return "4.1.6.2";
+	}
+	
+	public string getNativeSDKVersion()
+	{
+#if UNITY_IOS
+		return getSDKVersion_iPhone();
+#else
+		return getSDKVersion_Android();
+#endif
 	}
 	
 	//======================================================================================
@@ -298,6 +310,15 @@ public class MobFox :MonoBehaviour
 	//======================================================================================
 
 #if UNITY_IOS
+
+	//-------------------------------------------
+	
+	private string getSDKVersion_iPhone ()
+	{
+		return _getSDKVersion();
+	}
+
+	//-------------------------------------------
 
 	private void setCOPPA_iPhone (bool subjectToCOPPA)
 	{
@@ -510,6 +531,13 @@ public class MobFox :MonoBehaviour
 	//======================================================================================
 	//======  Android functions                                                       ======
 	//======================================================================================
+
+	private string getSDKVersion_Android ()
+	{
+		return "4.1.6";
+	}
+
+	//-------------------------------------------
 
 	private void setCOPPA_Android (bool subjectToCOPPA)
 	{

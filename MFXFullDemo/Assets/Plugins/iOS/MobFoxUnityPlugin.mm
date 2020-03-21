@@ -55,6 +55,17 @@ extern "C"
     NSLog(@"dbg: ### MobFoxUnityPlugin >> log(%@)",message);
 }
 
+-(char*) getSDKVersion
+{
+	NSString* nsVer = [MobFoxSDK sdkVersion];
+	char*     cVer  = (char*)[nsVer UTF8String];
+    if (cVer == NULL) return NULL;
+
+	char* res = (char*)malloc(strlen(cVer) + 1);
+    strcpy(res, cVer);
+	return res;
+}
+
 //======================================================================================
 //======  G L O B A L                                                             ======
 //======================================================================================
@@ -486,6 +497,16 @@ extern "C"
     	[plugin showMessage:[NSString stringWithUTF8String:val]];
     }
     
+    char* _getSDKVersion() {
+    
+    	char* ver = "Unknown";
+    	if (plugin != NULL)
+    	{
+    		ver = [plugin getSDKVersion];
+    	}
+        return ver;
+    }
+
     //----------------------------------------------------------------------
     
     void _setCOPPA(bool subjectToCOPPA){

@@ -75,6 +75,7 @@ public class MainScript : MonoBehaviour
         updateButtons();
         
         addLog("Unity plugin version: "+MobFox.Instance.getUnityPluginVersion());
+        addLog("Mobfox SDK version: "+MobFox.Instance.getNativeSDKVersion());
     }
 
     // Update is called once per frame

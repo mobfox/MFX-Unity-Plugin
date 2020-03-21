@@ -14,6 +14,7 @@
 
 -(void) showMessage:(NSString*)message;
 
+-(char*) getSDKVersion;
 
 -(void) setDemoAge:(NSString*)val;
 -(void) setDemoGender:(NSString*)val;
