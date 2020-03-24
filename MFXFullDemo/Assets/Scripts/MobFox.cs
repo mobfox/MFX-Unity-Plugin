@@ -293,7 +293,7 @@ public class MobFox :MonoBehaviour
 	
 	public string getUnityPluginVersion()
 	{
-		return "4.1.6.2";
+		return "4.1.7";
 	}
 	
 	public string getNativeSDKVersion()
@@ -534,7 +534,7 @@ public class MobFox :MonoBehaviour
 
 	private string getSDKVersion_Android ()
 	{
-		return "4.1.6";
+		return PluginInstance.Call<string>("getSdkVersion");
 	}
 
 	//-------------------------------------------

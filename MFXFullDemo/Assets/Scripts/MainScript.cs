@@ -83,6 +83,25 @@ public class MainScript : MonoBehaviour
     {
     	if (asyncMoPubCommand!=null)
     	{
+    	    if (asyncMoPubCommand == "startMoPubSmallBanner")
+    		{	
+	    		reallyStartMoPubSmallBanner();
+    			asyncMoPubCommand = null;
+    			return;
+    		}
+    	    if (asyncMoPubCommand == "startMoPubLargeBanner")
+    		{	
+	    		reallyStartMoPubLargeBanner();
+    			asyncMoPubCommand = null;
+    			return;
+    		}
+    	    if (asyncMoPubCommand == "startMoPubVideoBanner")
+    		{	
+	    		reallyStartMoPubVideoBanner();
+    			asyncMoPubCommand = null;
+    			return;
+    		}
+
     		if (asyncMoPubCommand == "showMoPubInterstitial")
     		{	
     			if (asyncMoPubParam!=null)
@@ -184,35 +203,31 @@ public class MainScript : MonoBehaviour
     public void clearAllAds()
     {
     	lblLog.text = "";
-    
-    	hideMobfoxBanner();
-    	hideMobfoxNative();
-    	
-    	hideMoPubBanner();
-    	
-    	hideAdMobBanner();
-    	
+
     	// clear all native fields:
 		MySetText(nativeTitle,        null);
 		MySetText(nativeDescription,  null);
 		MySetText(nativeCallToAction, null);
 		MySetText(nativeRating,       null);
 		MySetText(nativeSponsored,    null);
-
 		MySetImage(nativeIcon,        null);
 		MySetImage(nativeMainImage,   null);
-		
+    	hideMobfoxNative();
+    	    	    	
 		// release all ads
+    	hideMobfoxBanner();
 		MobFox.Instance.ReleaseMobFoxBanner();
 		MobFox.Instance.ReleaseMobFoxInterstitial();
 		MobFox.Instance.ReleaseMobFoxNative();
-		
+
     	if (mCurrentMoPubBannerHash!=null)
     	{
-			MoPub.DestroyBanner(mCurrentMoPubBannerHash);
+//	  		MoPub.ShowBanner (mCurrentMoPubBannerHash, false);   // hides the banner
+	  		MoPub.DestroyBanner (mCurrentMoPubBannerHash);
 			mCurrentMoPubBannerHash = null;
     	}
 
+    	hideAdMobBanner();
     	if (adMobBannerView!=null)
     	{
     		adMobBannerView.Destroy();
@@ -823,19 +838,11 @@ public class MainScript : MonoBehaviour
 
     //============================================================
     
-    public void hideMoPubBanner()
+    public void showMoPubBanner(string adUnitId)
     {
-    	if (mCurrentMoPubBannerHash!=null)
+    	if (adUnitId!=null)
     	{
-	  		MoPub.ShowBanner (mCurrentMoPubBannerHash, false);   // hides the banner
-    	}
-  	}
-    
-    public void showMoPubBanner()
-    {
-    	if (mCurrentMoPubBannerHash!=null)
-    	{
-	  		MoPub.ShowBanner (mCurrentMoPubBannerHash, true);   // shows the banner
+	  		MoPub.ShowBanner (adUnitId, true);   // shows the banner
     	}
     }
     
@@ -843,28 +850,42 @@ public class MainScript : MonoBehaviour
     
     private void startMoPubSmallBanner()
     {
-	    clearAllAds();
+		clearAllAds();
+    	asyncMoPubCommand = "startMoPubSmallBanner";
+	}
+	
+    private void startMoPubLargeBanner()
+    {
+		clearAllAds();
+    	asyncMoPubCommand = "startMoPubLargeBanner";
+	}
+	
+    private void startMoPubVideoBanner()
+    {
+		clearAllAds();
+    	asyncMoPubCommand = "startMoPubVideoBanner";
+	}
 
+	//------------------------------------------------------------
+	
+	private void reallyStartMoPubSmallBanner()
+	{
 		mCurrentMoPubBannerHash = MoPubBannerInventoryHash;
     	MoPub.RequestBanner(mCurrentMoPubBannerHash, MoPub.AdPosition.BottomCenter, MoPub.MaxAdSize.Width320Height50);
 
 		addLog("Loading MoPub banner");
     }
     
-    private void startMoPubLargeBanner()
+    private void reallyStartMoPubLargeBanner()
 	{
-	    clearAllAds();
-
 		mCurrentMoPubBannerHash = MoPubBannerLargeInvh;
     	MoPub.RequestBanner(mCurrentMoPubBannerHash, MoPub.AdPosition.BottomCenter, MoPub.MaxAdSize.Width300Height250);
 
 		addLog("Loading MoPub banner");
 	}
 	
-	private void startMoPubVideoBanner()
+	private void reallyStartMoPubVideoBanner()
 	{
-	    clearAllAds();
-
 		mCurrentMoPubBannerHash = MoPubBannerVideoInvh;
     	MoPub.RequestBanner(mCurrentMoPubBannerHash, MoPub.AdPosition.BottomCenter, MoPub.MaxAdSize.Width300Height250);
 
@@ -877,14 +898,14 @@ public class MainScript : MonoBehaviour
     {    
 		addLog("MoPub banner loaded");
 
-    	showMoPubBanner();
+    	showMoPubBanner(adUnitId);
     }
     
     void OnAdFailedEvent(string adUnitId, string errMsg)
     {
 		addLog("MoPub banner load err: "+errMsg);
 
-    	showMoPubBanner();
+    	showMoPubBanner(adUnitId);
     }
 
     void OnAdClickedEvent(string adUnitId)
