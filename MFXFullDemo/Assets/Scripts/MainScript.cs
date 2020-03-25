@@ -83,25 +83,6 @@ public class MainScript : MonoBehaviour
     {
     	if (asyncMoPubCommand!=null)
     	{
-    	    if (asyncMoPubCommand == "startMoPubSmallBanner")
-    		{	
-	    		reallyStartMoPubSmallBanner();
-    			asyncMoPubCommand = null;
-    			return;
-    		}
-    	    if (asyncMoPubCommand == "startMoPubLargeBanner")
-    		{	
-	    		reallyStartMoPubLargeBanner();
-    			asyncMoPubCommand = null;
-    			return;
-    		}
-    	    if (asyncMoPubCommand == "startMoPubVideoBanner")
-    		{	
-	    		reallyStartMoPubVideoBanner();
-    			asyncMoPubCommand = null;
-    			return;
-    		}
-
     		if (asyncMoPubCommand == "showMoPubInterstitial")
     		{	
     			if (asyncMoPubParam!=null)
@@ -139,6 +120,23 @@ public class MainScript : MonoBehaviour
     	}
     }
     
+    void OnApplicationQuit()
+    {
+    	// destroy MoPub banners:
+    	if (mCurrentMoPubSmallBannerHash != null)
+    	{
+    		MoPub.DestroyBanner(mCurrentMoPubSmallBannerHash);
+    	}
+    	if (mCurrentMoPubLargeBannerHash != null)
+    	{
+    		MoPub.DestroyBanner(mCurrentMoPubLargeBannerHash);
+    	}
+    	if (mCurrentMoPubVideoBannerHash != null)
+    	{
+    		MoPub.DestroyBanner(mCurrentMoPubVideoBannerHash);
+    	}
+    }
+
     //------------------------------------------------------------
     
     private void updateButtons()
@@ -220,11 +218,17 @@ public class MainScript : MonoBehaviour
 		MobFox.Instance.ReleaseMobFoxInterstitial();
 		MobFox.Instance.ReleaseMobFoxNative();
 
-    	if (mCurrentMoPubBannerHash!=null)
+		if (mCurrentMoPubSmallBannerHash != null)
     	{
-//	  		MoPub.ShowBanner (mCurrentMoPubBannerHash, false);   // hides the banner
-	  		MoPub.DestroyBanner (mCurrentMoPubBannerHash);
-			mCurrentMoPubBannerHash = null;
+    		hideMoPubBanner(mCurrentMoPubSmallBannerHash);
+    	}
+    	if (mCurrentMoPubLargeBannerHash != null)
+    	{
+    		hideMoPubBanner(mCurrentMoPubLargeBannerHash);
+    	}
+    	if (mCurrentMoPubVideoBannerHash != null)
+    	{
+    		hideMoPubBanner(mCurrentMoPubVideoBannerHash);
     	}
 
     	hideAdMobBanner();
@@ -732,7 +736,9 @@ public class MainScript : MonoBehaviour
     private string MoPubNativeInvh                = "ac0f139a2d9544fface76d06e27bc02a"; // Test iOS App / Native Ad
 #endif
 
-	private string mCurrentMoPubBannerHash = null;
+	private string mCurrentMoPubSmallBannerHash = null;
+	private string mCurrentMoPubLargeBannerHash = null;
+	private string mCurrentMoPubVideoBannerHash = null;
 
     //=============================================================
     
@@ -838,11 +844,20 @@ public class MainScript : MonoBehaviour
 
     //============================================================
     
+    public void hideMoPubBanner(string adUnitId)
+    {
+    	if (adUnitId!=null)
+    	{
+	  		MoPub.ShowBanner(adUnitId, false);
+    		MoPub.SetAutorefresh(adUnitId, false);
+    	}
+    }
+    
     public void showMoPubBanner(string adUnitId)
     {
     	if (adUnitId!=null)
     	{
-	  		MoPub.ShowBanner (adUnitId, true);   // shows the banner
+	  		MoPub.ShowBanner (adUnitId, true);
     	}
     }
     
@@ -851,45 +866,58 @@ public class MainScript : MonoBehaviour
     private void startMoPubSmallBanner()
     {
 		clearAllAds();
-    	asyncMoPubCommand = "startMoPubSmallBanner";
+		
+        if (mCurrentMoPubSmallBannerHash == null)
+    	{
+			mCurrentMoPubSmallBannerHash = MoPubBannerInventoryHash;
+    		MoPub.RequestBanner(mCurrentMoPubSmallBannerHash, MoPub.AdPosition.BottomCenter, MoPub.MaxAdSize.Width320Height50);
+	
+			addLog("Creating MoPub banner");
+    	} else {
+    	
+    		MoPub.SetAutorefresh(mCurrentMoPubSmallBannerHash, true);
+    		MoPub.ForceRefresh(mCurrentMoPubSmallBannerHash);
+    	
+			addLog("Reloading MoPub banner");
+    	}
 	}
 	
     private void startMoPubLargeBanner()
     {
 		clearAllAds();
-    	asyncMoPubCommand = "startMoPubLargeBanner";
+		
+        if (mCurrentMoPubLargeBannerHash == null)
+    	{
+			mCurrentMoPubLargeBannerHash = MoPubBannerLargeInvh;
+	    	MoPub.RequestBanner(mCurrentMoPubLargeBannerHash, MoPub.AdPosition.BottomCenter, MoPub.MaxAdSize.Width300Height250);
+	
+			addLog("Creating MoPub banner");
+    	} else {
+    	
+    		MoPub.SetAutorefresh(mCurrentMoPubLargeBannerHash, true);
+    		MoPub.ForceRefresh(mCurrentMoPubLargeBannerHash);
+    	
+			addLog("Reloading MoPub banner");
+    	}
 	}
 	
     private void startMoPubVideoBanner()
     {
 		clearAllAds();
-    	asyncMoPubCommand = "startMoPubVideoBanner";
-	}
-
-	//------------------------------------------------------------
+		
+        if (mCurrentMoPubVideoBannerHash == null)
+    	{
+			mCurrentMoPubVideoBannerHash = MoPubBannerVideoInvh;
+	    	MoPub.RequestBanner(mCurrentMoPubVideoBannerHash, MoPub.AdPosition.BottomCenter, MoPub.MaxAdSize.Width300Height250);
 	
-	private void reallyStartMoPubSmallBanner()
-	{
-		mCurrentMoPubBannerHash = MoPubBannerInventoryHash;
-    	MoPub.RequestBanner(mCurrentMoPubBannerHash, MoPub.AdPosition.BottomCenter, MoPub.MaxAdSize.Width320Height50);
-
-		addLog("Loading MoPub banner");
-    }
-    
-    private void reallyStartMoPubLargeBanner()
-	{
-		mCurrentMoPubBannerHash = MoPubBannerLargeInvh;
-    	MoPub.RequestBanner(mCurrentMoPubBannerHash, MoPub.AdPosition.BottomCenter, MoPub.MaxAdSize.Width300Height250);
-
-		addLog("Loading MoPub banner");
-	}
-	
-	private void reallyStartMoPubVideoBanner()
-	{
-		mCurrentMoPubBannerHash = MoPubBannerVideoInvh;
-    	MoPub.RequestBanner(mCurrentMoPubBannerHash, MoPub.AdPosition.BottomCenter, MoPub.MaxAdSize.Width300Height250);
-
-		addLog("Loading MoPub banner");
+			addLog("Creating MoPub banner");
+    	} else {
+    	
+    		MoPub.SetAutorefresh(mCurrentMoPubVideoBannerHash, true);
+    		MoPub.ForceRefresh(mCurrentMoPubVideoBannerHash);
+    	
+			addLog("Reloading MoPub banner");
+    	}
 	}
 
     //------------------------------------------------------------
