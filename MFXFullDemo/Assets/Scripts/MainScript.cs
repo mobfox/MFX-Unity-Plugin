@@ -57,6 +57,8 @@ public class MainScript : MonoBehaviour
 	private string asyncMoPubCommand = null;
 	private string asyncMoPubParam   = null;
 	
+	private string asyncTextForLog   = null;
+	
 	//############################################################
 	//#####   U I :                                          #####
 	//############################################################
@@ -118,6 +120,13 @@ public class MainScript : MonoBehaviour
         	this.unifiedNativeAdLoaded = false;        	
         	updateAdMobNativeAd();
     	}
+    	
+    	// logging
+    	if (asyncTextForLog != null)
+	    {
+    		reallyAddLog(asyncTextForLog);
+    		asyncTextForLog = null;
+	    }
     }
     
     void OnApplicationQuit()
@@ -246,15 +255,27 @@ public class MainScript : MonoBehaviour
     }
         
     //------------------------------------------------------------
-    
+
     private void addLog(string message)
     {
-    	string txt  = lblLog.text;
-    	string time = System.DateTime.Now.ToString("[HH:mm:ss] ");
-    	txt = txt + time + message + "\n";
-    	lblLog.text = txt;
-    	
+        string time  = System.DateTime.Now.ToString("[HH:mm:ss] ");
+        string toAdd = time + message + "\n";
+
+    	if (asyncTextForLog == null)
+    	{
+    		asyncTextForLog = toAdd;
+    	} else {
+    		asyncTextForLog = asyncTextForLog + toAdd;
+    	}
+
     	MobFox.Instance.Log(message);
+    }
+    
+    private void reallyAddLog(string message)
+    {
+    	string txt = lblLog.text;
+    	txt = txt + message;
+    	lblLog.text = txt;    	
     }
     
     //############################################################
