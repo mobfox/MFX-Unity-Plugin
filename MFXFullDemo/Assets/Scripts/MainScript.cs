@@ -728,7 +728,7 @@ public class MainScript : MonoBehaviour
 	private string MoPubRewardedInventoryHash     = "005491feb31848a0ae7b9daf4a46c701";	// Android MobFox Adapter / Test Hash Rewarded (DONT CHANGE)
 #else
 	private string MoPubBannerInventoryHash       = "234dd5a1b1bf4a5f9ab50431f9615784";	// Test iOS App / Banner Ad
-	private string MoPubBannerLargeInvh           = "234dd5a1b1bf4a5f9ab50431f9615784";	// Test iOS App / Banner Ad
+	private string MoPubBannerLargeInvh           = "5f239da8a483458eb8e5983418994040";	// Test iOS App / Banner Large Ad
 	private string MoPubBannerVideoInvh           = "62f37ebc4c0b40359a26af136d1e0866";	// Test iOS App / Banner Video
 	private string MoPubInterstitialInventoryHash = "6aee1c416d44412ca9978b4355902d3f";	// Test iOS App / iOS Inter html
 	private string MoPubInterVideoInvh            = "a5277fa1fd57418b867cfaa949df3b4a";	// Test iOS App / Fullscreen Ad-demoApp
