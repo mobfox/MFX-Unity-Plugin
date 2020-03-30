@@ -21,7 +21,7 @@ public class MobfoxModifyUnityAndroidAppManifest : IPostGenerateGradleAndroidPro
         androidManifest.AddPermission("android.permission.ACCESS_NETWORK_STATE");
         androidManifest.AddPermission("android.permission.INTERNET");
         
-        androidManifest.AddInterstialActivity();
+        //androidManifest.AddInterstialActivity();
         androidManifest.AddBrowserActivity();
         androidManifest.AddService();
         
@@ -124,6 +124,7 @@ internal class AndroidManifest : AndroidXmlDocument
         return attr;
     }
     
+    /*
     internal void AddInterstialActivity()
     {
         XmlElement child = CreateElement("activity");
@@ -141,6 +142,7 @@ internal class AndroidManifest : AndroidXmlDocument
         XmlAttribute newAttribute4 = CreateAndroidAttribute("theme", "@android:style/Theme.NoTitleBar.Fullscreen");
         child.Attributes.Append(newAttribute4);
     }
+    */
     
     internal void AddBrowserActivity()
     {

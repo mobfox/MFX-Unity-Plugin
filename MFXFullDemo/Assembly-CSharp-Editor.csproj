@@ -125,6 +125,9 @@
  <Reference Include="Unity.2D.Sprite.Editor">
  <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.Mobile.AndroidLogcat.Editor">
+ <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.2D.Tilemap.Editor">
  <HintPath>/Users/takephone/Documents/Matomy/MFX-Unity-Plugin/MFXFullDemo/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
  </Reference>
