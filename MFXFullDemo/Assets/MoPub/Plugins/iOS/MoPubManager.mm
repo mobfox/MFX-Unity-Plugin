@@ -423,7 +423,7 @@ __deprecated_msg("createBanner has been deprecated, please use requestBanner ins
 - (void)willPresentModalViewForAd:(MPAdView*)view
 {
     [self sendUnityEvent:@"EmitAdExpandedEvent"];
-    UnityPause(true);
+    //@@@UnityPause(true);
 }
 
 
@@ -480,7 +480,7 @@ __deprecated_msg("createBanner has been deprecated, please use requestBanner ins
 
 - (void)interstitialDidAppear:(MPInterstitialAdController*)interstitial
 {
-    UnityPause(true);
+    //@@@UnityPause(true);
     [self sendUnityEvent:@"EmitInterstitialShownEvent"];
 }
 
@@ -544,7 +544,7 @@ __deprecated_msg("createBanner has been deprecated, please use requestBanner ins
 
 - (void)rewardedVideoAdDidAppearForAdUnitID:(NSString*)adUnitID
 {
-    UnityPause(true);
+    //@@@UnityPause(true);
     [self sendUnityEvent:@"EmitRewardedVideoShownEvent"];
 }
 
