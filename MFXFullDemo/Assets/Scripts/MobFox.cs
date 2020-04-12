@@ -293,7 +293,7 @@ public class MobFox :MonoBehaviour
 	
 	public string getUnityPluginVersion()
 	{
-		return "4.1.11";
+		return "4.2.1";
 	}
 	
 	public string getNativeSDKVersion()
