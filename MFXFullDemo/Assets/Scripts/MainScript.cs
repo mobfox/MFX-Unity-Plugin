@@ -238,6 +238,9 @@ public class MainScript : MonoBehaviour
     	if (mCurrentMoPubVideoBannerHash != null)
     	{
     		hideMoPubBanner(mCurrentMoPubVideoBannerHash);
+
+    		MoPub.DestroyBanner(mCurrentMoPubVideoBannerHash);
+    		mCurrentMoPubVideoBannerHash = null;
     	}
 
     	hideAdMobBanner();
