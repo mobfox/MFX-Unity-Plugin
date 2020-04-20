@@ -10,6 +10,7 @@ Thanks for electing to show Mobfox ads in your Unity app.
 * [Important note - Android](#important-note---android)
 * [Usage](#usage)
   * [Initializing the SDK](#initializing-the-sdk)
+  * [Version queries](#version-queries)
   * [Configuring ads mediation](#configuring-ads-mediation)
   * [Setting up listeners](#setting-up-listeners)
   * [Banner ads](#banner-ads)
@@ -71,6 +72,15 @@ You can look at the **MainSript.cs** sript in the **MFXFullDemo** project to see
 On your main **MonoBehaviour** class 'start' function, call:
 
     	MobFox.CreateSingletone( );
+
+
+## Version queries
+
+You can query for the version of Unity plugin and/or the native Mobfox SDK version:
+
+    	MobFox.getUnityPluginVersion( );
+    	
+    	MobFox.getNativeSDKVersion( );
 
 
 ## Configuring ads mediation

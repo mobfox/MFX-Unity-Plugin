@@ -3,11 +3,21 @@ Thanks for electing to show Mobfox ads in your Unity app.
 
 <!-- toc -->
 
+* [What's new](#whats-new)
 * [Prerequisites](#prerequisites)
 * [Use cases - what plugin do I use?](#use-cases---what-plugin-do-i-use)
 * [Support](#support)
 
 <!-- toc stop -->
+
+# What's new
+
+**Version 4.2.1**
+
+* New Mobfox native SDK and adapters (Android 4.2.1, iOS 4.2.2).
+* Native ads under AdMob.
+* Fixes: watermark location, banner cleanup, callbacks inside interstitial/rewarded.
+* Added functions for querying version of Unity plugin and/or Mobfox native SDK.
 
 # Prerequisites
 
